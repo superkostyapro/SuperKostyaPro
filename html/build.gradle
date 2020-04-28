@@ -19,7 +19,7 @@ import org.wisepersist.gradle.plugins.gwt.GwtSuperDev
 def HttpFileServer server = null
 def httpFilePort = 8080
 
-task startHttpServer () {
+task startHttpServer() {
     dependsOn draftCompileGwt
     String output = project.buildDir.path + "/gwt/draftOut"
     doLast {
@@ -36,7 +36,7 @@ task startHttpServer () {
     }
 }
 
-task superDev (type: GwtSuperDev) {
+task superDev(type: GwtSuperDev) {
     dependsOn startHttpServer
     doFirst {
         gwt.modules = gwt.devModules
@@ -72,5 +72,3 @@ tasks.draftCompileGwt.dependsOn(addSource)
 
 sourceCompatibility = 1.7
 sourceSets.main.java.srcDirs = [ "src/" ]
-
-eclipse.project.name = appName + "-html"
