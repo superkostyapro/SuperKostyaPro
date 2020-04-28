@@ -1,3 +1,3 @@
 package pro.superkostya.actor
 
-class Joker
+class GoldCarp
