@@ -1,5 +1,4 @@
 android {
-    buildToolsVersion "29.0.3"
     compileSdkVersion 29
     sourceSets {
         main {
@@ -11,7 +10,6 @@ android {
             assets.srcDirs = ['assets']
             jniLibs.srcDirs = ['libs']
         }
-
     }
     packagingOptions {
         exclude 'META-INF/robovm/ios/robovm.xml'
