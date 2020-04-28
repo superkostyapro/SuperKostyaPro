@@ -1,5 +1,6 @@
 buildscript {
     ext {
+        appName = "SuperKostyaPro"
         gdxVersion = '1.9.10'
         ktxVersion = '1.9.10-b6'
         kotlinVersion = '1.3.72'
@@ -22,7 +23,6 @@ buildscript {
 allprojects {
     apply plugin: "eclipse"
 
-    appName = "SuperKostyaPro"
     version = '1.0'
 
     repositories {

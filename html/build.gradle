@@ -21,22 +21,17 @@ def httpFilePort = 8080
 
 task startHttpServer () {
     dependsOn draftCompileGwt
-
     String output = project.buildDir.path + "/gwt/draftOut"
-
     doLast {
         copy {
             from "webapp"
             into output
         }
-
         copy {
             from "war"
             into output
         }
-
         server = new SimpleHttpFileServerFactory().start(new File(output), httpFilePort)
-
         println "Server started in directory " + server.getContentRoot() + ", http://localhost:" + server.getPort()
     }
 }
@@ -47,7 +42,6 @@ task superDev (type: GwtSuperDev) {
         gwt.modules = gwt.devModules
     }
 }
-
 
 task dist(dependsOn: [clean, compileGwt]) {
     doLast {
