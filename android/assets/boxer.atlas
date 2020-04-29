@@ -1,81 +1,81 @@
 boxer.png
-size: 795, 102
+size: 215, 380
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 boxer1
   rotate: false
-  xy: 0, 0
+  xy: 53, 0
   size: 54, 91
   orig: 54, 91
   offset: 0, 0
   index: -1
 boxer2
   rotate: false
-  xy: 54, 0
+  xy: 107, 0
   size: 54, 91
   orig: 54, 91
   offset: 0, 0
   index: -1
 boxer3
   rotate: false
-  xy: 108, 0
+  xy: 161, 0
   size: 54, 90
   orig: 54, 90
   offset: 0, 0
   index: -1
 boxer4
   rotate: false
-  xy: 162, 0
+  xy: 0, 94
   size: 54, 89
   orig: 54, 89
   offset: 0, 0
   index: -1
 boxer5
   rotate: false
-  xy: 216, 0
+  xy: 54, 94
   size: 54, 90
   orig: 54, 90
   offset: 0, 0
   index: -1
 boxer6
   rotate: false
-  xy: 270, 0
+  xy: 0, 0
   size: 53, 94
   orig: 53, 94
   offset: 0, 0
   index: -1
 boxer7
   rotate: false
-  xy: 323, 0
+  xy: 108, 94
   size: 78, 91
   orig: 78, 91
   offset: 0, 0
   index: -1
 boxer8
   rotate: false
-  xy: 401, 0
+  xy: 86, 185
   size: 94, 100
   orig: 94, 100
   offset: 0, 0
   index: -1
 boxer9
   rotate: false
-  xy: 495, 0
+  xy: 0, 185
   size: 86, 102
   orig: 86, 102
   offset: 0, 0
   index: -1
 boxer10
   rotate: false
-  xy: 581, 0
+  xy: 0, 287
   size: 107, 93
   orig: 107, 93
   offset: 0, 0
   index: -1
 boxer11
   rotate: false
-  xy: 688, 0
+  xy: 107, 287
   size: 107, 93
   orig: 107, 93
   offset: 0, 0
