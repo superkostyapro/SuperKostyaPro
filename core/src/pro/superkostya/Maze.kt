@@ -2,16 +2,12 @@ package pro.superkostya
 
 import java.util.*
 
-private enum class Cell {
-    WALL, SPACE
-}
-
 @Suppress("MemberVisibilityCanBePrivate")
 class Maze(val width: Int, val height: Int) {
 
     private val data = Array(width) {
         Array(height) {
-            Cell.WALL
+            WALL_ID
         }
     }
 
@@ -24,21 +20,20 @@ class Maze(val width: Int, val height: Int) {
     fun generate() {
         for (x in 0 until width) {
             for (y in 0 until height) {
-                data[x][y] = Cell.WALL
+                data[x][y] = WALL_ID
             }
         }
         for (x in 0 until width) {
-            data[x][0] = Cell.SPACE
-            data[x][height - 1] = Cell.SPACE
+            data[x][0] = SPACE_ID
+            data[x][height - 1] = SPACE_ID
         }
         for (y in 0 until height) {
-            data[0][y] = Cell.SPACE
-            data[width - 1][y] = Cell.SPACE
+            data[0][y] = SPACE_ID
+            data[width - 1][y] = SPACE_ID
         }
-        data[2][2] = Cell.SPACE
+        data[2][2] = SPACE_ID
         carve(2, 2)
-        data[2][1] = Cell.SPACE
-        data[width - 3][height - 2] = Cell.SPACE
+        data[width - 2][height - 3] = SPACE_ID
     }
 
     private fun carve(x: Int, y: Int) {
@@ -51,9 +46,9 @@ class Maze(val width: Int, val height: Int) {
             val y1 = y + upY[dir]
             val x2 = x1 + upX[dir]
             val y2 = y1 + upY[dir]
-            if (data[x1][y1] == Cell.WALL && data[x2][y2] == Cell.WALL) {
-                data[x1][y1] = Cell.SPACE
-                data[x2][y2] = Cell.SPACE
+            if (data[x1][y1] == WALL_ID && data[x2][y2] == WALL_ID) {
+                data[x1][y1] = SPACE_ID
+                data[x2][y2] = SPACE_ID
                 carve(x2, y2)
             } else {
                 dir = (dir + 1) % 4
@@ -66,13 +61,25 @@ class Maze(val width: Int, val height: Int) {
     fun print() {
         for (y in 0 until height) {
             for (x in 0 until width) {
-                if (data[x][y] == Cell.WALL) {
-                    print("[]")
-                } else {
-                    print("  ")
-                }
+                print(when (data[x][y]) {
+                    WALL_ID -> "[]"
+                    Boxer.ID -> "<>"
+                    else -> "  "
+                })
             }
             println()
         }
     }
+
+    companion object {
+
+        const val SPACE_ID = 0
+        const val WALL_ID = -1
+    }
+}
+
+fun main() {
+    val maze = Maze(81, 33)
+    maze.generate()
+    maze.print()
 }
