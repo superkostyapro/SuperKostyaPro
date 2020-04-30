@@ -11,6 +11,8 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.utils.IntIntMap
+import pro.superkostya.Maze.Companion.WALL_ID
 
 class GameScreen : Screen {
 
@@ -18,46 +20,43 @@ class GameScreen : Screen {
 
     private val stage = Stage()
 
-    var map: TiledMap? = null
+    private val map = TiledMap()
 
-    var renderer: OrthogonalTiledMapRenderer? = null
+    lateinit var renderer: OrthogonalTiledMapRenderer
 
     private val kostya = Kostya()
 
     override fun show() {
-
         stage.viewport.camera = camera
-        kostya!!.setPosition(20f, 10f)
+        kostya.setPosition(20f, 10f)
         stage.addActor(kostya)
-
         val tiles = Texture(Gdx.files.internal("brickBlue01.png"))
-        map = TiledMap()
-        val layers = map!!.layers
-        val layer = TiledMapTileLayer(150, 100, 32, 32)
-        for (x in 0..149) {
-            for (y in 0..99) {
-                if (y % 2 == 0) {
+        val layer = TiledMapTileLayer(81, 33, 32, 32)
+        val maze = Maze(81, 33)
+        maze.generate(IntIntMap())
+        maze.data.forEachIndexed { y, array ->
+            array.forEachIndexed { x, value ->
+                if (value == WALL_ID) {
                     val cell = TiledMapTileLayer.Cell()
                     cell.tile = StaticTiledMapTile(TextureRegion(tiles, 0, 0, 32, 32))
                     layer.setCell(x, y, cell)
                 }
             }
         }
-        layers.add(layer)
-        kostya!!.layer = map!!.layers[0] as TiledMapTileLayer
+        map.layers.add(layer)
+        kostya.layer = map.layers[0] as TiledMapTileLayer
         renderer = OrthogonalTiledMapRenderer(map, 1 / 16f)
     }
 
     override fun render(delta: Float) {
         Gdx.gl.glClearColor(250f / 255, 250f / 255, 250f / 255, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-        kostya!!.x += delta * 3
-        camera.position.x = kostya!!.x
+        camera.position.x = kostya.x
         camera.update()
-        renderer!!.setView(camera)
-        renderer!!.render()
-        stage!!.act(delta)
-        stage!!.draw()
+        renderer.setView(camera)
+        renderer.render()
+        stage.act(delta)
+        stage.draw()
     }
 
     override fun resume() {
