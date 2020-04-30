@@ -1,13 +1,10 @@
 package pro.superkostya
 
-import com.badlogic.gdx.Screen
-import ktx.app.KtxGame
+import com.badlogic.gdx.Game
 
-class SuperKostyaPro : KtxGame<Screen>() {
+class SuperKostyaPro : Game() {
 
     override fun create() {
-        val game = MainScreen()
-        addScreen(game)
-        setScreen<MainScreen>()
+        setScreen(GameScreen())
     }
 }
