@@ -5,10 +5,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.scenes.scene2d.Actor
 import pro.superkostya.ppuX
 import pro.superkostya.ppuY
 
-abstract class BaseActor(val position: Vector2, width: Float, height: Float = width) {
+abstract class BaseActor(val position: Vector2, width: Float, height: Float = width) : Actor() {
 
     val bounds = Rectangle(0f, 0f, width, height)
 

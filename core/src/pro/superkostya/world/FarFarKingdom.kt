@@ -4,8 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
-import pro.superkostya.FRAME_DURATION
-import pro.superkostya.addAssets
+import pro.superkostya.*
 import pro.superkostya.extension.eachFlipX
 import pro.superkostya.extension.flipX
 

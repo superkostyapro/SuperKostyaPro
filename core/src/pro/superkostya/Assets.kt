@@ -1,9 +1,29 @@
 package pro.superkostya
 
+import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.utils.Disposable
 import com.badlogic.gdx.utils.IntMap
-import pro.superkostya.world.BaseAssets
+
+internal typealias AtlasRegion = TextureAtlas.AtlasRegion
+
+internal typealias AnimationRegion = Animation<TextureRegion>
+
+internal typealias ArrayRegion = Array<TextureRegion>
 
 private val assets = IntMap<BaseAssets>()
+
+abstract class BaseAssets : Disposable {
+
+    abstract val kostyaIdleLeft: TextureRegion
+    abstract val kostyaIdleRight: TextureRegion
+
+    abstract val kostyaLeftAnimation: AnimationRegion
+    abstract val kostyaRightAnimation: AnimationRegion
+
+    abstract val blockTexture: TextureRegion
+}
 
 fun addAssets(id: Int, value: BaseAssets): BaseAssets {
     removeAssets(id)
