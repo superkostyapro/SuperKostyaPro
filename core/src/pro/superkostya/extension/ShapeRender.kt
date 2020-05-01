@@ -2,20 +2,29 @@ package pro.superkostya.extension
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 
-inline fun ShapeRenderer.batchLine(block: ShapeRenderer.() -> Unit) {
+inline fun ShapeRenderer.useLine(block: ShapeRenderer.() -> Unit) {
     begin(ShapeRenderer.ShapeType.Line)
-    block()
-    end()
+    try {
+        block()
+    } finally {
+        end()
+    }
 }
 
-inline fun ShapeRenderer.batchFilled(block: ShapeRenderer.() -> Unit) {
+inline fun ShapeRenderer.useFilled(block: ShapeRenderer.() -> Unit) {
     begin(ShapeRenderer.ShapeType.Filled)
-    block()
-    end()
+    try {
+        block()
+    } finally {
+        end()
+    }
 }
 
-inline fun ShapeRenderer.batchPoint(block: ShapeRenderer.() -> Unit) {
+inline fun ShapeRenderer.usePoint(block: ShapeRenderer.() -> Unit) {
     begin(ShapeRenderer.ShapeType.Point)
-    block()
-    end()
+    try {
+        block()
+    } finally {
+        end()
+    }
 }
