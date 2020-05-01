@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.utils.Disposable
 import pro.superkostya.extension.flipX
 
-private typealias TextureAnimation = Animation<TextureRegion>
+private typealias AnimationRegion = Animation<TextureRegion>
+
+private typealias ArrayRegion = Array<TextureRegion>
 
 @Suppress("MemberVisibilityCanBePrivate")
 class Assets : Disposable {
@@ -24,8 +26,8 @@ class Assets : Disposable {
         abstract val kostyaIdleLeft: TextureRegion
         abstract val kostyaIdleRight: TextureRegion
 
-        abstract val kostyaLeftAnimation: TextureAnimation
-        abstract val kostyaRightAnimation: TextureAnimation
+        abstract val kostyaLeftAnimation: AnimationRegion
+        abstract val kostyaRightAnimation: AnimationRegion
 
         abstract val blockTexture: TextureRegion
     }
@@ -37,8 +39,10 @@ class Assets : Disposable {
         override val kostyaIdleLeft: AtlasRegion = atlas.findRegion("bob-01")
         override val kostyaIdleRight = TextureRegion(kostyaIdleLeft).flipX()
 
-        override val kostyaLeftAnimation: TextureAnimation
-        override val kostyaRightAnimation: TextureAnimation
+        override val kostyaLeftAnimation = AnimationRegion(FRAME_DURATION, *ArrayRegion(5) {
+            atlas.findRegion("bob-0" + (it + 2))
+        })
+        override val kostyaRightAnimation = AnimationRegion(FRAME_DURATION, *kostyaLeftAnimation.keyFrames.flipX())
 
         override val blockTexture: TextureRegion = atlas.findRegion("block")
 
@@ -49,13 +53,39 @@ class Assets : Disposable {
 
     class World2 : World() {
 
+        private val atlas = TextureAtlas(Gdx.files.internal("textures.pack"))
+
+        override val kostyaIdleLeft: AtlasRegion = atlas.findRegion("bob-01")
+        override val kostyaIdleRight = TextureRegion(kostyaIdleLeft).flipX()
+
+        override val kostyaLeftAnimation = AnimationRegion(FRAME_DURATION, *ArrayRegion(5) {
+            atlas.findRegion("bob-0" + (it + 2))
+        })
+        override val kostyaRightAnimation = AnimationRegion(FRAME_DURATION, *kostyaLeftAnimation.keyFrames.flipX())
+
+        override val blockTexture: TextureRegion = atlas.findRegion("block")
+
         override fun dispose() {
+            atlas.dispose()
         }
     }
 
     class World3 : World() {
 
+        private val atlas = TextureAtlas(Gdx.files.internal("textures.pack"))
+
+        override val kostyaIdleLeft: AtlasRegion = atlas.findRegion("bob-01")
+        override val kostyaIdleRight = TextureRegion(kostyaIdleLeft).flipX()
+
+        override val kostyaLeftAnimation = AnimationRegion(FRAME_DURATION, *ArrayRegion(5) {
+            atlas.findRegion("bob-0" + (it + 2))
+        })
+        override val kostyaRightAnimation = AnimationRegion(FRAME_DURATION, *kostyaLeftAnimation.keyFrames.flipX())
+
+        override val blockTexture: TextureRegion = atlas.findRegion("block")
+
         override fun dispose() {
+            atlas.dispose()
         }
     }
 
@@ -69,6 +99,7 @@ class Assets : Disposable {
     }
 
     @Suppress("UNCHECKED_CAST")
+    @Throws(Throwable::class)
     fun <T> getWorld(n: Int): T {
         return when (n) {
             1 -> world1 as T
