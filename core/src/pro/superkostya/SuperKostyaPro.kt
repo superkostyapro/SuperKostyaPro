@@ -1,8 +1,11 @@
 package pro.superkostya
 
 import com.badlogic.gdx.Game
+import com.badlogic.gdx.Gdx
 import pro.superkostya.screen.PlayScreen
 import pro.superkostya.world.DrawingWorld
+
+fun getGame() = Gdx.app.applicationListener as SuperKostyaPro
 
 class SuperKostyaPro : Game() {
 

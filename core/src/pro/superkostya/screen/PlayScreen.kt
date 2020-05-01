@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import pro.superkostya.CAMERA_HEIGHT
 import pro.superkostya.CAMERA_WIDTH
+import pro.superkostya.extension.use
+import pro.superkostya.extension.useLine
 import pro.superkostya.world.BaseWorld
 
 class PlayScreen(private val world: BaseWorld) : BaseScreen() {
@@ -29,6 +31,12 @@ class PlayScreen(private val world: BaseWorld) : BaseScreen() {
         world.update(delta)
         camera.position.x = world.kostya.position.x
         camera.update()
+        spriteBatch.use {
+
+        }
+        debugRenderer.useLine {
+
+        }
         world.render()
     }
 

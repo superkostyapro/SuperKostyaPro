@@ -18,10 +18,10 @@ class Kostya(private val world: Int, position: Vector2) : BaseActor(position, SI
     override fun update(delta: Float) {
         stateTime += delta
         position.add(velocity.cpy().scl(delta))
-        getBaseAssets(world).kostyaIdleLeft
     }
 
     override fun render() {
+        getBaseAssets(world).kostyaIdleLeft
 
     }
 
