@@ -8,9 +8,9 @@ import pro.superkostya.FRAME_DURATION
 import pro.superkostya.extension.eachFlipX
 import pro.superkostya.extension.flipX
 
-class ProgramWorld : BaseWorld(ID) {
+class ProgramWorld : BaseWorld(2) {
 
-    override val assets = AssetsManager.getInstance().addAssets(ID, Assets())
+    override val assets = AssetsManager.getInstance().addAssets(id, Assets())
 
     class Assets : BaseAssets() {
 
@@ -29,14 +29,5 @@ class ProgramWorld : BaseWorld(ID) {
         override fun dispose() {
             atlas.dispose()
         }
-    }
-
-    override fun dispose() {
-        AssetsManager.getInstance().removeAssets(ID)
-    }
-
-    companion object {
-
-        const val ID = 2
     }
 }
