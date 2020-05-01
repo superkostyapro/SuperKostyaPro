@@ -1,6 +1,8 @@
 package pro.superkostya
 
 import com.badlogic.gdx.math.Vector2
+import pro.superkostya.actor.Block
+import pro.superkostya.actor.Kostya
 
 class World {
 
