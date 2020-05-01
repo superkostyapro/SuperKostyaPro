@@ -14,6 +14,8 @@ abstract class BaseActor(val position: Vector2, width: Float, height: Float = wi
 
     abstract fun update(delta: Float)
 
+    abstract fun render()
+
     open fun SpriteBatch.draw(region: TextureRegion) {
         draw(region, position.x * ppuX, position.y * ppuY, bounds.width * ppuX, bounds.height * ppuY)
     }

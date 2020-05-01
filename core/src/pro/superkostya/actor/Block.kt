@@ -7,6 +7,10 @@ class Block(position: Vector2) : BaseActor(position, SIZE) {
     override fun update(delta: Float) {
     }
 
+    override fun render() {
+
+    }
+
     companion object {
 
         const val SIZE = 1f

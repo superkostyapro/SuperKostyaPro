@@ -17,6 +17,10 @@ abstract class BaseWorld(val id: Int) : InputProcessor, Disposable {
 
     abstract val assets: BaseAssets
 
+    abstract fun update(delta: Float)
+
+    abstract fun render()
+
     override fun keyUp(keycode: Int): Boolean {
         return false
     }

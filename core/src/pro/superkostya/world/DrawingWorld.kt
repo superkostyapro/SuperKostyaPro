@@ -12,6 +12,14 @@ class DrawingWorld : BaseWorld(1) {
 
     override val assets = addAssets(id, Assets())
 
+    override fun update(delta: Float) {
+
+    }
+
+    override fun render() {
+
+    }
+
     class Assets : BaseAssets() {
 
         private val atlas = TextureAtlas(Gdx.files.internal("textures.pack"))

@@ -12,14 +12,14 @@ fun TextureRegion.flipY(): TextureRegion {
     return this
 }
 
-fun Array<TextureRegion>.flipX(): Array<TextureRegion> {
+fun Array<TextureRegion>.eachFlipX(): Array<TextureRegion> {
     forEach {
         it.flipX()
     }
     return this
 }
 
-fun Array<TextureRegion>.flipY(): Array<TextureRegion> {
+fun Array<TextureRegion>.eachFlipY(): Array<TextureRegion> {
     forEach {
         it.flipY()
     }

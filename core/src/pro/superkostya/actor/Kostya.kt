@@ -1,8 +1,9 @@
 package pro.superkostya.actor
 
 import com.badlogic.gdx.math.Vector2
+import pro.superkostya.getBaseAssets
 
-class Kostya(position: Vector2) : BaseActor(position, SIZE) {
+class Kostya(private val world: Int, position: Vector2) : BaseActor(position, SIZE) {
 
     val acceleration = Vector2()
 
@@ -10,13 +11,18 @@ class Kostya(position: Vector2) : BaseActor(position, SIZE) {
 
     var state = State.IDLE
 
-    var isFacingRight = true
-
     var stateTime = 0f
+
+    var isFacingRight = true
 
     override fun update(delta: Float) {
         stateTime += delta
         position.add(velocity.cpy().scl(delta))
+        getBaseAssets(world).kostyaIdleLeft
+    }
+
+    override fun render() {
+
     }
 
     companion object {
