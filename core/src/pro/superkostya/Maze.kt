@@ -2,6 +2,9 @@ package pro.superkostya
 
 import java.util.*
 
+/**
+ * Recursive backtracking algorithm
+ */
 class Maze(private val width: Int, private val height: Int) {
 
     private val data = Array(width) {
@@ -11,10 +14,6 @@ class Maze(private val width: Int, private val height: Int) {
     }
 
     private val rand = Random()
-
-    init {
-        generate()
-    }
 
     fun generate() {
         for (x in 0 until width) {
