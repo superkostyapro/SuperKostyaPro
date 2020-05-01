@@ -1,6 +1,7 @@
 package pro.superkostya.world
 
 import com.badlogic.gdx.InputProcessor
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
@@ -14,6 +15,8 @@ internal typealias AnimationRegion = Animation<TextureRegion>
 internal typealias ArrayRegion = Array<TextureRegion>
 
 abstract class BaseWorld(val id: Int) : InputProcessor, Disposable {
+
+    abstract val backgroundColor: Color
 
     abstract val assets: BaseAssets
 
@@ -53,18 +56,18 @@ abstract class BaseWorld(val id: Int) : InputProcessor, Disposable {
         return false
     }
 
-    abstract class BaseAssets : Disposable {
-
-        abstract val kostyaIdleLeft: TextureRegion
-        abstract val kostyaIdleRight: TextureRegion
-
-        abstract val kostyaLeftAnimation: AnimationRegion
-        abstract val kostyaRightAnimation: AnimationRegion
-
-        abstract val blockTexture: TextureRegion
-    }
-
     override fun dispose() {
         removeAssets(id)
     }
+}
+
+abstract class BaseAssets : Disposable {
+
+    abstract val kostyaIdleLeft: TextureRegion
+    abstract val kostyaIdleRight: TextureRegion
+
+    abstract val kostyaLeftAnimation: AnimationRegion
+    abstract val kostyaRightAnimation: AnimationRegion
+
+    abstract val blockTexture: TextureRegion
 }

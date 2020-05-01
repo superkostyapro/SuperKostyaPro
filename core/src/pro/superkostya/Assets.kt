@@ -1,7 +1,7 @@
 package pro.superkostya
 
 import com.badlogic.gdx.utils.IntMap
-import pro.superkostya.world.BaseWorld.BaseAssets
+import pro.superkostya.world.BaseAssets
 
 private val assets = IntMap<BaseAssets>()
 

@@ -1,6 +1,7 @@
 package pro.superkostya.world
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import pro.superkostya.FRAME_DURATION
@@ -9,6 +10,8 @@ import pro.superkostya.extension.eachFlipX
 import pro.superkostya.extension.flipX
 
 class ProgramWorld : BaseWorld(2) {
+
+    override val backgroundColor = Color(250f / 255, 250f / 255, 250f / 255, 1f)
 
     override val assets = addAssets(id, Assets())
 
