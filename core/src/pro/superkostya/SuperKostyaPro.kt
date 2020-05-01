@@ -17,6 +17,6 @@ class SuperKostyaPro : Game() {
 
     override fun dispose() {
         super.dispose()
-        AssetsManager.getInstance().dispose()
+        clearAssets()
     }
 }

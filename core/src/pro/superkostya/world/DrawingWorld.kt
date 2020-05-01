@@ -3,14 +3,14 @@ package pro.superkostya.world
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
-import pro.superkostya.AssetsManager
 import pro.superkostya.FRAME_DURATION
+import pro.superkostya.addAssets
 import pro.superkostya.extension.eachFlipX
 import pro.superkostya.extension.flipX
 
 class DrawingWorld : BaseWorld(1) {
 
-    override val assets = AssetsManager.getInstance().addAssets(id, Assets())
+    override val assets = addAssets(id, Assets())
 
     class Assets : BaseAssets() {
 
