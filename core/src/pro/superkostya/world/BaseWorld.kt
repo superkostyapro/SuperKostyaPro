@@ -5,11 +5,11 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.utils.Disposable
 
-typealias AtlasRegion = TextureAtlas.AtlasRegion
+internal typealias AtlasRegion = TextureAtlas.AtlasRegion
 
-typealias AnimationRegion = Animation<TextureRegion>
+internal typealias AnimationRegion = Animation<TextureRegion>
 
-typealias ArrayRegion = Array<TextureRegion>
+internal typealias ArrayRegion = Array<TextureRegion>
 
 abstract class BaseWorld(id: Int) : Disposable {
 

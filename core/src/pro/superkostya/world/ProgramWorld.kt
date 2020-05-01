@@ -3,13 +3,14 @@ package pro.superkostya.world
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import pro.superkostya.AssetsManager
 import pro.superkostya.FRAME_DURATION
 import pro.superkostya.extension.eachFlipX
 import pro.superkostya.extension.flipX
 
 class ProgramWorld : BaseWorld(ID) {
 
-    override val assets = Assets()
+    override val assets = AssetsManager.getInstance().addAssets(ID, Assets())
 
     class Assets : BaseAssets() {
 
@@ -31,7 +32,7 @@ class ProgramWorld : BaseWorld(ID) {
     }
 
     override fun dispose() {
-        assets.dispose()
+        AssetsManager.getInstance().removeAssets(ID)
     }
 
     companion object {

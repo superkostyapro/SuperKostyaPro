@@ -4,19 +4,23 @@ import com.badlogic.gdx.utils.Disposable
 import com.badlogic.gdx.utils.IntMap
 import pro.superkostya.world.BaseWorld
 
+private typealias BaseAssets = BaseWorld.BaseAssets
+
 @Suppress("MemberVisibilityCanBePrivate")
 class AssetsManager : Disposable {
 
-    private val assets = IntMap<BaseWorld.BaseAssets>()
+    private val assets = IntMap<BaseAssets>()
 
-    fun addAssets(id: Int, world: BaseWorld.BaseAssets) {
+    fun addAssets(id: Int, world: BaseAssets): BaseAssets {
+        removeAssets(id)
         assets.put(id, world)
+        return world
     }
 
-    fun getBaseAssets(id: Int) = getAssets<BaseWorld.BaseAssets>(id)
+    fun getBaseAssets(id: Int) = getAssets<BaseAssets>(id)
 
     @Suppress("UNCHECKED_CAST")
-    fun <T : BaseWorld.BaseAssets> getAssets(id: Int) = assets.get(id) as T
+    fun <T : BaseAssets> getAssets(id: Int) = assets.get(id) as T
 
     fun removeAssets(id: Int) {
         with(assets) {
