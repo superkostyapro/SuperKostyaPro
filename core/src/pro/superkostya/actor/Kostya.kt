@@ -1,5 +1,7 @@
 package pro.superkostya.actor
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 
@@ -7,23 +9,33 @@ enum class State {
     IDLE, WALKING, JUMPING, DYING
 }
 
-class Kostya(val position: Vector2) {
+class Kostya(val position: Vector2) : BaseActor() {
 
-    var acceleration = Vector2()
+    val acceleration = Vector2()
 
-    var velocity = Vector2()
+    val velocity = Vector2()
 
-    var bounds = Rectangle(0f, 0f, SIZE, SIZE)
+    val bounds = Rectangle(0f, 0f, SIZE, SIZE)
 
     var state = State.IDLE
 
-    var facingLeft = true
+    var isFacingRight = true
 
     var stateTime = 0f
 
-    fun update(delta: Float) {
+    override fun update(delta: Float) {
         stateTime += delta
         position.add(velocity.cpy().scl(delta))
+    }
+
+    override fun SpriteBatch.draw(region: TextureRegion) {
+        draw(
+            region,
+            position.x * ppuX,
+            position.y * ppuY,
+            SIZE * ppuX,
+            SIZE * ppuY
+        )
     }
 
     companion object {
