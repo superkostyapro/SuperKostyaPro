@@ -1,10 +1,28 @@
 package pro.superkostya.world
 
-import pro.superkostya.actor.Kostya
+import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.utils.Disposable
 
-abstract class BaseWorld {
+typealias AtlasRegion = TextureAtlas.AtlasRegion
 
-    lateinit var kostya: Kostya
+typealias AnimationRegion = Animation<TextureRegion>
 
-    abstract fun update(delta: Float)
+typealias ArrayRegion = Array<TextureRegion>
+
+abstract class BaseWorld(id: Int) : Disposable {
+
+    abstract val assets: BaseAssets
+
+    abstract class BaseAssets : Disposable {
+
+        abstract val kostyaIdleLeft: TextureRegion
+        abstract val kostyaIdleRight: TextureRegion
+
+        abstract val kostyaLeftAnimation: AnimationRegion
+        abstract val kostyaRightAnimation: AnimationRegion
+
+        abstract val blockTexture: TextureRegion
+    }
 }

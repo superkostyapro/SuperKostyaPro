@@ -1,41 +1,22 @@
 package pro.superkostya
 
-import com.badlogic.gdx.graphics.g2d.Animation
-import com.badlogic.gdx.graphics.g2d.TextureAtlas
-import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.utils.Disposable
 import com.badlogic.gdx.utils.IntMap
-
-typealias AtlasRegion = TextureAtlas.AtlasRegion
-
-typealias AnimationRegion = Animation<TextureRegion>
-
-typealias ArrayRegion = Array<TextureRegion>
+import pro.superkostya.world.BaseWorld
 
 @Suppress("MemberVisibilityCanBePrivate")
 class AssetsManager : Disposable {
 
-    private val assets = IntMap<Base>()
+    private val assets = IntMap<BaseWorld.BaseAssets>()
 
-    abstract class Base : Disposable {
-
-        abstract val kostyaIdleLeft: TextureRegion
-        abstract val kostyaIdleRight: TextureRegion
-
-        abstract val kostyaLeftAnimation: AnimationRegion
-        abstract val kostyaRightAnimation: AnimationRegion
-
-        abstract val blockTexture: TextureRegion
-    }
-
-    fun addAssets(id: Int, world: Base) {
+    fun addAssets(id: Int, world: BaseWorld.BaseAssets) {
         assets.put(id, world)
     }
 
-    fun getBaseAssets(id: Int) = getAssets<Base>(id)
+    fun getBaseAssets(id: Int) = getAssets<BaseWorld.BaseAssets>(id)
 
     @Suppress("UNCHECKED_CAST")
-    fun <T : Base> getAssets(id: Int) = assets.get(id) as T
+    fun <T : BaseWorld.BaseAssets> getAssets(id: Int) = assets.get(id) as T
 
     fun removeAssets(id: Int) {
         with(assets) {
