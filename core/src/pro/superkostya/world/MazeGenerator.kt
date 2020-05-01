@@ -1,4 +1,4 @@
-package pro.superkostya
+package pro.superkostya.world
 
 import java.util.*
 

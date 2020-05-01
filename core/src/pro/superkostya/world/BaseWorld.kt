@@ -2,25 +2,29 @@ package pro.superkostya.world
 
 import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.graphics.Color
-import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.maps.tiled.TiledMap
+import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Disposable
 import pro.superkostya.BaseAssets
+import pro.superkostya.actor.BaseActor
 import pro.superkostya.actor.Kostya
+import pro.superkostya.putAssets
 import pro.superkostya.removeAssets
 
-abstract class BaseWorld(val id: Int) : InputProcessor, Disposable {
+abstract class BaseWorld(val id: Int, assets: BaseAssets) : InputProcessor, Disposable {
 
     abstract val backgroundColor: Color
 
-    abstract val assets: BaseAssets
+    val map = TiledMap()
 
-    lateinit var kostya: Kostya
+    val kostya = Kostya(id, Vector2(5f, 5f))
 
-    val stage = Stage()
+    val actors: Array<BaseActor>
+        get() = arrayOf(kostya)
 
-    abstract fun update(delta: Float)
-
-    abstract fun render()
+    init {
+        putAssets(id, assets)
+    }
 
     override fun keyUp(keycode: Int): Boolean {
         return false

@@ -25,7 +25,7 @@ abstract class BaseAssets : Disposable {
     abstract val blockTexture: TextureRegion
 }
 
-fun addAssets(id: Int, value: BaseAssets): BaseAssets {
+fun putAssets(id: Int, value: BaseAssets): BaseAssets {
     removeAssets(id)
     assets.put(id, value)
     return value

@@ -8,19 +8,9 @@ import pro.superkostya.*
 import pro.superkostya.extension.eachFlipX
 import pro.superkostya.extension.flipX
 
-class FarFarKingdom : BaseWorld(3) {
+class FarFarKingdom : BaseWorld(3, Assets()) {
 
     override val backgroundColor = Color(250f / 255, 250f / 255, 250f / 255, 1f)
-
-    override val assets = addAssets(id, Assets())
-
-    override fun update(delta: Float) {
-
-    }
-
-    override fun render() {
-
-    }
 
     class Assets : BaseAssets() {
 
