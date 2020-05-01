@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.utils.Disposable
+import pro.superkostya.actor.Kostya
 import pro.superkostya.removeAssets
 
 internal typealias AtlasRegion = TextureAtlas.AtlasRegion
@@ -19,6 +20,8 @@ abstract class BaseWorld(val id: Int) : InputProcessor, Disposable {
     abstract val backgroundColor: Color
 
     abstract val assets: BaseAssets
+
+    lateinit var kostya: Kostya
 
     abstract fun update(delta: Float)
 

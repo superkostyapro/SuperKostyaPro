@@ -1,12 +1,13 @@
 package pro.superkostya
 
 import com.badlogic.gdx.Game
-import pro.superkostya.screen.MainScreen
+import pro.superkostya.screen.PlayScreen
+import pro.superkostya.world.DrawingWorld
 
 class SuperKostyaPro : Game() {
 
     override fun create() {
-        setScreen(MainScreen())
+        setScreen(PlayScreen(DrawingWorld()))
     }
 
     override fun resize(width: Int, height: Int) {

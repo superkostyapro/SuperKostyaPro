@@ -5,7 +5,7 @@ import java.util.*
 /**
  * Recursive backtracking algorithm
  */
-class Maze(private val width: Int, private val height: Int) {
+class MazeGenerator(private val width: Int, private val height: Int) {
 
     private val data = Array(width) {
         Array(height) {
@@ -76,7 +76,7 @@ class Maze(private val width: Int, private val height: Int) {
 }
 
 fun main() {
-    val maze = Maze(33, 11)
+    val maze = MazeGenerator(33, 11)
     maze.generate()
     maze.print()
 }
