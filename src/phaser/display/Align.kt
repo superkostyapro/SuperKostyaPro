@@ -1,4 +1,4 @@
-package Phaser.Display.Align
+package phaser.display
 
 import kotlin.js.*
 import kotlin.js.Json

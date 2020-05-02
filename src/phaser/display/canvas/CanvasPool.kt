@@ -1,4 +1,4 @@
-package Phaser.Display.Canvas.CanvasPool
+package phaser.display.canvas
 
 import kotlin.js.*
 import kotlin.js.Json

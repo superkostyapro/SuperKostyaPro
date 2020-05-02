@@ -1,4 +1,4 @@
-package Phaser.Core.Events
+package phaser.core
 
 import kotlin.js.*
 import kotlin.js.Json

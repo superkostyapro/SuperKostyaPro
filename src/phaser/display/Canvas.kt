@@ -1,4 +1,4 @@
-package Phaser.Display.Canvas
+package phaser.display
 
 import kotlin.js.*
 import kotlin.js.Json

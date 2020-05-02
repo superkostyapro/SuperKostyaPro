@@ -1,4 +1,4 @@
-package Phaser.Create.Palettes
+package phaser.create
 
 import kotlin.js.*
 import kotlin.js.Json
