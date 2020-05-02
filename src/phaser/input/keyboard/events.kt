@@ -1,6 +1,6 @@
-@file:JsQualifier("Phaser.Input.Gamepad.Events")
+@file:JsQualifier("Phaser.Input.Keyboard.Events")
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
-package Phaser.Input.Gamepad.Events
+package phaser.input.keyboard
 
 import kotlin.js.*
 import kotlin.js.Json
@@ -17,14 +17,16 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external var BUTTON_DOWN: Any
+external var ANY_KEY_DOWN: Any
 
-external var BUTTON_UP: Any
+external var ANY_KEY_UP: Any
 
-external var CONNECTED: Any
+external var COMBO_MATCH: Any
 
-external var DISCONNECTED: Any
+external var DOWN: Any
 
-external var GAMEPAD_BUTTON_DOWN: Any
+external var KEY_DOWN: Any
 
-external var GAMEPAD_BUTTON_UP: Any
+external var KEY_UP: Any
+
+external var UP: Any
