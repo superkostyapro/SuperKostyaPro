@@ -12,6 +12,10 @@ buildscript {
 apply plugin: "org.jetbrains.kotlin.js"
 apply plugin: 'kotlin-dce-js'
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
     testImplementation "org.jetbrains.kotlin:kotlin-test-js"
@@ -19,7 +23,7 @@ dependencies {
 
 kotlin {
     sourceSets {
-        main.kotlin.srcDirs = ['src']
+        main.kotlin.srcDirs = ['phaser', 'src']
     }
     target {
         browser {}
