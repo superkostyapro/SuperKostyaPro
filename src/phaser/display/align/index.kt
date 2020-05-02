@@ -1,4 +1,4 @@
-package phaser.display
+package phaser.display.align
 
 import integer
 
