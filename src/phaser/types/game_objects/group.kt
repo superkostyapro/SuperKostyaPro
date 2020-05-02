@@ -1,5 +1,5 @@
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
-package Phaser.Types.Core
+package phaser.types.game_objects
 
 import kotlin.js.*
 import kotlin.js.Json
@@ -15,10 +15,8 @@ import org.w3c.notifications.*
 import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
-import Phaser.Game
+import Phaser.GameObjects.GameObject
 
-typealias BootCallback = (game: Game) -> Unit
+typealias GroupCallback = (item: GameObject) -> Unit
 
-typealias NOOP = () -> Unit
-
-typealias TimeStepCallback = (time: Number, average: Number, interpolation: Number) -> Unit
+typealias GroupMultipleCreateCallback = (items: Array<GameObject>) -> Unit

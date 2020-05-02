@@ -1,5 +1,5 @@
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
-package Phaser.Types.GameObjects.BitmapText
+package phaser.types
 
 import kotlin.js.*
 import kotlin.js.Json
@@ -15,5 +15,7 @@ import org.w3c.notifications.*
 import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
+import Phaser.Sound.BaseSoundManager
+import Phaser.Sound.BaseSound
 
-typealias DisplayCallback = (display: DisplayCallbackConfig) -> Unit
+typealias EachActiveSoundCallback = (manager: BaseSoundManager, sound: BaseSound, index: Number, sounds: Array<BaseSound>) -> Unit

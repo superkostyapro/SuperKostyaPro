@@ -1,5 +1,5 @@
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
-package Phaser.Types.Create
+package phaser.types
 
 import kotlin.js.*
 import kotlin.js.Json
@@ -16,4 +16,8 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-typealias GenerateTextureCallback = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) -> Unit
+typealias SceneCreateCallback = (data: Any?) -> Unit
+
+typealias SceneInitCallback = (data: Any?) -> Unit
+
+typealias ScenePreloadCallback = () -> Unit

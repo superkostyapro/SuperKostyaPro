@@ -1,5 +1,5 @@
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
-package Phaser.Types.Cameras.Scene2D
+package phaser.types.game_objects
 
 import kotlin.js.*
 import kotlin.js.Json
@@ -15,14 +15,5 @@ import org.w3c.notifications.*
 import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
-import Phaser.Cameras.Scene2D.Camera
 
-typealias CameraFadeCallback = (camera: Camera, progress: Number) -> Unit
-
-typealias CameraFlashCallback = (camera: Camera, progress: Number) -> Unit
-
-typealias CameraPanCallback = (camera: Camera, progress: Number, x: Number, y: Number) -> Unit
-
-typealias CameraShakeCallback = (camera: Camera, progress: Number) -> Unit
-
-typealias CameraZoomCallback = (camera: Camera, progress: Number, zoom: Number) -> Unit
+typealias DisplayCallback = (display: DisplayCallbackConfig) -> Unit
