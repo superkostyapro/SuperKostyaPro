@@ -1,6 +1,6 @@
-@file:JsQualifier("Phaser.Structs.Events")
+@file:JsQualifier("Phaser.Loader.Events")
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
-package Phaser.Structs.Events
+package phaser.loader
 
 import kotlin.js.*
 import kotlin.js.Json
@@ -17,6 +17,22 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external var PROCESS_QUEUE_ADD: Any
+external var ADD: Any
 
-external var PROCESS_QUEUE_REMOVE: Any
+external var COMPLETE: Any
+
+external var FILE_COMPLETE: Any
+
+external var FILE_KEY_COMPLETE: Any
+
+external var FILE_LOAD_ERROR: Any
+
+external var FILE_LOAD: Any
+
+external var FILE_PROGRESS: Any
+
+external var POST_PROCESS: Any
+
+external var PROGRESS: Any
+
+external var START: Any

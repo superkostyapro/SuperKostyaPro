@@ -1,6 +1,6 @@
-@file:JsQualifier("Phaser.Create.Palettes")
+@file:JsQualifier("Phaser.Structs.Events")
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
-package Phaser.Create.Palettes
+package phaser.structs
 
 import kotlin.js.*
 import kotlin.js.Json
@@ -16,14 +16,7 @@ import org.w3c.notifications.*
 import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
-import Phaser.Types.Create.Palette
 
-external var ARNE16: Palette
+external var PROCESS_QUEUE_ADD: Any
 
-external var C64: Palette
-
-external var CGA: Palette
-
-external var JMP: Palette
-
-external var MSX: Palette
+external var PROCESS_QUEUE_REMOVE: Any

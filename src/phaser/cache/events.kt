@@ -1,6 +1,6 @@
-@file:JsQualifier("Phaser.Loader.FileTypesManager")
+@file:JsQualifier("Phaser.Cache.Events")
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
-package Phaser.Loader.FileTypesManager
+package phaser.cache
 
 import kotlin.js.*
 import kotlin.js.Json
@@ -16,10 +16,7 @@ import org.w3c.notifications.*
 import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
-import Phaser.Loader.LoaderPlugin
 
-external fun install(loader: LoaderPlugin)
+external var ADD: Any
 
-external fun register(key: String, factoryFunction: Function<*>)
-
-external fun destroy()
+external var REMOVE: Any

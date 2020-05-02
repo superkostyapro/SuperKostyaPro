@@ -1,6 +1,6 @@
-@file:JsQualifier("Phaser.Cache.Events")
+@file:JsQualifier("Phaser.Data.Events")
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
-package Phaser.Cache.Events
+package phaser.data
 
 import kotlin.js.*
 import kotlin.js.Json
@@ -17,6 +17,10 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external var ADD: Any
+external var CHANGE_DATA: Any
 
-external var REMOVE: Any
+external var CHANGE_DATA_KEY: Any
+
+external var REMOVE_DATA: Any
+
+external var SET_DATA: Any
