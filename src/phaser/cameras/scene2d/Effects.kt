@@ -1,31 +1,14 @@
-package Phaser.Cameras.Scene2D.Effects
+package phaser.cameras.scene2d
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Cameras.Scene2D.Camera
-import integer
-import Phaser.Types.Cameras.Scene2D.CameraFadeCallback
-import Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline
-import Phaser.Types.Cameras.Scene2D.CameraFlashCallback
-import Phaser.Math.Vector2
-import Phaser.Types.Cameras.Scene2D.CameraPanCallback
 import CameraRotateCallback
-import Phaser.Types.Cameras.Scene2D.CameraShakeCallback
-import Phaser.Types.Cameras.Scene2D.CameraZoomCallback
+import Phaser.Math.Vector2
+import Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline
+import Phaser.Types.Cameras.Scene2D.*
+import integer
+import org.w3c.dom.CanvasRenderingContext2D
+import phaser.cameras.Camera
 
-external open class Fade(camera: Phaser.Cameras.Scene2D.Camera) {
+open external class Fade(camera: Camera) {
     open var camera: Camera
     open var isRunning: Boolean
     open var isComplete: Boolean
@@ -41,7 +24,7 @@ external open class Fade(camera: Phaser.Cameras.Scene2D.Camera) {
     open fun destroy()
 }
 
-external open class Flash(camera: Phaser.Cameras.Scene2D.Camera) {
+open external class Flash(camera: Camera) {
     open var camera: Camera
     open var isRunning: Boolean
     open var duration: integer
@@ -55,7 +38,7 @@ external open class Flash(camera: Phaser.Cameras.Scene2D.Camera) {
     open fun destroy()
 }
 
-external open class Pan(camera: Phaser.Cameras.Scene2D.Camera) {
+open external class Pan(camera: Camera) {
     open var camera: Camera
     open var isRunning: Boolean
     open var duration: integer
@@ -73,7 +56,7 @@ external open class Pan(camera: Phaser.Cameras.Scene2D.Camera) {
     open fun start(x: Number, y: Number): Camera
 }
 
-external open class RotateTo(camera: Phaser.Cameras.Scene2D.Camera) {
+open external class RotateTo(camera: Camera) {
     open var camera: Camera
     open var isRunning: Boolean
     open var duration: integer
@@ -93,7 +76,7 @@ external open class RotateTo(camera: Phaser.Cameras.Scene2D.Camera) {
     open fun start(radians: Number): Camera
 }
 
-external open class Shake(camera: Phaser.Cameras.Scene2D.Camera) {
+open external class Shake(camera: Camera) {
     open var camera: Camera
     open var isRunning: Boolean
     open var duration: integer
@@ -109,7 +92,7 @@ external open class Shake(camera: Phaser.Cameras.Scene2D.Camera) {
     open fun start(): Camera
 }
 
-external open class Zoom(camera: Phaser.Cameras.Scene2D.Camera) {
+open external class Zoom(camera: Camera) {
     open var camera: Camera
     open var isRunning: Boolean
     open var duration: integer
