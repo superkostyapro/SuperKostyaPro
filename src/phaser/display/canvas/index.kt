@@ -1,0 +1,7 @@
+package phaser.display.canvas
+
+import org.w3c.dom.HTMLCanvasElement
+
+external fun TouchAction(canvas: HTMLCanvasElement, value: String = definedExternally): HTMLCanvasElement
+
+external fun UserSelect(canvas: HTMLCanvasElement, value: String = definedExternally): HTMLCanvasElement
