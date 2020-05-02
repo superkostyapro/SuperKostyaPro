@@ -1,19 +1,5 @@
-package Phaser.Input.Gamepad
+package phaser.input
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
 import Phaser.Events.EventEmitter
 import integer
 import Phaser.Math.Vector2
@@ -21,7 +7,7 @@ import Phaser.Scene
 import Phaser.Types.Scenes.SettingsObject
 import Phaser.Input.InputPlugin
 
-external open class Axis(pad: Phaser.Input.Gamepad.Gamepad, index: integer) {
+open external class Axis(pad: Gamepad, index: integer) {
     open var pad: Gamepad
     open var events: EventEmitter
     open var index: integer
@@ -31,7 +17,7 @@ external open class Axis(pad: Phaser.Input.Gamepad.Gamepad, index: integer) {
     open fun destroy()
 }
 
-external open class Button(pad: Phaser.Input.Gamepad.Gamepad, index: integer) {
+open external class Button(pad: Gamepad, index: integer) {
     open var pad: Gamepad
     open var events: EventEmitter
     open var index: integer
@@ -41,7 +27,7 @@ external open class Button(pad: Phaser.Input.Gamepad.Gamepad, index: integer) {
     open fun destroy()
 }
 
-external open class Gamepad(manager: Phaser.Input.Gamepad.GamepadPlugin, pad: Phaser.Types.Input.Gamepad.Pad) : EventEmitter {
+open external class Gamepad(manager: GamepadPlugin, pad: Phaser.Types.Input.Gamepad.Pad) : EventEmitter {
     open var manager: GamepadPlugin
     open var pad: Any
     open var id: String
@@ -74,7 +60,7 @@ external open class Gamepad(manager: Phaser.Input.Gamepad.GamepadPlugin, pad: Ph
     open var R2: Number
 }
 
-external open class GamepadPlugin(sceneInputPlugin: Phaser.Input.InputPlugin) : EventEmitter {
+open external class GamepadPlugin(sceneInputPlugin: Phaser.Input.InputPlugin) : EventEmitter {
     open var scene: Scene
     open var settings: SettingsObject
     open var sceneInputPlugin: InputPlugin

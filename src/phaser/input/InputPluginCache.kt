@@ -1,4 +1,4 @@
-package Phaser.Input.InputPluginCache
+package phaser.input
 
 import kotlin.js.*
 import kotlin.js.Json

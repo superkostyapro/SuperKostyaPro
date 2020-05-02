@@ -1,19 +1,7 @@
-package Phaser.Input.Keyboard
+package phaser.input
 
 import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
 import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
 import Phaser.Types.Input.Keyboard.KeyComboConfig
 import integer
 import Phaser.Input.InputManager
@@ -24,7 +12,7 @@ import Phaser.Input.InputPlugin
 import Phaser.Types.Input.Keyboard.CursorKeys
 import Phaser.Events.EventEmitter
 
-external open class KeyCombo {
+open external class KeyCombo {
     constructor(keyboardPlugin: KeyboardPlugin, keys: String, config: KeyComboConfig)
     constructor(keyboardPlugin: KeyboardPlugin, keys: Array<integer>, config: KeyComboConfig)
     constructor(keyboardPlugin: KeyboardPlugin, keys: Array<Any?>, config: KeyComboConfig)
@@ -45,7 +33,7 @@ external open class KeyCombo {
     open fun destroy()
 }
 
-external open class KeyboardManager(inputManager: Phaser.Input.InputManager) {
+open external class KeyboardManager(inputManager: Phaser.Input.InputManager) {
     open var manager: InputManager
     open var preventDefault: Boolean
     open var captures: Array<integer>
@@ -67,7 +55,7 @@ external open class KeyboardManager(inputManager: Phaser.Input.InputManager) {
     open fun destroy()
 }
 
-external open class KeyboardPlugin(sceneInputPlugin: Phaser.Input.InputPlugin) : EventEmitter {
+open external class KeyboardPlugin(sceneInputPlugin: Phaser.Input.InputPlugin) : EventEmitter {
     open var game: Game
     open var scene: Scene
     open var settings: SettingsObject
@@ -111,7 +99,7 @@ external fun JustDown(key: Key): Boolean
 
 external fun JustUp(key: Key): Boolean
 
-external open class Key(plugin: Phaser.Input.Keyboard.KeyboardPlugin, keyCode: integer) : EventEmitter {
+open external class Key(plugin: KeyboardPlugin, keyCode: integer) : EventEmitter {
     open var plugin: KeyboardPlugin
     open var keyCode: integer
     open var originalEvent: KeyboardEvent

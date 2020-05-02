@@ -1,4 +1,4 @@
-package Phaser.Input.Gamepad.Configs
+package phaser.input.gamepad
 
 import kotlin.js.*
 import kotlin.js.Json

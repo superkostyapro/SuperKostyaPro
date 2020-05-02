@@ -1,4 +1,4 @@
-package Phaser.Input.Keyboard.Events
+package phaser.input.keyboard
 
 import kotlin.js.*
 import kotlin.js.Json
