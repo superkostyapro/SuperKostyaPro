@@ -1,35 +1,23 @@
 package Phaser.GameObjects.Components
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.GameObjects.GameObject
-import Phaser.Animations.AnimationManager
 import Phaser.Animations.AnimationFrame
-import integer
+import Phaser.Animations.AnimationManager
 import Phaser.BlendModes
-import Phaser.Textures.Frame
-import Phaser.Geom.Rectangle
-import Phaser.Math.Vector2
+import Phaser.Curves.Path
 import Phaser.Display.Masks.BitmapMask
 import Phaser.Display.Masks.GeometryMask
+import Phaser.GameObjects.GameObject
 import Phaser.GameObjects.Graphics
-import Phaser.Curves.Path
+import Phaser.Geom.Point
+import Phaser.Geom.Rectangle
+import Phaser.Math.Vector2
+import Phaser.Renderer.WebGL.WebGLPipeline
+import Phaser.Textures.Frame
 import Phaser.Types.GameObjects.PathFollower.PathConfig
 import Phaser.Types.Tweens.NumberTweenBuilderConfig
-import Phaser.Renderer.WebGL.WebGLPipeline
-import Phaser.Geom.Point
+import Phaser.integer
+import org.khronos.webgl.Float32Array
+import org.w3c.dom.CanvasRenderingContext2D
 
 external interface Alpha {
     fun clearAlpha(): Alpha /* this */
