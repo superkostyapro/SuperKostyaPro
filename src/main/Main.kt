@@ -22,7 +22,7 @@ fun main() {
                 }
             }
         }
-        scene = arrayOf(StartScreen::class.js)
+        scene = arrayOf(StartScreen::class.js, WorldScreen::class.js)
     })
 }
 
