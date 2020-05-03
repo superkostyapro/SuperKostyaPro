@@ -1,24 +1,10 @@
 package Phaser.Plugins
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
 import Phaser.Game
-import Phaser.Types.Plugins.GlobalPlugin
-import Phaser.Scenes.Systems
 import Phaser.Scene
-import integer
+import Phaser.Scenes.Systems
+import Phaser.Types.Plugins.GlobalPlugin
+import Phaser.integer
 
 open external class BasePlugin(pluginManager: Phaser.Plugins.PluginManager) {
     open var pluginManager: PluginManager

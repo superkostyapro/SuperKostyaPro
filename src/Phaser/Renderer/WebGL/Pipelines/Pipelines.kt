@@ -1,28 +1,17 @@
 package Phaser.Renderer.WebGL.Pipelines
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.GameObjects.GameObject
 import Phaser.Cameras.Scene2D.Camera
+import Phaser.GameObjects.Components.TransformMatrix
+import Phaser.GameObjects.GameObject
+import Phaser.GameObjects.Image
+import Phaser.GameObjects.Sprite
 import Phaser.Renderer.WebGL.WebGLPipeline
 import Phaser.Scene
-import integer
-import Phaser.GameObjects.Components.TransformMatrix
-import Phaser.GameObjects.Sprite
-import Phaser.GameObjects.Image
 import Phaser.Textures.Frame
+import Phaser.integer
+import org.khronos.webgl.Float32Array
+import org.khronos.webgl.Uint32Array
+import org.khronos.webgl.WebGLTexture
 
 open external class BitmapMaskPipeline(config: Any?) : WebGLPipeline {
     open var vertexViewF32: Float32Array

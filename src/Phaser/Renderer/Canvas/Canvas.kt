@@ -1,30 +1,18 @@
 package Phaser.Renderer.Canvas
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Game
-import integer
-import Phaser.Types.Renderer.Snapshot.SnapshotState
-import Phaser.Structs.Size
-import Phaser.Scene
-import Phaser.GameObjects.DisplayList
 import Phaser.Cameras.Scene2D.Camera
-import Phaser.Types.Renderer.Snapshot.SnapshotCallback
-import Phaser.GameObjects.GameObject
-import Phaser.Textures.Frame
+import Phaser.Game
 import Phaser.GameObjects.Components.TransformMatrix
+import Phaser.GameObjects.DisplayList
+import Phaser.GameObjects.GameObject
+import Phaser.Scene
+import Phaser.Structs.Size
+import Phaser.Textures.Frame
+import Phaser.Types.Renderer.Snapshot.SnapshotCallback
+import Phaser.Types.Renderer.Snapshot.SnapshotState
+import Phaser.integer
+import org.w3c.dom.CanvasRenderingContext2D
+import org.w3c.dom.HTMLCanvasElement
 
 open external class CanvasRenderer(game: Phaser.Game) {
     open var game: Game
