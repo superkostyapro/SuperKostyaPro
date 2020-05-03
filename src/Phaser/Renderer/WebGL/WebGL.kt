@@ -1,29 +1,18 @@
 package Phaser.Renderer.WebGL
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Game
-import integer
-import Phaser.Scene
-import Phaser.Cameras.Scene2D.Camera
-import Phaser.Types.Renderer.Snapshot.SnapshotState
 import Phaser.Cameras.Scene2D.BaseCamera
+import Phaser.Cameras.Scene2D.Camera
 import Phaser.Display.Masks.GeometryMask
-import Phaser.Structs.Size
+import Phaser.Game
 import Phaser.GameObjects.GameObject
+import Phaser.Scene
+import Phaser.Structs.Size
 import Phaser.Types.Renderer.Snapshot.SnapshotCallback
+import Phaser.Types.Renderer.Snapshot.SnapshotState
+import Phaser.integer
+import org.khronos.webgl.*
+import org.w3c.dom.HTMLCanvasElement
+import org.w3c.dom.HTMLVideoElement
 
 open external class WebGLPipeline(config: Any?) {
     open var name: String
@@ -134,7 +123,8 @@ open external class WebGLRenderer(game: Phaser.Game) {
     open fun rebindPipeline(pipelineInstance: WebGLPipeline)
     open fun clearPipeline()
     open fun setBlendMode(blendModeId: integer, force: Boolean = definedExternally): Boolean
-    open fun addBlendMode(func: Array<GLenum>, equation: GLenum): integer
+    // todo
+    open fun addBlendMode(func: Array<Any/*GLenum*/>, equation: Any/*GLenum*/): integer
     open fun updateBlendMode(index: integer, func: Function<*>, equation: Function<*>): WebGLRenderer /* this */
     open fun removeBlendMode(index: integer): WebGLRenderer /* this */
     open fun setTexture2D(texture: WebGLTexture, textureUnit: integer, flush: Boolean = definedExternally): WebGLRenderer /* this */

@@ -1,25 +1,12 @@
 package Phaser.Sound
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Types.Sound.SoundMarker
-import Phaser.Types.Sound.SoundConfig
+import Phaser.Cache.BaseCache
 import Phaser.Events.EventEmitter
 import Phaser.Game
-import Phaser.Cache.BaseCache
 import Phaser.Types.Sound.DecodeAudioConfig
+import Phaser.Types.Sound.SoundConfig
+import Phaser.Types.Sound.SoundMarker
+import org.khronos.webgl.ArrayBuffer
 
 external interface `T$11` {
     @nativeGetter
@@ -169,7 +156,8 @@ open external class WebAudioSound(manager: Phaser.Sound.WebAudioSoundManager, ke
 }
 
 open external class WebAudioSoundManager(game: Phaser.Game) : BaseSoundManager {
-    open fun setAudioContext(context: AudioContext): WebAudioSoundManager /* this */
+    // todo
+    open fun setAudioContext(context: Any/*AudioContext*/): WebAudioSoundManager /* this */
     override fun add(key: String, config: SoundConfig): WebAudioSound
     open fun decodeAudio(audioKey: Array<DecodeAudioConfig> = definedExternally, audioData: ArrayBuffer = definedExternally)
     open fun decodeAudio(audioKey: Array<DecodeAudioConfig> = definedExternally, audioData: String = definedExternally)
