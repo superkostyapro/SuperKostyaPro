@@ -1,21 +1,7 @@
 package Phaser
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-
-typealias CameraRotateCallback = (camera: Cameras.Scene2D.Camera, progress: Number, angle: Number) -> Unit
+// todo
+typealias CameraRotateCallback = (camera: Any/*Cameras.Scene2D.Camera*/, progress: Number, angle: Number) -> Unit
 
 typealias DataEachCallback = (parent: Any, key: String, value: Any, args: Any) -> Unit
 
@@ -33,7 +19,8 @@ typealias CenterFunction = (triangle: Phaser.Geom.Triangle) -> Unit
 
 typealias ArcadePhysicsCallback = (object1: Phaser.GameObjects.GameObject, object2: Phaser.GameObjects.GameObject) -> Unit
 
-typealias WebGLContextCallback = (renderer: Renderer.WebGL.WebGLRenderer) -> Unit
+// todo
+typealias WebGLContextCallback = (renderer: Any/*Renderer.WebGL.WebGLRenderer*/) -> Unit
 
 typealias EachListCallback<I> = (item: I, args: Any) -> Unit
 
@@ -57,7 +44,7 @@ external fun mixin(myClass: Any, mixins: Any)
 
 external fun mixin(myClass: Any, mixins: Array<Any>)
 
-external open class Class(definition: Any)
+open external class Class(definition: Any)
 
 external interface AdInstance {
     var instance: Any

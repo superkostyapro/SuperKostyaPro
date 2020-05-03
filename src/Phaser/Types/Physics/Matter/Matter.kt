@@ -1,22 +1,8 @@
 package Phaser.Types.Physics.Matter
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
 import MatterJS.BodyType
-import Phaser.Types.Math.Vector2Like
 import MatterJS.Vector
+import Phaser.Types.Math.Vector2Like
 
 external interface MatterBodyConfig {
     var label: String?
@@ -142,12 +128,13 @@ external interface MatterBodyRenderConfig {
     var sprite: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var sprite.xOffset: Number?
+    // todo
+    /*var sprite.xOffset: Number?
         get() = definedExternally
         set(value) = definedExternally
     var sprite.yOffset: Number?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
 }
 
 external interface MatterBodyTileOptions {
@@ -523,7 +510,8 @@ external interface MatterWorldConfig {
     var setBounds: dynamic /* Any? | Boolean */
         get() = definedExternally
         set(value) = definedExternally
-    var setBounds.x: Number?
+    // todo
+    /*var setBounds.x: Number?
         get() = definedExternally
         set(value) = definedExternally
     var setBounds.y: Number?
@@ -549,7 +537,7 @@ external interface MatterWorldConfig {
         set(value) = definedExternally
     var setBounds.bottom: Boolean?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
     var positionIterations: Number?
         get() = definedExternally
         set(value) = definedExternally
@@ -562,7 +550,8 @@ external interface MatterWorldConfig {
     var enableSleeping: Boolean?
         get() = definedExternally
         set(value) = definedExternally
-    var timing.timestamp: Number?
+    // todo
+    /*var timing.timestamp: Number?
         get() = definedExternally
         set(value) = definedExternally
     var timing.timeScale: Number?
@@ -576,7 +565,7 @@ external interface MatterWorldConfig {
         set(value) = definedExternally
     var plugins.collisionevents: Boolean?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
     var enabled: Boolean?
         get() = definedExternally
         set(value) = definedExternally
