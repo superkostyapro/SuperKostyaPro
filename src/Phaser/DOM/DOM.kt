@@ -1,20 +1,7 @@
 package Phaser.DOM
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import ContentLoadedCallback
+import Phaser.ContentLoadedCallback
+import org.w3c.dom.HTMLElement
 
 external fun AddToDOM(element: HTMLElement, parent: String = definedExternally): HTMLElement
 
@@ -42,7 +29,8 @@ open external class RequestAnimationFrame {
     open var target: Number
     open var step: Any
     open var stepTimeout: Function<*>
-    open fun start(callback: FrameRequestCallback, forceSetTimeOut: Boolean, targetFPS: Number)
+    // todo
+    open fun start(callback: Any/*FrameRequestCallback*/, forceSetTimeOut: Boolean, targetFPS: Number)
     open fun stop()
     open fun destroy()
 }

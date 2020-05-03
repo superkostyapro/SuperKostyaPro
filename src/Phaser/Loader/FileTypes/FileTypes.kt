@@ -1,54 +1,11 @@
 package Phaser.Loader.FileTypes
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Loader.LoaderPlugin
-import Phaser.Types.Loader.XHRSettingsObject
-import Phaser.Types.Loader.FileTypes.JSONFileConfig
 import Phaser.Loader.File
-import Phaser.Types.Loader.FileTypes.AtlasJSONFileConfig
+import Phaser.Loader.LoaderPlugin
 import Phaser.Loader.MultiFile
-import Phaser.Types.Loader.FileTypes.AtlasXMLFileConfig
-import Phaser.Types.Loader.FileTypes.AudioFileConfig
-import Phaser.Types.Loader.FileTypes.AudioSpriteFileConfig
-import Phaser.Types.Loader.FileTypes.BinaryFileConfig
-import Phaser.Types.Loader.FileTypes.BitmapFontFileConfig
-import Phaser.Types.Loader.FileTypes.CSSFileConfig
-import Phaser.Types.Loader.FileTypes.GLSLFileConfig
-import Phaser.Types.Loader.FileTypes.HTMLFileConfig
-import integer
-import Phaser.Types.Loader.FileTypes.HTMLTextureFileConfig
-import Phaser.Types.Loader.FileTypes.ImageFrameConfig
-import Phaser.Types.Loader.FileTypes.ImageFileConfig
-import Phaser.Types.Loader.FileTypes.MultiAtlasFileConfig
-import Phaser.Types.Loader.FileTypes.MultiScriptFileConfig
-import Phaser.Types.Loader.FileTypes.PackFileConfig
-import Phaser.Types.Loader.FileTypes.PluginFileConfig
-import Phaser.Types.Loader.FileTypes.SceneFileConfig
-import Phaser.Types.Loader.FileTypes.ScenePluginFileConfig
-import Phaser.Types.Loader.FileTypes.ScriptFileConfig
-import Phaser.Types.Loader.FileTypes.SpriteSheetFileConfig
-import Phaser.Types.Loader.FileTypes.SVGSizeConfig
-import Phaser.Types.Loader.FileTypes.SVGFileConfig
-import Phaser.Types.Loader.FileTypes.TextFileConfig
-import Phaser.Types.Loader.FileTypes.TilemapCSVFileConfig
-import Phaser.Types.Loader.FileTypes.TilemapImpactFileConfig
-import Phaser.Types.Loader.FileTypes.TilemapJSONFileConfig
-import Phaser.Types.Loader.FileTypes.UnityAtlasFileConfig
-import Phaser.Types.Loader.FileTypes.VideoFileConfig
-import Phaser.Types.Loader.FileTypes.XMLFileConfig
+import Phaser.Types.Loader.FileTypes.*
+import Phaser.Types.Loader.XHRSettingsObject
+import Phaser.integer
 
 open external class AnimationJSONFile : File {
     constructor(loader: LoaderPlugin, key: String, url: String, xhrSettings: XHRSettingsObject, dataKey: String)
@@ -74,8 +31,9 @@ open external class AtlasXMLFile : MultiFile {
 }
 
 open external class AudioFile : File {
-    constructor(loader: LoaderPlugin, key: String, urlConfig: Any, xhrSettings: XHRSettingsObject, audioContext: AudioContext)
-    constructor(loader: LoaderPlugin, key: AudioFileConfig, urlConfig: Any, xhrSettings: XHRSettingsObject, audioContext: AudioContext)
+    // todo
+    constructor(loader: LoaderPlugin, key: String, urlConfig: Any, xhrSettings: XHRSettingsObject, audioContext: Any/*AudioContext*/)
+    constructor(loader: LoaderPlugin, key: AudioFileConfig, urlConfig: Any, xhrSettings: XHRSettingsObject, audioContext: Any/*AudioContext*/)
     override fun onProcess()
 }
 
