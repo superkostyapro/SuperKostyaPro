@@ -1,53 +1,23 @@
 package Phaser.Tilemaps
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Scene
-import integer
-import Phaser.Types.GameObjects.GameObjectConfig
+import Phaser.*
 import Phaser.Cameras.Scene2D.Camera
+import Phaser.GameObjects.Components.*
+import Phaser.GameObjects.GameObject
+import Phaser.GameObjects.Graphics
 import Phaser.GameObjects.Sprite
-import Phaser.Types.Tilemaps.FilteringOptions
-import FindTileCallback
-import EachTileCallback
 import Phaser.Geom.Circle
 import Phaser.Geom.Line
 import Phaser.Geom.Rectangle
 import Phaser.Geom.Triangle
-import Phaser.GameObjects.Graphics
-import Phaser.Types.Tilemaps.StyleConfig
 import Phaser.Math.Vector2
-import Phaser.BlendModes
 import Phaser.Renderer.WebGL.WebGLPipeline
-import Phaser.GameObjects.Components.TransformMatrix
-import Phaser.GameObjects.Components.BlendMode
-import Phaser.GameObjects.GameObject
-import Phaser.GameObjects.Components.Alpha
-import Phaser.GameObjects.Components.ComputedSize
-import Phaser.GameObjects.Components.Depth
-import Phaser.GameObjects.Components.Flip
-import Phaser.GameObjects.Components.GetBounds
-import Phaser.GameObjects.Components.Origin
-import Phaser.GameObjects.Components.Pipeline
-import Phaser.GameObjects.Components.ScrollFactor
-import Phaser.GameObjects.Components.Transform
-import Phaser.GameObjects.Components.Visible
-import Phaser.Types.Tilemaps.TiledObject
-import TilemapFilterCallback
-import TilemapFindCallback
 import Phaser.Textures.Texture
+import Phaser.Types.GameObjects.GameObjectConfig
+import Phaser.Types.Tilemaps.FilteringOptions
+import Phaser.Types.Tilemaps.StyleConfig
+import Phaser.Types.Tilemaps.TiledObject
+import org.khronos.webgl.WebGLTexture
 
 open external class DynamicTilemapLayer : GameObject, Alpha, BlendMode, ComputedSize, Depth, Flip, GetBounds, Origin, Pipeline, ScrollFactor, Transform, Visible {
     constructor(scene: Scene, tilemap: Tilemap, layerIndex: integer, tileset: String, x: Number, y: Number)
@@ -202,8 +172,6 @@ open external class DynamicTilemapLayer : GameObject, Alpha, BlendMode, Computed
     override fun getParentRotation(): Number
     override var visible: Boolean
     override fun setVisible(value: Boolean): DynamicTilemapLayer /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
 }
 
 open external class ImageCollection(name: String, firstgid: integer, width: integer = definedExternally, height: integer = definedExternally, margin: integer = definedExternally, spacing: integer = definedExternally, properties: Any? = definedExternally) {
@@ -415,8 +383,6 @@ open external class StaticTilemapLayer : GameObject, Alpha, BlendMode, ComputedS
     override var scrollFactorX: Number
     override var scrollFactorY: Number
     override fun setScrollFactor(x: Number, y: Number): StaticTilemapLayer /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
 }
 
 open external class Tile(layer: Phaser.Tilemaps.LayerData, index: integer, x: integer, y: integer, width: integer, height: integer, baseWidth: integer, baseHeight: integer) : Alpha, Flip, Visible {
