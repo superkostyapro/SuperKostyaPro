@@ -249,18 +249,6 @@ open external class BitmapText : GameObject, Alpha, BlendMode, Depth, Mask, Orig
     override fun setVisible(value: Boolean): BitmapText /* this */
     override fun setTexture(key: String): BitmapText /* this */
     override fun setTexture(key: Texture): BitmapText /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
-    override fun setTexture(key: String, frame: String): Texture /* this */
-    override fun setTexture(key: String, frame: integer): Texture /* this */
-    override fun setTexture(key: Texture, frame: String): Texture /* this */
-    override fun setTexture(key: Texture, frame: integer): Texture /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setTexture(key: String): Texture /* this */
-    override fun setTexture(key: Texture): Texture /* this */
 
     companion object {
         var ALIGN_LEFT: integer
@@ -365,18 +353,6 @@ open external class Blitter : GameObject, Alpha, BlendMode, Depth, Mask, Pipelin
     open fun createMultiple(quantity: integer): Array<Bob>
     override fun setTexture(key: String): Blitter /* this */
     override fun setTexture(key: Texture): Blitter /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
-    override fun setTexture(key: String, frame: String): Texture /* this */
-    override fun setTexture(key: String, frame: integer): Texture /* this */
-    override fun setTexture(key: Texture, frame: String): Texture /* this */
-    override fun setTexture(key: Texture, frame: integer): Texture /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setTexture(key: String): Texture /* this */
-    override fun setTexture(key: Texture): Texture /* this */
 }
 
 open external class Bob {
@@ -522,10 +498,6 @@ open external class Container(scene: Phaser.Scene, x: Number = definedExternally
     open fun pointToContainer(source: Any?): dynamic /* Any? | Phaser.Geom.Point | Phaser.Math.Vector2 */
     open fun pointToContainer(source: Point): dynamic /* Any? | Phaser.Geom.Point | Phaser.Math.Vector2 */
     open fun pointToContainer(source: Vector2): dynamic /* Any? | Phaser.Geom.Point | Phaser.Math.Vector2 */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
 }
 
 open external class DisplayList(scene: Phaser.Scene) : List<GameObject> {
@@ -622,8 +594,6 @@ open external class DOMElement : GameObject, AlphaSingle, BlendMode, Depth, Orig
     open fun createElement(tagName: String): DOMElement /* this */
     open fun setElement(element: String): DOMElement /* this */
     open fun setElement(element: Element): DOMElement /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
 }
 
 open external class Extern(scene: Phaser.Scene) : GameObject, Alpha, BlendMode, Depth, Flip, Origin, ScrollFactor, Size, Phaser.GameObjects.Components.Texture, Tint, Transform, Visible {
@@ -708,16 +678,6 @@ open external class Extern(scene: Phaser.Scene) : GameObject, Alpha, BlendMode, 
     override fun setVisible(value: Boolean): Extern /* this */
     override fun setTexture(key: String): Extern /* this */
     override fun setTexture(key: Texture): Extern /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setTexture(key: String, frame: String): Texture /* this */
-    override fun setTexture(key: String, frame: integer): Texture /* this */
-    override fun setTexture(key: Texture, frame: String): Texture /* this */
-    override fun setTexture(key: Texture, frame: integer): Texture /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setTexture(key: String): Texture /* this */
-    override fun setTexture(key: Texture): Texture /* this */
 }
 
 open external class GameObject(scene: Phaser.Scene, type: String) : EventEmitter {
@@ -997,10 +957,6 @@ open external class Graphics(scene: Phaser.Scene, options: Phaser.Types.GameObje
     open fun setTexture(): Graphics /* this */
     open fun fillRoundedRect(x: Number, y: Number, width: Number, height: Number): Graphics /* this */
     open fun strokeRoundedRect(x: Number, y: Number, width: Number, height: Number): Graphics /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
 
     companion object {
         var TargetCamera: Camera
@@ -1205,18 +1161,6 @@ open external class Image : GameObject, Alpha, BlendMode, Depth, Flip, GetBounds
     override fun setVisible(value: Boolean): Image /* this */
     override fun setCrop(): Image /* this */
     override fun setTexture(key: String): Image /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
-    override fun setCrop(x: Number, y: Number, width: Number, height: Number): TextureCrop /* this */
-    override fun setCrop(x: Phaser.Geom.Rectangle, y: Number, width: Number, height: Number): TextureCrop /* this */
-    override fun setTexture(key: String, frame: String): TextureCrop /* this */
-    override fun setTexture(key: String, frame: integer): TextureCrop /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): TextureCrop /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): TextureCrop /* this */
-    override fun setCrop(): TextureCrop /* this */
-    override fun setTexture(key: String): TextureCrop /* this */
 }
 
 open external class Light(x: Number, y: Number, radius: Number, r: Number, g: Number, b: Number, intensity: Number) {
@@ -2621,7 +2565,7 @@ open external class Rectangle(scene: Phaser.Scene, x: Number, y: Number, width: 
 }
 
 open external class Shape(scene: Phaser.Scene, type: String = definedExternally, data: Any = definedExternally) : GameObject, AlphaSingle, BlendMode, ComputedSize, Depth, GetBounds, Mask, Origin, Pipeline, ScrollFactor, Transform, Visible {
-    open var data: Any
+    override var data: DataManager
     open var pathData: Array<Number>
     open var pathIndexes: Array<integer>
     open var fillColor: Number
@@ -2706,10 +2650,6 @@ open external class Shape(scene: Phaser.Scene, type: String = definedExternally,
     override fun getParentRotation(): Number
     override var visible: Boolean
     override fun setVisible(value: Boolean): Shape /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
 }
 
 open external class Star(scene: Phaser.Scene, x: Number = definedExternally, y: Number = definedExternally, points: Number = definedExternally, innerRadius: Number = definedExternally, outerRadius: Number = definedExternally, fillColor: Number = definedExternally, fillAlpha: Number = definedExternally) : Shape {
@@ -2976,18 +2916,6 @@ open external class Sprite : GameObject, Alpha, BlendMode, Depth, Flip, GetBound
     override fun setVisible(value: Boolean): Sprite /* this */
     override fun setCrop(): Sprite /* this */
     override fun setTexture(key: String): Sprite /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
-    override fun setCrop(x: Number, y: Number, width: Number, height: Number): TextureCrop /* this */
-    override fun setCrop(x: Phaser.Geom.Rectangle, y: Number, width: Number, height: Number): TextureCrop /* this */
-    override fun setTexture(key: String, frame: String): TextureCrop /* this */
-    override fun setTexture(key: String, frame: integer): TextureCrop /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): TextureCrop /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): TextureCrop /* this */
-    override fun setCrop(): TextureCrop /* this */
-    override fun setTexture(key: String): TextureCrop /* this */
 }
 
 open external class Text : GameObject, Alpha, BlendMode, ComputedSize, Crop, Depth, Flip, GetBounds, Mask, Origin, Pipeline, ScrollFactor, Tint, Transform, Visible {
@@ -3137,13 +3065,6 @@ open external class Text : GameObject, Alpha, BlendMode, ComputedSize, Crop, Dep
     override var visible: Boolean
     override fun setVisible(value: Boolean): Text /* this */
     override fun setCrop(): Text /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setCrop(x: Number, y: Number, width: Number, height: Number): Crop /* this */
-    override fun setCrop(x: Phaser.Geom.Rectangle, y: Number, width: Number, height: Number): Crop /* this */
-    override fun setCrop(): Crop /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
 
     companion object {
         fun GetTextSize(text: Text, size: TextMetrics, lines: Array<Any>): Any?
@@ -3330,13 +3251,6 @@ open external class TileSprite : GameObject, Alpha, BlendMode, ComputedSize, Cro
     override fun setVisible(value: Boolean): TileSprite /* this */
     open fun setTexture(key: String): TileSprite /* this */
     override fun setCrop(): TileSprite /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setCrop(x: Number, y: Number, width: Number, height: Number): Crop /* this */
-    override fun setCrop(x: Phaser.Geom.Rectangle, y: Number, width: Number, height: Number): Crop /* this */
-    override fun setCrop(): Crop /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
 }
 
 open external class UpdateList(scene: Phaser.Scene) : ProcessQueue<GameObject> {
@@ -3498,18 +3412,6 @@ open external class Video(scene: Phaser.Scene, x: Number, y: Number, key: String
     override fun setVisible(value: Boolean): Video /* this */
     override fun setCrop(): Video /* this */
     override fun setTexture(key: String): Video /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
-    override fun setCrop(x: Number, y: Number, width: Number, height: Number): TextureCrop /* this */
-    override fun setCrop(x: Phaser.Geom.Rectangle, y: Number, width: Number, height: Number): TextureCrop /* this */
-    override fun setTexture(key: String, frame: String): TextureCrop /* this */
-    override fun setTexture(key: String, frame: integer): TextureCrop /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): TextureCrop /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): TextureCrop /* this */
-    override fun setCrop(): TextureCrop /* this */
-    override fun setTexture(key: String): TextureCrop /* this */
 }
 
 open external class Zone(scene: Phaser.Scene, x: Number, y: Number, width: Number = definedExternally, height: Number = definedExternally) : GameObject, Depth, GetBounds, Origin, Transform, ScrollFactor, Visible {
