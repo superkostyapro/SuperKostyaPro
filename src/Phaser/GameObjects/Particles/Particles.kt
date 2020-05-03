@@ -1,60 +1,21 @@
 package Phaser.GameObjects.Particles
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Types.GameObjects.Particles.EmitterOpOnEmitCallback
-import Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateCallback
-import Phaser.Types.GameObjects.Particles.ParticleEmitterConfig
-import Phaser.Types.GameObjects.Particles.GravityWellConfig
-import Phaser.Textures.Frame
-import integer
-import Phaser.Textures.Texture
-import Phaser.Types.GameObjects.Particles.ParticleEmitterCallback
-import Phaser.Types.GameObjects.Particles.ParticleDeathCallback
-import Phaser.GameObjects.Particles.Zones.DeathZone
-import Phaser.Geom.Rectangle
-import Phaser.GameObjects.GameObject
-import Phaser.Math.Vector2
-import Phaser.Types.GameObjects.Particles.ParticleEmitterFrameConfig
-import Phaser.Types.GameObjects.Particles.EmitterOpRandomConfig
-import Phaser.Types.GameObjects.Particles.EmitterOpRandomMinMaxConfig
-import Phaser.Types.GameObjects.Particles.EmitterOpRandomStartEndConfig
-import Phaser.Types.GameObjects.Particles.EmitterOpSteppedConfig
-import Phaser.Types.GameObjects.Particles.EmitterOpCustomEmitConfig
-import Phaser.Types.GameObjects.Particles.ParticleEmitterBounds
-import Phaser.Types.GameObjects.Particles.ParticleEmitterBoundsAlt
-import Phaser.Types.GameObjects.Particles.EmitterOpEaseConfig
-import Phaser.Types.GameObjects.Particles.EmitterOpCustomUpdateConfig
-import Phaser.Types.GameObjects.Particles.ParticleEmitterEdgeZoneConfig
-import Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig
-import Phaser.Types.GameObjects.Particles.ParticleEmitterDeathZoneConfig
 import Phaser.BlendModes
 import Phaser.Display.Masks.BitmapMask
 import Phaser.Display.Masks.GeometryMask
+import Phaser.GameObjects.Components.*
+import Phaser.GameObjects.GameObject
 import Phaser.GameObjects.Graphics
-import Phaser.GameObjects.Components.BlendMode
-import Phaser.GameObjects.Components.Mask
-import Phaser.GameObjects.Components.ScrollFactor
-import Phaser.GameObjects.Components.Visible
+import Phaser.GameObjects.Particles.Zones.DeathZone
+import Phaser.Geom.Rectangle
+import Phaser.Math.Vector2
+import Phaser.Renderer.WebGL.WebGLPipeline
 import Phaser.Scene
 import Phaser.Structs.List
-import Phaser.Renderer.WebGL.WebGLPipeline
-import Phaser.GameObjects.Components.TransformMatrix
-import Phaser.GameObjects.Components.Depth
-import Phaser.GameObjects.Components.Pipeline
-import Phaser.GameObjects.Components.Transform
+import Phaser.Textures.Frame
+import Phaser.Textures.Texture
+import Phaser.Types.GameObjects.Particles.*
+import Phaser.integer
 
 open external class EmitterOp(config: Phaser.Types.GameObjects.Particles.ParticleEmitterConfig, key: String, defaultValue: Number, emitOnly: Boolean = definedExternally) {
     open var propertyKey: String
@@ -377,10 +338,6 @@ open external class ParticleEmitter(manager: Phaser.GameObjects.Particles.Partic
     open fun setFrequency(frequency: Number): ParticleEmitter /* this */
     open fun setEmitZone(): ParticleEmitter /* this */
     open fun flow(frequency: Number): ParticleEmitter /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
 }
 
 open external class ParticleEmitterManager : GameObject, Depth, Mask, Pipeline, Transform, Visible {
@@ -450,6 +407,4 @@ open external class ParticleEmitterManager : GameObject, Depth, Mask, Pipeline, 
     override fun setVisible(value: Boolean): ParticleEmitterManager /* this */
     open fun setTexture(key: String): ParticleEmitterManager /* this */
     open fun setFrame(): ParticleEmitterManager /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
 }
