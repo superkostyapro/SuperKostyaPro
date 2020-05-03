@@ -1,96 +1,58 @@
 package Phaser.GameObjects
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Scene
-import integer
-import Phaser.Types.GameObjects.BitmapText.DisplayCallback
-import Phaser.Types.GameObjects.BitmapText.DisplayCallbackConfig
-import Phaser.BlendModes
+import Phaser.*
+import Phaser.Cache.BaseCache
+import Phaser.Cameras.Scene2D.BaseCamera
+import Phaser.Cameras.Scene2D.Camera
+import Phaser.Curves.Path
+import Phaser.Data.DataManager
+import Phaser.Display.BaseShader
 import Phaser.Display.Masks.BitmapMask
 import Phaser.Display.Masks.GeometryMask
+import Phaser.Events.EventEmitter
+import Phaser.GameObjects.Components.*
+import Phaser.GameObjects.Particles.ParticleEmitterManager
+import Phaser.Geom.Circle
+import Phaser.Geom.Point
+import Phaser.Input.Pointer
+import Phaser.Math.Vector2
+import Phaser.Math.Vector4
 import Phaser.Renderer.WebGL.WebGLPipeline
-import Phaser.Textures.Frame
+import Phaser.Scenes.Systems
+import Phaser.Structs.List
+import Phaser.Structs.ProcessQueue
+import Phaser.Structs.Set
+import Phaser.Textures.*
 import Phaser.Textures.Texture
-import Phaser.GameObjects.Components.TransformMatrix
+import Phaser.Tilemaps.Tilemap
+import Phaser.Tweens.Tween
 import Phaser.Types.GameObjects.BitmapText.BitmapFontData
 import Phaser.Types.GameObjects.BitmapText.BitmapTextSize
-import Phaser.Types.GameObjects.JSONGameObject
-import Phaser.GameObjects.Components.BlendMode
-import Phaser.GameObjects.Components.Mask
-import Phaser.GameObjects.Components.Alpha
-import Phaser.GameObjects.Components.Depth
-import Phaser.GameObjects.Components.Origin
-import Phaser.GameObjects.Components.Pipeline
-import Phaser.GameObjects.Components.ScrollFactor
-import Phaser.GameObjects.Components.Tint
-import Phaser.GameObjects.Components.Transform
-import Phaser.GameObjects.Components.Visible
-import Phaser.Structs.List
-import CreateCallback
-import Phaser.GameObjects.Components.Size
+import Phaser.Types.GameObjects.BitmapText.DisplayCallback
+import Phaser.Types.GameObjects.BitmapText.DisplayCallbackConfig
 import Phaser.Types.GameObjects.GameObjectConfig
-import Phaser.Geom.Point
-import Phaser.Math.Vector2
-import Phaser.GameObjects.Components.AlphaSingle
-import Phaser.GameObjects.Components.ComputedSize
-import Phaser.Scenes.Systems
-import Phaser.Cache.BaseCache
-import Phaser.Math.Vector4
-import Phaser.GameObjects.Components.Flip
-import Phaser.Data.DataManager
-import Phaser.Types.Input.InteractiveObject
-import Phaser.Types.Input.InputConfiguration
-import Phaser.Types.Input.HitAreaCallback
-import Phaser.Cameras.Scene2D.Camera
-import Phaser.Events.EventEmitter
+import Phaser.Types.GameObjects.Graphics.RoundedRectRadius
+import Phaser.Types.GameObjects.Graphics.Styles
+import Phaser.Types.GameObjects.Group.GroupCallback
 import Phaser.Types.GameObjects.Group.GroupConfig
 import Phaser.Types.GameObjects.Group.GroupCreateConfig
-import Phaser.GameObjects.Particles.ParticleEmitterManager
-import Phaser.Types.GameObjects.RenderTexture.RenderTextureConfig
-import Phaser.Types.Tilemaps.TilemapConfig
-import Phaser.Tilemaps.Tilemap
-import Phaser.Types.Tweens.TweenBuilderConfig
-import Phaser.Tweens.Tween
-import Phaser.Curves.Path
-import Phaser.Types.GameObjects.Graphics.Styles
-import Phaser.Types.GameObjects.Particles.ParticleEmitterConfig
-import Phaser.Types.Math.Vector2Like
-import Phaser.Display.BaseShader
-import Phaser.Geom.Circle
-import Phaser.Types.GameObjects.Graphics.RoundedRectRadius
-import Phaser.Structs.Set
-import Phaser.Types.GameObjects.Group.GroupCallback
 import Phaser.Types.GameObjects.Group.GroupMultipleCreateCallback
-import Phaser.GameObjects.Components.TextureCrop
-import Phaser.GameObjects.Components.GetBounds
-import LightForEach
+import Phaser.Types.GameObjects.JSONGameObject
+import Phaser.Types.GameObjects.Particles.ParticleEmitterConfig
 import Phaser.Types.GameObjects.PathFollower.PathConfig
-import Phaser.Types.Tweens.NumberTweenBuilderConfig
-import Phaser.Textures.TextureManager
-import Phaser.Cameras.Scene2D.BaseCamera
-import Phaser.Types.Renderer.Snapshot.SnapshotCallback
-import Phaser.GameObjects.Components.Crop
-import Phaser.GameObjects.Components.Animation
-import Phaser.Input.Pointer
-import TextStyleWordWrapCallback
-import Phaser.Types.GameObjects.Text.TextPadding
+import Phaser.Types.GameObjects.RenderTexture.RenderTextureConfig
 import Phaser.Types.GameObjects.Text.TextMetrics
-import Phaser.Structs.ProcessQueue
-import Phaser.Textures.TextureSource
-import Phaser.Textures.CanvasTexture
+import Phaser.Types.GameObjects.Text.TextPadding
+import Phaser.Types.Input.HitAreaCallback
+import Phaser.Types.Input.InputConfiguration
+import Phaser.Types.Input.InteractiveObject
+import Phaser.Types.Math.Vector2Like
+import Phaser.Types.Renderer.Snapshot.SnapshotCallback
+import Phaser.Types.Tilemaps.TilemapConfig
+import Phaser.Types.Tweens.NumberTweenBuilderConfig
+import Phaser.Types.Tweens.TweenBuilderConfig
+import org.khronos.webgl.*
+import org.w3c.dom.*
 
 open external class DynamicBitmapText : BitmapText {
     constructor(scene: Scene, x: Number, y: Number, font: String, text: String, size: Number, align: integer)
@@ -1371,18 +1333,6 @@ open external class Mesh : GameObject, BlendMode, Depth, Mask, Pipeline, Size, P
     override fun setScrollFactor(x: Number, y: Number): Mesh /* this */
     override fun setTexture(key: String): Mesh /* this */
     override fun setTexture(key: Texture): Mesh /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
-    override fun setTexture(key: String, frame: String): Texture /* this */
-    override fun setTexture(key: String, frame: integer): Texture /* this */
-    override fun setTexture(key: Texture, frame: String): Texture /* this */
-    override fun setTexture(key: Texture, frame: integer): Texture /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setTexture(key: String): Texture /* this */
-    override fun setTexture(key: Texture): Texture /* this */
 }
 
 open external class PathFollower : Sprite, Phaser.GameObjects.Components.PathFollower {
@@ -1513,14 +1463,6 @@ open external class PathFollower : Sprite, Phaser.GameObjects.Components.PathFol
     override fun pathUpdate()
     override fun setCrop(): PathFollower /* this */
     override fun setTexture(key: String): PathFollower /* this */
-    override fun setPath(path: Path): PathFollower /* this */
-    override fun startFollow(): PathFollower /* this */
-    override fun setPath(path: Path, config: Number): PathFollower /* this */
-    override fun setPath(path: Path, config: PathConfig): PathFollower /* this */
-    override fun setPath(path: Path, config: NumberTweenBuilderConfig): PathFollower /* this */
-    override fun startFollow(config: Number, startAt: Number): PathFollower /* this */
-    override fun startFollow(config: PathConfig, startAt: Number): PathFollower /* this */
-    override fun startFollow(config: NumberTweenBuilderConfig, startAt: Number): PathFollower /* this */
     override fun setPath(path: Path): PathFollower /* this */
     override fun startFollow(): PathFollower /* this */
 }
@@ -1739,13 +1681,6 @@ open external class RenderTexture(scene: Phaser.Scene, x: Number = definedExtern
     override fun setVisible(value: Boolean): RenderTexture /* this */
     open fun drawFrame(key: String): RenderTexture /* this */
     override fun setCrop(): RenderTexture /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setCrop(x: Number, y: Number, width: Number, height: Number): Crop /* this */
-    override fun setCrop(x: Phaser.Geom.Rectangle, y: Number, width: Number, height: Number): Crop /* this */
-    override fun setCrop(): Crop /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
 }
 
 open external class Rope : GameObject, AlphaSingle, BlendMode, Depth, Flip, Mask, Pipeline, Size, Phaser.GameObjects.Components.Texture, Transform, Visible, ScrollFactor {
@@ -1879,18 +1814,6 @@ open external class Rope : GameObject, AlphaSingle, BlendMode, Depth, Flip, Mask
     open fun setPoints(): Rope /* this */
     override fun setTexture(key: String): Rope /* this */
     override fun setTexture(key: Texture): Rope /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
-    override fun setTexture(key: String, frame: String): Texture /* this */
-    override fun setTexture(key: String, frame: integer): Texture /* this */
-    override fun setTexture(key: Texture, frame: String): Texture /* this */
-    override fun setTexture(key: Texture, frame: integer): Texture /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setTexture(key: String): Texture /* this */
-    override fun setTexture(key: Texture): Texture /* this */
 }
 
 open external class Shader : GameObject, ComputedSize, Depth, GetBounds, Mask, Origin, ScrollFactor, Transform, Visible {
@@ -1987,8 +1910,6 @@ open external class Shader : GameObject, ComputedSize, Depth, GetBounds, Mask, O
     override fun getParentRotation(): Number
     override var visible: Boolean
     override fun setVisible(value: Boolean): Shader /* this */
-    override fun setMask(mask: BitmapMask): Mask /* this */
-    override fun setMask(mask: GeometryMask): Mask /* this */
 }
 
 open external class Arc(scene: Phaser.Scene, x: Number = definedExternally, y: Number = definedExternally, radius: Number = definedExternally, startAngle: integer = definedExternally, endAngle: integer = definedExternally, anticlockwise: Boolean = definedExternally, fillColor: Number = definedExternally, fillAlpha: Number = definedExternally) : Shape {
