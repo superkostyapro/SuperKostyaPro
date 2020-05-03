@@ -1,6 +1,7 @@
 package Phaser.Physics.Matter
 
 import MatterJS.*
+import Phaser.ArcadePhysicsCallback
 import Phaser.BlendModes
 import Phaser.Cameras.Scene2D.Camera
 import Phaser.Display.Masks.BitmapMask
@@ -218,10 +219,12 @@ open external class Image : Phaser.GameObjects.Image, Bounce, Collision, Force, 
     override var scaleY: Number
     override var angle: integer
     override var rotation: Number
+    override fun setPosition(x: Number, y: Number): Transform /* this */
     override fun setPosition(x: Number, y: Number, z: Number, w: Number): Image /* this */
     override fun setRandomPosition(x: Number, y: Number, width: Number, height: Number): Image /* this */
     override fun setRotation(radians: Number): Image /* this */
     override fun setAngle(degrees: Number): Image /* this */
+    override fun setScale(x: Number, y: Number, point: Vector2): Transform /* this */
     override fun setScale(x: Number, y: Number): Image /* this */
     override fun setX(value: Number): Image /* this */
     override fun setY(value: Number): Image /* this */
@@ -485,10 +488,12 @@ open external class Sprite : Phaser.GameObjects.Sprite, Bounce, Collision, Force
     override var scaleY: Number
     override var angle: integer
     override var rotation: Number
+    override fun setPosition(x: Number, y: Number): Transform /* this */
     override fun setPosition(x: Number, y: Number, z: Number, w: Number): Sprite /* this */
     override fun setRandomPosition(x: Number, y: Number, width: Number, height: Number): Sprite /* this */
     override fun setRotation(radians: Number): Sprite /* this */
     override fun setAngle(degrees: Number): Sprite /* this */
+    override fun setScale(x: Number, y: Number, point: Vector2): Transform /* this */
     override fun setScale(x: Number, y: Number): Sprite /* this */
     override fun setX(value: Number): Sprite /* this */
     override fun setY(value: Number): Sprite /* this */
