@@ -1,29 +1,12 @@
 package Phaser.Cameras.Scene2D.Effects
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
+import Phaser.CameraRotateCallback
 import Phaser.Cameras.Scene2D.Camera
-import integer
-import Phaser.Types.Cameras.Scene2D.CameraFadeCallback
-import Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline
-import Phaser.Types.Cameras.Scene2D.CameraFlashCallback
 import Phaser.Math.Vector2
-import Phaser.Types.Cameras.Scene2D.CameraPanCallback
-import CameraRotateCallback
-import Phaser.Types.Cameras.Scene2D.CameraShakeCallback
-import Phaser.Types.Cameras.Scene2D.CameraZoomCallback
+import Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline
+import Phaser.Types.Cameras.Scene2D.*
+import Phaser.integer
+import org.w3c.dom.CanvasRenderingContext2D
 
 open external class Fade(camera: Phaser.Cameras.Scene2D.Camera) {
     open var camera: Camera

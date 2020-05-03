@@ -1,24 +1,12 @@
 package Phaser.Display.Masks
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.GameObjects.GameObject
-import Phaser.Renderer.Canvas.CanvasRenderer
 import Phaser.Cameras.Scene2D.Camera
-import Phaser.Renderer.WebGL.WebGLRenderer
+import Phaser.GameObjects.GameObject
 import Phaser.GameObjects.Graphics
+import Phaser.Renderer.Canvas.CanvasRenderer
+import Phaser.Renderer.WebGL.WebGLRenderer
+import org.khronos.webgl.WebGLFramebuffer
+import org.khronos.webgl.WebGLTexture
 
 open external class BitmapMask(scene: Phaser.Scene, renderable: Phaser.GameObjects.GameObject) {
     open var renderer: dynamic /* Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer */

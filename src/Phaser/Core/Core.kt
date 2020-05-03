@@ -1,29 +1,12 @@
 package Phaser.Core
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Scale.ScaleModeType
-import integer
-import Phaser.Scale.CenterType
-import Phaser.Types.Core.AudioConfig
-import Phaser.Types.Core.FPSConfig
-import Phaser.Types.Core.BootCallback
-import Phaser.Types.Core.PhysicsConfig
-import Phaser.Game
 import Phaser.DOM.RequestAnimationFrame
-import Phaser.Types.Core.TimeStepCallback
+import Phaser.Game
+import Phaser.Scale.CenterType
+import Phaser.Scale.ScaleModeType
+import Phaser.Types.Core.*
+import Phaser.integer
+import org.w3c.dom.HTMLCanvasElement
 
 open external class Config(GameConfig: Phaser.Types.Core.GameConfig = definedExternally) {
     open var width: dynamic /* integer | String */

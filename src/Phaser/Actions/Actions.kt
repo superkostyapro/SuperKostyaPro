@@ -1,30 +1,12 @@
 package Phaser.Actions
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import integer
 import Phaser.GameObjects.GameObject
+import Phaser.Geom.*
+import Phaser.Math.Vector2
 import Phaser.Types.Actions.CallCallback
 import Phaser.Types.Actions.GridAlignConfig
-import Phaser.Geom.Circle
-import Phaser.Geom.Ellipse
-import Phaser.Geom.Line
-import Phaser.Geom.Rectangle
-import Phaser.Geom.Triangle
 import Phaser.Types.Input.HitAreaCallback
-import Phaser.Math.Vector2
+import Phaser.integer
 
 external fun <G : Array<GameObject>> AlignTo(items: G, position: integer, offsetX: Number = definedExternally, offsetY: Number = definedExternally): G
 

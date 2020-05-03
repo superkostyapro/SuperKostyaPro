@@ -1,31 +1,13 @@
 package Phaser.Animations
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import integer
-import Phaser.Textures.TextureManager
-import Phaser.Types.Animations.JSONAnimation
 import Phaser.Events.EventEmitter
-import Phaser.Textures.Frame
-import Phaser.Types.Animations.JSONAnimationFrame
 import Phaser.Game
-import Phaser.Structs.Map
-import Phaser.Types.Animations.JSONAnimations
-import Phaser.Types.Animations.GenerateFrameNames
-import Phaser.Types.Animations.GenerateFrameNumbers
 import Phaser.GameObjects.GameObject
+import Phaser.Structs.Map
+import Phaser.Textures.Frame
+import Phaser.Textures.TextureManager
+import Phaser.Types.Animations.*
+import Phaser.integer
 
 open external class Animation(manager: Phaser.Animations.AnimationManager, key: String, config: Phaser.Types.Animations.Animation) : EventEmitter {
     open var manager: AnimationManager
