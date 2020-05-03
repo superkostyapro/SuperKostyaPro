@@ -1,41 +1,28 @@
 package Phaser.Input
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import integer
-import Phaser.GameObjects.GameObject
-import Phaser.Types.Input.HitAreaCallback
-import Phaser.Types.Input.InteractiveObject
-import Phaser.Textures.TextureManager
-import Phaser.Game
-import Phaser.Scale.ScaleManager
+import Phaser.Cameras.Scene2D.Camera
+import Phaser.Cameras.Scene2D.CameraManager
 import Phaser.Core.Config
 import Phaser.Events.EventEmitter
+import Phaser.Game
+import Phaser.GameObjects.DisplayList
+import Phaser.GameObjects.GameObject
+import Phaser.Input.Gamepad.GamepadPlugin
 import Phaser.Input.Keyboard.KeyboardManager
+import Phaser.Input.Keyboard.KeyboardPlugin
 import Phaser.Input.Mouse.MouseManager
 import Phaser.Input.Touch.TouchManager
-import Phaser.Cameras.Scene2D.Camera
-import Phaser.Input.Gamepad.GamepadPlugin
+import Phaser.Math.Vector2
+import Phaser.Scale.ScaleManager
 import Phaser.Scene
 import Phaser.Scenes.Systems
-import Phaser.Types.Scenes.SettingsObject
-import Phaser.GameObjects.DisplayList
-import Phaser.Cameras.Scene2D.CameraManager
+import Phaser.Textures.TextureManager
+import Phaser.Types.Input.HitAreaCallback
 import Phaser.Types.Input.InputConfiguration
-import Phaser.Input.Keyboard.KeyboardPlugin
-import Phaser.Math.Vector2
+import Phaser.Types.Input.InteractiveObject
+import Phaser.Types.Scenes.SettingsObject
+import Phaser.integer
+import org.w3c.dom.HTMLCanvasElement
 
 external var MOUSE_DOWN: integer
 
