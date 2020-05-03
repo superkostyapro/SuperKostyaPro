@@ -21,7 +21,7 @@ fs.readdir('.', (err, files) => {
       const parts = file.split('.');
       for (let i = 2; i < parts.length - 2; i++) {
         const part = parts[i];
-        if (parts[i + 1] == 'module_phaser') {
+        if (i === parts.length - 3) {
           fs.copyFileSync(file, `${dir}/${part}.kt`);
         } else {
           dir = `${dir}/${part}`;
