@@ -1,6 +1,5 @@
 @file:JsModule("phaser")
 @file:JsNonModule
-@file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION")
 package Phaser
 
 import kotlin.js.*
@@ -80,7 +79,7 @@ external var LEFT: integer
 
 external var RIGHT: integer
 
-external open class Game(GameConfig: Phaser.Types.Core.GameConfig = definedExternally) {
+open external class Game(GameConfig: Phaser.Types.Core.GameConfig = definedExternally) {
     open var config: Config
     open var renderer: dynamic /* Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer */
     open var domContainer: HTMLDivElement
@@ -168,7 +167,7 @@ external enum class ScaleModes {
     NEAREST
 }
 
-external open class Scene {
+open external class Scene {
     constructor(config: String)
     constructor(config: SettingsConfig)
     open var sys: Systems
@@ -198,7 +197,7 @@ external open class Scene {
     open fun update(time: Number, delta: Number)
 }
 
-external open class FacebookInstantGamesPlugin(game: Phaser.Game) : EventEmitter {
+open external class FacebookInstantGamesPlugin(game: Phaser.Game) : EventEmitter {
     open var game: Game
     open var data: DataManager
     open var hasLoaded: Boolean
@@ -275,7 +274,7 @@ external open class FacebookInstantGamesPlugin(game: Phaser.Game) : EventEmitter
     override fun destroy()
 }
 
-external open class FacebookInstantGamesLeaderboard(plugin: Phaser.FacebookInstantGamesPlugin, data: Any) : EventEmitter {
+open external class FacebookInstantGamesLeaderboard(plugin: Phaser.FacebookInstantGamesPlugin, data: Any) : EventEmitter {
     open var plugin: FacebookInstantGamesPlugin
     open var ref: Any
     open var name: String
