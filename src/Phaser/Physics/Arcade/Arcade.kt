@@ -1,72 +1,31 @@
 package Phaser.Physics.Arcade
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Scene
-import integer
+import Phaser.ArcadePhysicsCallback
 import Phaser.BlendModes
-import Phaser.Math.Vector2
-import Phaser.Geom.Rectangle
 import Phaser.Display.Masks.BitmapMask
 import Phaser.Display.Masks.GeometryMask
+import Phaser.Events.EventEmitter
+import Phaser.GameObjects.Components.*
 import Phaser.GameObjects.GameObject
 import Phaser.GameObjects.Graphics
-import Phaser.Renderer.WebGL.WebGLPipeline
-import Phaser.Textures.Frame
-import Phaser.GameObjects.Components.TransformMatrix
-import Phaser.GameObjects.Components.BlendMode
-import Phaser.GameObjects.Components.Texture
-import Phaser.Physics.Arcade.Components.Acceleration
-import Phaser.Physics.Arcade.Components.Angular
-import Phaser.Physics.Arcade.Components.Bounce
-import Phaser.Physics.Arcade.Components.Debug
-import Phaser.Physics.Arcade.Components.Drag
-import Phaser.Physics.Arcade.Components.Enable
-import Phaser.Physics.Arcade.Components.Friction
-import Phaser.Physics.Arcade.Components.Gravity
-import Phaser.Physics.Arcade.Components.Immovable
-import Phaser.Physics.Arcade.Components.Mass
+import Phaser.Geom.Rectangle
+import Phaser.Math.Vector2
+import Phaser.Physics.Arcade.Components.*
 import Phaser.Physics.Arcade.Components.Size
-import Phaser.Physics.Arcade.Components.Velocity
-import Phaser.GameObjects.Components.Alpha
-import Phaser.GameObjects.Components.Depth
-import Phaser.GameObjects.Components.Flip
-import Phaser.GameObjects.Components.GetBounds
-import Phaser.GameObjects.Components.Origin
-import Phaser.GameObjects.Components.Pipeline
-import Phaser.GameObjects.Components.ScrollFactor
-import Phaser.GameObjects.Components.Tint
-import Phaser.GameObjects.Components.Transform
-import Phaser.GameObjects.Components.Visible
+import Phaser.Renderer.WebGL.WebGLPipeline
+import Phaser.Scene
 import Phaser.Scenes.Systems
-import ArcadePhysicsCallback
+import Phaser.Structs.ProcessQueue
+import Phaser.Structs.RTree
+import Phaser.Structs.Set
+import Phaser.Textures.Frame
 import Phaser.Tilemaps.DynamicTilemapLayer
 import Phaser.Tilemaps.StaticTilemapLayer
 import Phaser.Tilemaps.Tile
-import Phaser.Types.Physics.Arcade.ArcadeBodyCollision
-import Phaser.Types.Physics.Arcade.ArcadeBodyBounds
 import Phaser.Types.GameObjects.Group.GroupConfig
 import Phaser.Types.GameObjects.Group.GroupCreateConfig
-import Phaser.Types.Physics.Arcade.PhysicsGroupDefaults
-import Phaser.Structs.Set
-import Phaser.Structs.ProcessQueue
-import Phaser.Types.Physics.Arcade.CheckCollisionObject
-import Phaser.Types.Physics.Arcade.ArcadeWorldDefaults
-import Phaser.Structs.RTree
-import Phaser.Types.Physics.Arcade.ArcadeWorldTreeMinMax
-import Phaser.Events.EventEmitter
+import Phaser.Types.Physics.Arcade.*
+import Phaser.integer
 
 open external class Image : Phaser.GameObjects.Image, Acceleration, Angular, Bounce, Debug, Drag, Enable, Friction, Gravity, Immovable, Mass, Size, Velocity, Alpha, BlendMode, Depth, Flip, GetBounds, Origin, Pipeline, ScrollFactor, Phaser.GameObjects.Components.Size, Texture, Tint, Transform, Visible {
     constructor(scene: Scene, x: Number, y: Number, texture: String, frame: String)
@@ -205,6 +164,7 @@ open external class Image : Phaser.GameObjects.Image, Acceleration, Angular, Bou
     override fun setImmovable(value: Boolean): Image /* this */
     override fun setMass(value: Number): Image /* this */
     override fun setOffset(x: Number, y: Number): Image /* this */
+    override fun setSize(width: Number, height: Number, center: Boolean): Size /* this */
     override fun setCircle(radius: Number, offsetX: Number, offsetY: Number): Image /* this */
     override fun setVelocity(x: Number, y: Number): Image /* this */
     override fun setVelocityX(x: Number): Image /* this */
@@ -212,15 +172,8 @@ open external class Image : Phaser.GameObjects.Image, Acceleration, Angular, Bou
     override fun setMaxVelocity(x: Number, y: Number): Image /* this */
     override fun setCrop(): Image /* this */
     override fun setTexture(key: String): Image /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setTexture(key: String, frame: String): Texture /* this */
-    override fun setTexture(key: String, frame: integer): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture, frame: String): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture, frame: integer): Texture /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setTexture(key: String): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture): Texture /* this */
 }
 
@@ -422,6 +375,7 @@ open external class Sprite : Phaser.GameObjects.Sprite, Acceleration, Angular, B
     override fun setImmovable(value: Boolean): Sprite /* this */
     override fun setMass(value: Number): Sprite /* this */
     override fun setOffset(x: Number, y: Number): Sprite /* this */
+    override fun setSize(width: Number, height: Number, center: Boolean): Size /* this */
     override fun setCircle(radius: Number, offsetX: Number, offsetY: Number): Sprite /* this */
     override fun setVelocity(x: Number, y: Number): Sprite /* this */
     override fun setVelocityX(x: Number): Sprite /* this */
@@ -429,15 +383,8 @@ open external class Sprite : Phaser.GameObjects.Sprite, Acceleration, Angular, B
     override fun setMaxVelocity(x: Number, y: Number): Sprite /* this */
     override fun setCrop(): Sprite /* this */
     override fun setTexture(key: String): Sprite /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setTexture(key: String, frame: String): Texture /* this */
-    override fun setTexture(key: String, frame: integer): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture, frame: String): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture, frame: integer): Texture /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setTexture(key: String): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture): Texture /* this */
 }
 
