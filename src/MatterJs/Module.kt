@@ -556,19 +556,19 @@ external fun use(vararg plugins: Plugin)
 
 external fun use(vararg plugins: String)
 
-external open class Axes {
+open external class Axes {
     companion object {
         fun fromVertices(vertices: Array<Vector>): Array<Vector>
         fun rotate(axes: Array<Vector>, angle: Number)
     }
 }
 
-external open class AxesFactory {
+open external class AxesFactory {
     open fun fromVertices(vertices: Array<Vector>): Array<Vector>
     open fun rotate(axes: Array<Vector>, angle: Number)
 }
 
-external open class Bodies {
+open external class Bodies {
     companion object {
         fun circle(x: Number, y: Number, radius: Number, options: IBodyDefinition = definedExternally, maxSides: Number = definedExternally): BodyType
         fun polygon(x: Number, y: Number, sides: Number, radius: Number, options: IChamferableBodyDefinition = definedExternally): BodyType
@@ -578,7 +578,7 @@ external open class Bodies {
     }
 }
 
-external open class BodiesFactory {
+open external class BodiesFactory {
     open fun circle(x: Number, y: Number, radius: Number, options: IBodyDefinition = definedExternally, maxSides: Number = definedExternally): BodyType
     open fun polygon(x: Number, y: Number, sides: Number, radius: Number, options: IChamferableBodyDefinition = definedExternally): BodyType
     open fun rectangle(x: Number, y: Number, width: Number, height: Number, options: IChamferableBodyDefinition = definedExternally): BodyType
@@ -586,7 +586,7 @@ external open class BodiesFactory {
     open fun fromVertices(x: Number, y: Number, vertexSets: Array<Array<Vector>>, options: IBodyDefinition = definedExternally, flagInternal: Boolean = definedExternally, removeCollinear: Number = definedExternally, minimumArea: Number = definedExternally): BodyType
 }
 
-external open class Body {
+open external class Body {
     companion object {
         fun applyForce(body: BodyType, position: Vector, force: Vector)
         fun create(options: IChamferableBodyDefinition): Body
@@ -610,7 +610,7 @@ external open class Body {
     }
 }
 
-external open class BodyFactory {
+open external class BodyFactory {
     open fun applyForce(body: BodyType, position: Vector, force: Vector)
     open fun create(options: IChamferableBodyDefinition): BodyType
     open fun rotate(body: BodyType, rotation: Number)
@@ -632,7 +632,7 @@ external open class BodyFactory {
     open fun update(body: BodyType, deltaTime: Number, timeScale: Number, correction: Number)
 }
 
-external open class Bounds {
+open external class Bounds {
     companion object {
         fun create(vertices: Vertices): IBound
         fun update(bounds: IBound, vertices: Vertices, velocity: Vector)
@@ -643,7 +643,7 @@ external open class Bounds {
     }
 }
 
-external open class BoundsFactory {
+open external class BoundsFactory {
     open fun create(vertices: Vertices): IBound
     open fun update(bounds: IBound, vertices: Vertices, velocity: Vector)
     open fun contains(bounds: IBound, point: Vector): Boolean
@@ -652,7 +652,7 @@ external open class BoundsFactory {
     open fun shift(bounds: IBound, position: Vector)
 }
 
-external open class Composite {
+open external class Composite {
     companion object {
         fun add(composite: CompositeType, obj: BodyType): CompositeType
         fun add(composite: CompositeType, obj: CompositeType): CompositeType
@@ -675,7 +675,7 @@ external open class Composite {
     }
 }
 
-external open class CompositeFactory {
+open external class CompositeFactory {
     open fun add(composite: CompositeType, obj: BodyType): CompositeType
     open fun add(composite: CompositeType, obj: CompositeType): CompositeType
     open fun add(composite: CompositeType, obj: ConstraintType): CompositeType
@@ -696,7 +696,7 @@ external open class CompositeFactory {
     open fun scale(composite: CompositeType, scaleX: Number, scaleY: Number, point: Vector, recursive: Boolean = definedExternally)
 }
 
-external open class Composites {
+open external class Composites {
     companion object {
         fun car(xx: Number, yy: Number, width: Number, height: Number, wheelSize: Number): CompositeType
         fun chain(composite: CompositeType, xOffsetA: Number, yOffsetA: Number, xOffsetB: Number, yOffsetB: Number, options: Any): CompositeType
@@ -708,7 +708,7 @@ external open class Composites {
     }
 }
 
-external open class CompositesFactory {
+open external class CompositesFactory {
     open fun car(xx: Number, yy: Number, width: Number, height: Number, wheelSize: Number): CompositeType
     open fun chain(composite: CompositeType, xOffsetA: Number, yOffsetA: Number, xOffsetB: Number, yOffsetB: Number, options: Any): CompositeType
     open fun mesh(composite: CompositeType, columns: Number, rows: Number, crossBrace: Boolean, options: Any): CompositeType
@@ -718,17 +718,17 @@ external open class CompositesFactory {
     open fun stack(xx: Number, yy: Number, columns: Number, rows: Number, columnGap: Number, rowGap: Number, callback: Function<*>): CompositeType
 }
 
-external open class Constraint {
+open external class Constraint {
     companion object {
         fun create(options: IConstraintDefinition): ConstraintType
     }
 }
 
-external open class ConstraintFactory {
+open external class ConstraintFactory {
     open fun create(options: IConstraintDefinition): ConstraintType
 }
 
-external open class Engine {
+open external class Engine {
     open var broadphase: Grid
     open var constraintIterations: Number
     open var enabled: Boolean
@@ -750,7 +750,7 @@ external open class Engine {
     }
 }
 
-external open class Grid {
+open external class Grid {
     companion object {
         fun create(options: IGridDefinition = definedExternally): Grid
         fun update(grid: Grid, bodies: Array<BodyType>, engine: Engine, forceUpdate: Boolean)
@@ -758,13 +758,13 @@ external open class Grid {
     }
 }
 
-external open class GridFactory {
+open external class GridFactory {
     open fun create(options: IGridDefinition = definedExternally): Grid
     open fun update(grid: Grid, bodies: Array<BodyType>, engine: Engine, forceUpdate: Boolean)
     open fun clear(grid: Grid)
 }
 
-external open class MouseConstraint {
+open external class MouseConstraint {
     open var constraint: ConstraintType
     open var collisionFilter: ICollisionFilter
     open var body: BodyType
@@ -775,17 +775,17 @@ external open class MouseConstraint {
     }
 }
 
-external open class Pairs {
+open external class Pairs {
     companion object {
         fun clear(pairs: Any): Any
     }
 }
 
-external open class PairsFactory {
+open external class PairsFactory {
     open fun clear(pairs: Any): Any
 }
 
-external open class Pair {
+open external class Pair {
     companion object {
         fun create(collision: ICollisionData, timestamp: Number): IPair
         fun update(pair: IPair, collision: ICollisionData, timestamp: Number)
@@ -794,26 +794,26 @@ external open class Pair {
     }
 }
 
-external open class PairFactory {
+open external class PairFactory {
     open fun create(collision: ICollisionData, timestamp: Number): IPair
     open fun update(pair: IPair, collision: ICollisionData, timestamp: Number)
     open fun setActive(pair: IPair, isActive: Boolean, timestamp: Number)
     open fun id(bodyA: BodyType, bodyB: BodyType): String
 }
 
-external open class Detector {
+open external class Detector {
     companion object {
         fun collisions(broadphasePairs: Array<IPair>, engine: Engine): Array<ICollisionData>
         fun canCollide(filterA: ICollisionFilter, filterB: ICollisionFilter): Boolean
     }
 }
 
-external open class DetectorFactory {
+open external class DetectorFactory {
     open fun collisions(broadphasePairs: Array<IPair>, engine: Engine): Array<ICollisionData>
     open fun canCollide(filterA: ICollisionFilter, filterB: ICollisionFilter): Boolean
 }
 
-external open class Resolver {
+open external class Resolver {
     companion object {
         fun preSolvePosition(pairs: Array<IPair>)
         fun solvePosition(pairs: Array<IPair>, bodies: Array<BodyType>, timeScale: Number)
@@ -823,7 +823,7 @@ external open class Resolver {
     }
 }
 
-external open class ResolverFactory {
+open external class ResolverFactory {
     open fun preSolvePosition(pairs: Array<IPair>)
     open fun solvePosition(pairs: Array<IPair>, bodies: Array<BodyType>, timeScale: Number)
     open fun postSolvePosition(bodies: Array<BodyType>)
@@ -831,17 +831,17 @@ external open class ResolverFactory {
     open fun solveVelocity(pairs: Array<IPair>, timeScale: Number)
 }
 
-external open class SAT {
+open external class SAT {
     companion object {
         fun collides(bodyA: BodyType, bodyB: BodyType, previousCollision: ICollisionData): ICollisionData
     }
 }
 
-external open class SATFactory {
+open external class SATFactory {
     open fun collides(bodyA: BodyType, bodyB: BodyType, previousCollision: ICollisionData): ICollisionData
 }
 
-external open class Query {
+open external class Query {
     companion object {
         fun ray(bodies: Array<BodyType>, startPoint: Vector, endPoint: Vector, rayWidth: Number = definedExternally): Array<ICollisionData>
         fun region(bodies: Array<BodyType>, bounds: Bounds, outside: Boolean = definedExternally): Array<BodyType>
@@ -849,13 +849,13 @@ external open class Query {
     }
 }
 
-external open class QueryFactory {
+open external class QueryFactory {
     open fun ray(bodies: Array<BodyType>, startPoint: Vector, endPoint: Vector, rayWidth: Number = definedExternally): Array<ICollisionData>
     open fun region(bodies: Array<BodyType>, bounds: Bounds, outside: Boolean = definedExternally): Array<BodyType>
     open fun point(bodies: Array<BodyType>, point: Vector): Array<BodyType>
 }
 
-external open class Runner {
+open external class Runner {
     open var enabled: Boolean
     open var isFixed: Boolean
     open var delta: Number
@@ -870,27 +870,27 @@ external open class Runner {
     }
 }
 
-external open class Sleeping {
+open external class Sleeping {
     companion object {
         fun set(body: BodyType, isSleeping: Boolean)
     }
 }
 
-external open class SleepingFactory {
+open external class SleepingFactory {
     open fun set(body: BodyType, isSleeping: Boolean)
 }
 
-external open class Svg {
+open external class Svg {
     companion object {
         fun pathToVertices(path: SVGPathElement, sampleLength: Number): Array<Vector>
     }
 }
 
-external open class SvgFactory {
+open external class SvgFactory {
     open fun pathToVertices(path: SVGPathElement, sampleLength: Number): Array<Vector>
 }
 
-external open class Vector {
+open external class Vector {
     open var x: Number
     open var y: Number
 
@@ -915,7 +915,7 @@ external open class Vector {
     }
 }
 
-external open class VectorFactory {
+open external class VectorFactory {
     open fun create(x: Number = definedExternally, y: Number = definedExternally): Vector
     open fun clone(vector: Vector): Vector
     open fun cross3(vectorA: Vector, vectorB: Vector, vectorC: Vector): Number
@@ -935,7 +935,7 @@ external open class VectorFactory {
     open fun sub(vectorA: Vector, vectorB: Vector, optional: Vector = definedExternally): Vector
 }
 
-external open class Vertices {
+open external class Vertices {
     companion object {
         fun mean(vertices: Array<Vector>): Array<Vector>
         fun clockwiseSort(vertices: Array<Vector>): Array<Vector>
@@ -955,7 +955,7 @@ external open class Vertices {
     }
 }
 
-external open class VerticesFactory {
+open external class VerticesFactory {
     open fun mean(vertices: Array<Vector>): Array<Vector>
     open fun clockwiseSort(vertices: Array<Vector>): Array<Vector>
     open fun isConvex(vertices: Array<Vector>): Boolean
@@ -973,7 +973,7 @@ external open class VerticesFactory {
     open fun translate(vertices: Array<Vector>, vector: Vector, scalar: Number)
 }
 
-external open class World {
+open external class World {
     open var gravity: Gravity
     open var bounds: Bounds
 
@@ -993,11 +993,14 @@ external open class World {
     }
 }
 
-external open class Events {
+open external class Events {
     companion object {
-        fun on(obj: BodyType, name: String /* "sleepStart" */, callback: (e: IEvent<BodyType>) -> Unit)
+        // todo
         fun on(obj: BodyType, name: String /* "sleepEnd" */, callback: (e: IEvent<BodyType>) -> Unit)
-        fun on(obj: Engine, name: String /* "beforeAdd" */, callback: (e: IEventComposite<CompositeType>) -> Unit)
+        fun on(obj: BodyType, name: String, callback: (e: IEventComposite<CompositeType>) -> Unit)
+        fun on(obj: BodyType, name: String, callback: (e: IEventTimestamped<dynamic>) -> Unit)
+        fun on(obj: BodyType, name: String, callback: (e: IEventCollision<Engine>) -> Unit)
+        /*fun on(obj: Engine, name: String /* "beforeAdd" */, callback: (e: IEventComposite<CompositeType>) -> Unit)
         fun on(obj: Engine, name: String /* "afterAdd" */, callback: (e: IEventComposite<CompositeType>) -> Unit)
         fun on(obj: Engine, name: String /* "beforeRemove" */, callback: (e: IEventComposite<CompositeType>) -> Unit)
         fun on(obj: Engine, name: String /* "afterRemove" */, callback: (e: IEventComposite<CompositeType>) -> Unit)
@@ -1010,7 +1013,7 @@ external open class Events {
         fun on(obj: Engine, name: String /* "tick" */, callback: (e: IEventTimestamped<Runner>) -> Unit)
         fun on(obj: Engine, name: String /* "afterTick" */, callback: (e: IEventTimestamped<Runner>) -> Unit)
         fun on(obj: Engine, name: String /* "beforeRender" */, callback: (e: IEventTimestamped<Runner>) -> Unit)
-        fun on(obj: Engine, name: String /* "afterRender" */, callback: (e: IEventTimestamped<Runner>) -> Unit)
+        fun on(obj: Engine, name: String /* "afterRender" */, callback: (e: IEventTimestamped<Runner>) -> Unit)*/
         fun on(obj: Any, name: String, callback: (e: Any) -> Unit)
         fun off(obj: Any, eventName: String, callback: (e: Any) -> Unit)
         fun trigger(obj: Any, eventNames: String, event: (e: Any) -> Unit = definedExternally)
@@ -1064,7 +1067,7 @@ external interface `T$18` {
     var number: Number
 }
 
-external open class Plugin {
+open external class Plugin {
     open var name: String
     open var version: String
     open var install: () -> Unit
