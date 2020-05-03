@@ -16,6 +16,8 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 import integer
 
+typealias SnapshotCallback = (snapshot: dynamic /* Phaser.Display.Color | HTMLImageElement */) -> Unit
+
 external interface SnapshotState {
     var callback: SnapshotCallback
     var type: String?

@@ -15,6 +15,8 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+typealias GenerateTextureCallback = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) -> Unit
+
 external interface GenerateTextureConfig {
     var data: Array<Any>?
         get() = definedExternally

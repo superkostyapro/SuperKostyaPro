@@ -19,6 +19,12 @@ import Phaser.Types.Core.PhysicsConfig
 import Phaser.Types.Core.LoaderConfig
 import Phaser.Scene
 
+typealias SceneCreateCallback = (data: Any?) -> Unit
+
+typealias SceneInitCallback = (data: Any?) -> Unit
+
+typealias ScenePreloadCallback = () -> Unit
+
 external interface CreateSceneFromObjectConfig {
     var init: SceneInitCallback?
         get() = definedExternally

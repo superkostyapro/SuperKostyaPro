@@ -1,5 +1,6 @@
 package Phaser.Types.GameObjects.Group
 
+import Phaser.GameObjects.GameObject
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -16,6 +17,10 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 import integer
 import Phaser.Types.Input.HitAreaCallback
+
+typealias GroupCallback = (item: GameObject) -> Unit
+
+typealias GroupMultipleCreateCallback = (items: Array<GameObject>) -> Unit
 
 external interface GroupConfig {
     var classType: Function<*>?

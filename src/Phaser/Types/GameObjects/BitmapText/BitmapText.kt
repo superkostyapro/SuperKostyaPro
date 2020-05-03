@@ -16,6 +16,8 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 import Phaser.GameObjects.DynamicBitmapText
 
+typealias DisplayCallback = (display: DisplayCallbackConfig) -> Unit
+
 external interface `T$1` {
     @nativeGetter
     operator fun get(key: String): Number?

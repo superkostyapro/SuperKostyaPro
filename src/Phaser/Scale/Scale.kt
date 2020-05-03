@@ -23,6 +23,14 @@ import integer
 import Phaser.Types.Core.GameConfig
 import Phaser.Events.EventEmitter
 
+typealias CenterType = Center
+
+typealias OrientationType = Orientation
+
+typealias ScaleModeType = ScaleModes
+
+typealias ZoomType = Zoom
+
 external enum class Center {
     NO_CENTER,
     CENTER_BOTH,

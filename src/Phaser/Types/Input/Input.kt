@@ -19,6 +19,8 @@ import Phaser.GameObjects.GameObject
 import Phaser.Cameras.Scene2D.Camera
 import Phaser.GameObjects.Shape
 
+typealias HitAreaCallback = (hitArea: Any, x: Number, y: Number, gameObject: GameObject) -> Unit
+
 external interface EventData {
     var cancelled: Boolean?
         get() = definedExternally

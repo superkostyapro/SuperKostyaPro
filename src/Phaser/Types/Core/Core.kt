@@ -1,5 +1,6 @@
 package Phaser.Types.Core
 
+import Phaser.Game
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -19,6 +20,12 @@ import Phaser.Types.Physics.Arcade.ArcadeWorldConfig
 import Phaser.Types.Physics.Matter.MatterWorldConfig
 import Phaser.Scale.ScaleModeType
 import Phaser.Scale.CenterType
+
+typealias BootCallback = (game: Game) -> Unit
+
+typealias NOOP = () -> Unit
+
+typealias TimeStepCallback = (time: Number, average: Number, interpolation: Number) -> Unit
 
 external interface AudioConfig {
     var disableWebAudio: Boolean?

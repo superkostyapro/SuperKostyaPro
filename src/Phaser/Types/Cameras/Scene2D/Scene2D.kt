@@ -1,5 +1,6 @@
 package Phaser.Types.Cameras.Scene2D
 
+import Phaser.Cameras.Scene2D.Camera
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -15,6 +16,16 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 import integer
+
+typealias CameraFadeCallback = (camera: Camera, progress: Number) -> Unit
+
+typealias CameraFlashCallback = (camera: Camera, progress: Number) -> Unit
+
+typealias CameraPanCallback = (camera: Camera, progress: Number, x: Number, y: Number) -> Unit
+
+typealias CameraShakeCallback = (camera: Camera, progress: Number) -> Unit
+
+typealias CameraZoomCallback = (camera: Camera, progress: Number, zoom: Number) -> Unit
 
 external interface CameraConfig {
     var name: String?

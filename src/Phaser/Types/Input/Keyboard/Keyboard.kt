@@ -16,6 +16,8 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 import Phaser.Input.Keyboard.Key
 
+typealias KeyboardKeydownCallback = (event: KeyboardEvent) -> Unit
+
 external interface CursorKeys {
     var up: Key?
         get() = definedExternally

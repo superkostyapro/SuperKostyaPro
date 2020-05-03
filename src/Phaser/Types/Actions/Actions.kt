@@ -1,5 +1,6 @@
 package Phaser.Types.Actions
 
+import Phaser.GameObjects.GameObject
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -15,6 +16,8 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 import integer
+
+typealias CallCallback = (item: GameObject) -> Unit
 
 external interface GridAlignConfig {
     var width: integer?
