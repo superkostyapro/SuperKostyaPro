@@ -1,96 +1,30 @@
 package Phaser.Physics.Matter
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import Phaser.Math.Vector2
-import MatterJS.BodyType
-import Phaser.GameObjects.GameObject
-import Phaser.Scene
-import Phaser.Scenes.Systems
-import Phaser.Types.Physics.Matter.MatterBodyConfig
-import MatterJS.CompositeType
-import integer
-import Phaser.Types.Physics.Matter.MatterConstraintConfig
-import MatterJS.ConstraintType
-import Phaser.Tilemaps.Tile
-import Phaser.Types.Physics.Matter.MatterTileOptions
-import MatterJS.Body
+import MatterJS.*
 import Phaser.BlendModes
-import Phaser.Geom.Rectangle
+import Phaser.Cameras.Scene2D.Camera
 import Phaser.Display.Masks.BitmapMask
 import Phaser.Display.Masks.GeometryMask
-import Phaser.GameObjects.Graphics
-import Phaser.Renderer.WebGL.WebGLPipeline
-import Phaser.Textures.Frame
-import Phaser.GameObjects.Components.TransformMatrix
-import Phaser.Types.Physics.Matter.MatterSetBodyConfig
-import Phaser.GameObjects.Components.BlendMode
-import Phaser.GameObjects.Components.Texture
-import Phaser.Physics.Matter.Components.Bounce
-import Phaser.Physics.Matter.Components.Collision
-import Phaser.Physics.Matter.Components.Force
-import Phaser.Physics.Matter.Components.Friction
-import Phaser.Physics.Matter.Components.Gravity
-import Phaser.Physics.Matter.Components.Mass
-import Phaser.Physics.Matter.Components.Sensor
-import Phaser.Physics.Matter.Components.SetBody
-import Phaser.Physics.Matter.Components.Sleep
-import Phaser.Physics.Matter.Components.Static
-import Phaser.Physics.Matter.Components.Transform
-import Phaser.Physics.Matter.Components.Velocity
-import Phaser.GameObjects.Components.Alpha
-import Phaser.GameObjects.Components.Depth
-import Phaser.GameObjects.Components.Flip
-import Phaser.GameObjects.Components.GetBounds
-import Phaser.GameObjects.Components.Origin
-import Phaser.GameObjects.Components.Pipeline
-import Phaser.GameObjects.Components.ScrollFactor
-import Phaser.GameObjects.Components.Size
-import Phaser.GameObjects.Components.Tint
-import Phaser.GameObjects.Components.Visible
-import Phaser.Types.Physics.Matter.MatterWorldConfig
-import MatterJS.BodyFactory
-import MatterJS.CompositeFactory
-import MatterJS.DetectorFactory
-import MatterJS.GridFactory
-import MatterJS.PairFactory
-import MatterJS.PairsFactory
-import MatterJS.QueryFactory
-import MatterJS.ResolverFactory
-import MatterJS.SATFactory
-import MatterJS.ConstraintFactory
-import MatterJS.BodiesFactory
-import MatterJS.CompositesFactory
-import MatterJS.AxesFactory
-import MatterJS.BoundsFactory
-import MatterJS.SvgFactory
-import MatterJS.VectorFactory
-import MatterJS.VerticesFactory
-import ArcadePhysicsCallback
-import Phaser.Types.Math.Vector2Like
-import Phaser.Types.Physics.Matter.MatterBodyTileOptions
 import Phaser.Events.EventEmitter
-import Phaser.Cameras.Scene2D.Camera
+import Phaser.GameObjects.Components.*
+import Phaser.GameObjects.GameObject
+import Phaser.GameObjects.Graphics
+import Phaser.Geom.Rectangle
 import Phaser.Input.Pointer
-import MatterJS.Engine
-import Phaser.Types.Physics.Matter.MatterRunnerConfig
-import Phaser.Types.Physics.Matter.MatterDebugConfig
+import Phaser.Math.Vector2
+import Phaser.Physics.Matter.Components.*
+import Phaser.Physics.Matter.Components.Gravity
+import Phaser.Physics.Matter.Components.Transform
+import Phaser.Renderer.WebGL.WebGLPipeline
+import Phaser.Scene
+import Phaser.Scenes.Systems
+import Phaser.Textures.Frame
 import Phaser.Tilemaps.DynamicTilemapLayer
 import Phaser.Tilemaps.StaticTilemapLayer
-import MatterJS.Grid
-import MatterJS.Pair
+import Phaser.Tilemaps.Tile
+import Phaser.Types.Math.Vector2Like
+import Phaser.Types.Physics.Matter.*
+import Phaser.integer
 
 open external class BodyBounds {
     open var boundsCenter: Vector2
@@ -345,15 +279,8 @@ open external class Image : Phaser.GameObjects.Image, Bounce, Collision, Force, 
     override fun setVelocity(x: Number, y: Number): GameObject
     override fun setCrop(): Image /* this */
     override fun setTexture(key: String): Image /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setTexture(key: String, frame: String): Texture /* this */
-    override fun setTexture(key: String, frame: integer): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture, frame: String): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture, frame: integer): Texture /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setTexture(key: String): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture): Texture /* this */
 }
 
@@ -619,15 +546,8 @@ open external class Sprite : Phaser.GameObjects.Sprite, Bounce, Collision, Force
     override fun setVelocity(x: Number, y: Number): GameObject
     override fun setCrop(): Sprite /* this */
     override fun setTexture(key: String): Sprite /* this */
-    override fun setBlendMode(value: String): BlendMode /* this */
-    override fun setBlendMode(value: BlendModes): BlendMode /* this */
-    override fun setTexture(key: String, frame: String): Texture /* this */
-    override fun setTexture(key: String, frame: integer): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture, frame: String): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture, frame: integer): Texture /* this */
-    override fun setFrame(frame: String, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setFrame(frame: integer, updateSize: Boolean, updateOrigin: Boolean): Texture /* this */
-    override fun setTexture(key: String): Texture /* this */
     override fun setTexture(key: Phaser.Textures.Texture): Texture /* this */
 }
 
@@ -638,7 +558,7 @@ open external class TileBody(world: Phaser.Physics.Matter.World, tile: Phaser.Ti
     open fun setFromTileCollision(options: MatterBodyTileOptions = definedExternally): TileBody
     open fun setBody(body: BodyType, addToWorld: Boolean = definedExternally): TileBody
     open fun removeBody(): TileBody
-    open fun destroy(): TileBody
+    override fun destroy()
     override fun setBounce(value: Number): GameObject
     override fun setCollisionCategory(value: Number): GameObject
     override fun setCollisionGroup(value: Number): GameObject
