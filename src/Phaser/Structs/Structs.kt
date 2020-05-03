@@ -1,25 +1,12 @@
 package Phaser.Structs
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import integer
-import EachListCallback
-import EachMapCallback
+import Phaser.EachListCallback
+import Phaser.EachMapCallback
+import Phaser.EachSetCallback
 import Phaser.Events.EventEmitter
-import EachSetCallback
 import Phaser.Math.Vector2
+import Phaser.integer
+import org.w3c.dom.HTMLElement
 
 open external class List<T>(parent: Any) {
     open var parent: Any
