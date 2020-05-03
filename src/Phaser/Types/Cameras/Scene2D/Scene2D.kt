@@ -1,21 +1,7 @@
 package Phaser.Types.Cameras.Scene2D
 
 import Phaser.Cameras.Scene2D.Camera
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import integer
+import Phaser.integer
 
 typealias CameraFadeCallback = (camera: Camera, progress: Number) -> Unit
 
@@ -64,7 +50,8 @@ external interface CameraConfig {
     var bounds: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var bounds.x: Number?
+    // todo
+    /*var bounds.x: Number?
         get() = definedExternally
         set(value) = definedExternally
     var bounds.y: Number?
@@ -75,7 +62,7 @@ external interface CameraConfig {
         set(value) = definedExternally
     var bounds.height: Number?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
 }
 
 external interface JSONCamera {

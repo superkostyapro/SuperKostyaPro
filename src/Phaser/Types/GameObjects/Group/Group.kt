@@ -1,22 +1,8 @@
 package Phaser.Types.GameObjects.Group
 
 import Phaser.GameObjects.GameObject
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
-import integer
 import Phaser.Types.Input.HitAreaCallback
+import Phaser.integer
 
 typealias GroupCallback = (item: GameObject) -> Unit
 
@@ -95,7 +81,8 @@ external interface GroupCreateConfig {
     var setXY: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var setXY.x: Number?
+    // todo
+    /*var setXY.x: Number?
         get() = definedExternally
         set(value) = definedExternally
     var setXY.y: Number?
@@ -106,20 +93,22 @@ external interface GroupCreateConfig {
         set(value) = definedExternally
     var setXY.stepY: Number?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
     var setRotation: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var setRotation.value: Number?
+    // todo
+    /*var setRotation.value: Number?
         get() = definedExternally
         set(value) = definedExternally
     var setRotation.step: Number?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
     var setScale: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var setScale.x: Number?
+    // todo
+    /*var setScale.x: Number?
         get() = definedExternally
         set(value) = definedExternally
     var setScale.y: Number?
@@ -130,29 +119,32 @@ external interface GroupCreateConfig {
         set(value) = definedExternally
     var setScale.stepY: Number?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
     var setAlpha: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var setAlpha.value: Number?
+    // todo
+    /*var setAlpha.value: Number?
         get() = definedExternally
         set(value) = definedExternally
     var setAlpha.step: Number?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
     var setDepth: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var setDepth.value: Number?
+    // todo
+    /*var setDepth.value: Number?
         get() = definedExternally
         set(value) = definedExternally
     var setDepth.step: Number?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
     var setScrollFactor: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var setScrollFactor.x: Number?
+    // todo
+    /*var setScrollFactor.x: Number?
         get() = definedExternally
         set(value) = definedExternally
     var setScrollFactor.y: Number?
@@ -163,7 +155,7 @@ external interface GroupCreateConfig {
         set(value) = definedExternally
     var setScrollFactor.stepY: Number?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
     var hitArea: Any?
         get() = definedExternally
         set(value) = definedExternally

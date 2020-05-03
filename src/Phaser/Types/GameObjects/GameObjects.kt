@@ -1,7 +1,6 @@
 package Phaser.Types.GameObjects
 
 import Phaser.integer
-import kotlin.js.*
 
 external interface GameObjectConfig {
     var x: Number?
@@ -59,13 +58,15 @@ external interface JSONGameObject {
     var scale: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var scale.x: Number
-    var scale.y: Number
+    // todo
+    /*var scale.x: Number
+    var scale.y: Number*/
     var origin: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var origin.x: Number
-    var origin.y: Number
+    // todo
+    /*var origin.x: Number
+    var origin.y: Number*/
     var flipX: Boolean
     var flipY: Boolean
     var rotation: Number

@@ -1,24 +1,10 @@
 package Phaser.Types.GameObjects.Particles
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
 import Phaser.GameObjects.GameObject
-import integer
 import Phaser.GameObjects.Particles.Particle
 import Phaser.GameObjects.Particles.ParticleEmitter
 import Phaser.Math.Vector2
+import Phaser.integer
 
 typealias DeathZoneSourceCallback = (x: Number, y: Number) -> Unit
 
@@ -262,12 +248,13 @@ external interface ParticleEmitterConfig {
     var followOffset: Any?
         get() = definedExternally
         set(value) = definedExternally
-    var followOffset.x: Number?
+    // todo
+    /*var followOffset.x: Number?
         get() = definedExternally
         set(value) = definedExternally
     var followOffset.y: Number?
         get() = definedExternally
-        set(value) = definedExternally
+        set(value) = definedExternally*/
     var frame: dynamic /* Number | Array<Number> | String | Array<String> | Phaser.Textures.Frame | Array<Phaser.Textures.Frame> | Phaser.Types.GameObjects.Particles.ParticleEmitterFrameConfig */
         get() = definedExternally
         set(value) = definedExternally

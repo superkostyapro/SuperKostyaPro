@@ -1,19 +1,5 @@
 package Phaser.Types.GameObjects.BitmapText
 
-import kotlin.js.*
-import kotlin.js.Json
-import org.khronos.webgl.*
-import org.w3c.dom.*
-import org.w3c.dom.events.*
-import org.w3c.dom.parsing.*
-import org.w3c.dom.svg.*
-import org.w3c.dom.url.*
-import org.w3c.fetch.*
-import org.w3c.files.*
-import org.w3c.notifications.*
-import org.w3c.performance.*
-import org.w3c.workers.*
-import org.w3c.xhr.*
 import Phaser.GameObjects.DynamicBitmapText
 
 typealias DisplayCallback = (display: DisplayCallbackConfig) -> Unit
@@ -88,14 +74,16 @@ external interface LocalBitmapTextSize {
 
 external interface RetroFontConfig {
     var image: String
-    var offset.x: Number
-    var offset.y: Number
+    // todo
+    /*var offset.x: Number
+    var offset.y: Number*/
     var width: Number
     var height: Number
     var chars: String
     var charsPerRow: Number
-    var spacing.x: Number
-    var spacing.y: Number
+    // todo
+    /*var spacing.x: Number
+    var spacing.y: Number*/
     var lineSpacing: Number
 }
 
