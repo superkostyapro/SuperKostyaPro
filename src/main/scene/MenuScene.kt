@@ -5,7 +5,6 @@ package main.scene
 import Phaser.GameObjects.Graphics
 import Phaser.GameObjects.Text
 import Phaser.Geom.Rectangle
-import Phaser.Types.GameObjects.Graphics.FillStyle
 import main.extension.jsObject
 
 class MenuScene : BaseScene(jsObject {
@@ -19,11 +18,7 @@ class MenuScene : BaseScene(jsObject {
     private lateinit var copyrightText: Text
 
     override fun create() {
-        graphics = add.graphics(jsObject {
-            fillStyle = jsObject<FillStyle> {
-                color = 0xc74b0b
-            }
-        })
+        graphics = add.graphics()
         gameText = add.text(0, 0, "SUPER\nKOSTYA PRO.", jsObject<dynamic> {
             fontFamily = "NSMBWii"
             fontSize = "72px"
@@ -37,20 +32,44 @@ class MenuScene : BaseScene(jsObject {
     }
 
     override fun update(time: Float, delta: Float) {
-        val padding = 10f
         val cX = cameras.main.centerX.toFloat()
         val cY = cameras.main.centerY.toFloat()
         val gameBounds: Rectangle = gameText.getBounds()
+        val gameWidth = gameBounds.width.toFloat()
+        val gameHeight = gameBounds.height.toFloat()
+        val padding = 10f
+        val blockX = gameBounds.x.toFloat() - padding
+        val blockY = gameBounds.y.toFloat() - padding / 2
+        val blockWidth = gameWidth + 2 * padding
+        val blockHeight = gameHeight + 3 * padding / 2
+        val topOffset = 100f
+        val halfLine = 1f
+        gameText.apply {
+            x = cX - gameWidth / 2
+            y = cY - gameHeight / 2 - topOffset
+        }
         graphics.clear()
-        gameText.x = cX - gameBounds.width.toFloat() / 2
-        gameText.y = cY - gameBounds.height.toFloat() / 2
-        graphics.fillRect(
-            gameBounds.x.toFloat() - padding,
-            gameBounds.y.toFloat() - padding / 2,
-            gameBounds.width.toFloat() + 2 * padding,
-            gameBounds.height.toFloat() + 2 * padding
-        )
-        copyrightText.x = cX + gameBounds.width.toFloat() / 2 + padding
-        copyrightText.y = gameBounds.bottom.toFloat() + padding
+            .fillStyle(0xc74b0b)
+            .fillRect(blockX, blockY, blockWidth, blockHeight)
+            .lineStyle(halfLine * 2, 0xeab3b0)
+            .lineBetween(blockX, blockY - halfLine, blockX + blockWidth, blockY - halfLine)
+            .lineBetween(blockX - halfLine, blockY, blockX - halfLine, blockY + blockHeight)
+            .lineStyle(halfLine * 2, 0x000000)
+            .lineBetween(
+                blockX + blockWidth + halfLine,
+                blockY,
+                blockX + blockWidth + halfLine,
+                blockY + blockHeight
+            )
+            .lineBetween(
+                blockX,
+                blockY + blockHeight + halfLine,
+                blockX + blockWidth,
+                blockY + blockHeight + halfLine
+            )
+        copyrightText.apply {
+            x = cX + gameWidth / 2 + padding
+            y = gameBounds.bottom.toFloat() + padding
+        }
     }
 }
