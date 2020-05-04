@@ -6,10 +6,14 @@ import Phaser.Types.Core.PhysicsConfig
 import Phaser.Types.Math.Vector2Like
 import Phaser.Types.Physics.Arcade.ArcadeWorldConfig
 import main.extension.jsObject
+import main.scene.EngineerDrawing
+import main.scene.FarFarKingdom
+import main.scene.MenuScene
+import main.scene.ProgrammerDrawing
 
 fun main() {
     SuperKostyaPro(jsObject {
-        title = "Super Mario Bros."
+        title = "Super Kostya Pro"
         width = 480
         height = 480
         parent = "game"
@@ -22,7 +26,12 @@ fun main() {
                 }
             }
         }
-        scene = arrayOf(StartScreen::class.js, WorldScreen::class.js)
+        scene = arrayOf(
+            MenuScene::class.js,
+            EngineerDrawing::class.js,
+            ProgrammerDrawing::class.js,
+            FarFarKingdom::class.js
+        )
     })
 }
 

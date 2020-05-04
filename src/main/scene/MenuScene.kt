@@ -1,16 +1,17 @@
 @file:Suppress("UnsafeCastFromDynamic")
 
-package main
+package main.scene
 
-import Phaser.Scene
-import Phaser.Types.Scenes.SettingsConfig
 import main.extension.jsObject
 
-class StartScreen : Scene(jsObject<SettingsConfig> {
+class MenuScene : BaseScene(jsObject {
     key = "Start"
 }) {
 
-    fun create() {
+    override fun create() {
+        addMenuOption('Credits', function() {
+            game.state.start("Credits");
+        });
         add.text(50, 50, "Start", jsObject<dynamic> {
             fill = "#dfdfdf"
             fontSize = "40px"
