@@ -15,14 +15,13 @@ import main.scene.MenuScene
 import main.scene.ProgrammerDrawing
 import kotlin.browser.document
 
-@Suppress("SpellCheckingInspection")
 fun main() {
     FontFace("NSMBWii", "url(NSMBWii.ttf)").load().then {
         document.asDynamic().fonts.add(it)
         SuperKostyaPro(jsObject {
             type = AUTO
             title = "Super Kostya Pro"
-            backgroundColor = "#000000"
+            backgroundColor = "#5c93fa"
             scale = jsObject<ScaleConfig> {
                 mode = 5 // RESIZE
                 parent = "game" // id of div
