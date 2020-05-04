@@ -1,11 +1,13 @@
 @file:Suppress("UnsafeCastFromDynamic")
 
-package main.scene
+package main.scene.menu
 
 import Phaser.GameObjects.Graphics
 import Phaser.GameObjects.Text
 import Phaser.Geom.Rectangle
+import Phaser.Types.GameObjects.Text.TextStyle
 import main.extension.jsObject
+import main.scene.BaseScene
 
 class MenuScene : BaseScene(jsObject {
     key = "Menu"
@@ -19,14 +21,15 @@ class MenuScene : BaseScene(jsObject {
 
     override fun create() {
         graphics = add.graphics()
-        gameText = add.text(0, 0, "SUPER\nKOSTYA PRO.", jsObject<dynamic> {
+        gameText = add.text(0, 0, "SUPER\nKOSTYA PRO.", jsObject<TextStyle> {
             fontFamily = "NSMBWii"
             fontSize = "72px"
             color = "#fbbbaf"
         }).setShadow(0, 5, "#000000", 2, false, true)
-        copyrightText = add.text(0, 0, "©2020 VLAD", jsObject<dynamic> {
+        copyrightText = add.text(0, 0, "©2020 VLAD", jsObject<TextStyle> {
             fontFamily = "sans-serif"
-            fontSize = "24px"
+            fontStyle = "bold"
+            fontSize = "20px"
             color = "#fdbbad"
         }).setOrigin(1, 0)
     }
@@ -43,6 +46,7 @@ class MenuScene : BaseScene(jsObject {
         val blockWidth = gameWidth + 2 * padding
         val blockHeight = gameHeight + 3 * padding / 2
         val topOffset = 100f
+        val halfPoint = 2f
         val halfLine = 1f
         gameText.apply {
             x = cX - gameWidth / 2
@@ -66,6 +70,44 @@ class MenuScene : BaseScene(jsObject {
                 blockY + blockHeight + halfLine,
                 blockX + blockWidth,
                 blockY + blockHeight + halfLine
+            )
+            .fillStyle(0x000000)
+            .fillPoint(
+                blockX + padding / 2 + halfPoint,
+                blockY + padding / 2 + halfPoint,
+                halfPoint * 2
+            )
+            .fillPoint(
+                blockX + blockWidth - padding / 2,
+                blockY + padding / 2 + halfPoint,
+                halfPoint * 2
+            )
+            .fillPoint(
+                blockX + padding / 2 + halfPoint,
+                blockY + blockHeight - padding / 2,
+                halfPoint * 2
+            )
+            .fillPoint(
+                blockX + blockWidth - padding / 2,
+                blockY + blockHeight - padding / 2,
+                halfPoint * 2
+            )
+            .fillStyle(0xfeb9aa)
+            .fillPoint(blockX + padding / 2, blockY + padding / 2, halfPoint * 2)
+            .fillPoint(
+                blockX + blockWidth - padding / 2 - halfPoint,
+                blockY + padding / 2,
+                halfPoint * 2
+            )
+            .fillPoint(
+                blockX + padding / 2,
+                blockY + blockHeight - padding / 2 - halfPoint,
+                halfPoint * 2
+            )
+            .fillPoint(
+                blockX + blockWidth - padding / 2 - halfPoint,
+                blockY + blockHeight - padding / 2 - halfPoint,
+                halfPoint * 2
             )
         copyrightText.apply {
             x = cX + gameWidth / 2 + padding
