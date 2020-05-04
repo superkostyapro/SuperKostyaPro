@@ -16,6 +16,8 @@ class MenuScene : BaseScene(jsObject {
 
     private lateinit var gameText: Text
 
+    private lateinit var copyrightText: Text
+
     override fun create() {
         graphics = add.graphics(jsObject {
             fillStyle = jsObject<FillStyle> {
@@ -26,23 +28,29 @@ class MenuScene : BaseScene(jsObject {
             fontFamily = "NSMBWii"
             fontSize = "72px"
             color = "#fbbbaf"
-        })
-        gameText.setShadow(0, 5, "#000000", 2, false, true)
+        }).setShadow(0, 5, "#000000", 2, false, true)
+        copyrightText = add.text(0, 0, "©2020 VLAD", jsObject<dynamic> {
+            fontFamily = "sans-serif"
+            fontSize = "24px"
+            color = "#fdbbad"
+        }).setOrigin(1, 0)
     }
 
     override fun update(time: Float, delta: Float) {
+        val padding = 10f
         val cX = cameras.main.centerX.toFloat()
         val cY = cameras.main.centerY.toFloat()
-        val bounds: Rectangle = gameText.getBounds()
-        gameText.x = cX - bounds.width.toFloat() / 2
-        gameText.y = cY - bounds.height.toFloat() / 2
+        val gameBounds: Rectangle = gameText.getBounds()
         graphics.clear()
-        val padding = 10f
+        gameText.x = cX - gameBounds.width.toFloat() / 2
+        gameText.y = cY - gameBounds.height.toFloat() / 2
         graphics.fillRect(
-            bounds.x.toFloat() - padding,
-            bounds.y.toFloat() - padding / 2,
-            bounds.width.toFloat() + 2 * padding,
-            bounds.height.toFloat() + 2 * padding
+            gameBounds.x.toFloat() - padding,
+            gameBounds.y.toFloat() - padding / 2,
+            gameBounds.width.toFloat() + 2 * padding,
+            gameBounds.height.toFloat() + 2 * padding
         )
+        copyrightText.x = cX + gameBounds.width.toFloat() / 2 + padding
+        copyrightText.y = gameBounds.bottom.toFloat() + padding
     }
 }
