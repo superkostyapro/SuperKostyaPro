@@ -11,8 +11,8 @@ import Phaser.Types.Physics.Arcade.ArcadeWorldConfig
 import main.extension.jsObject
 import main.scene.EngineerDrawing
 import main.scene.FarFarKingdom
+import main.scene.MenuScene
 import main.scene.ProgrammerDrawing
-import main.scene.menu.MenuScene
 import kotlin.browser.document
 
 fun main() {
