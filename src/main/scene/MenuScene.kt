@@ -8,7 +8,6 @@ import Phaser.Geom.Rectangle
 import Phaser.Types.GameObjects.Text.TextStyle
 import main.extension.dp
 import main.extension.jsObject
-import main.extension.sp
 import org.w3c.dom.get
 import kotlin.browser.localStorage
 
@@ -28,13 +27,13 @@ class MenuScene : BaseScene(jsObject {
         graphics = add.graphics()
         gameText = add.text(0, 0, "SUPER\nKOSTYA PRO.", jsObject<TextStyle> {
             fontFamily = "NSMBWii"
-            fontSize = "${72.sp}px"
+            fontSize = "72px"
             color = "#fbbbaf"
         }).setShadow(0, 5, "#000000", 2, false, true)
         copyrightText = add.text(0, 0, "©2020 VLAD", jsObject<TextStyle> {
             fontFamily = "sans-serif"
             fontStyle = "bold"
-            fontSize = "${24.sp}px"
+            fontSize = "24px"
             color = "#fdbbad"
         }).setOrigin(1, 0)
         addWorldText(1) {
@@ -63,7 +62,7 @@ class MenuScene : BaseScene(jsObject {
         worldsTexts.add(add.text(0, 0, "WORLD $id-${level ?: 1}", jsObject<TextStyle> {
             fontFamily = "sans-serif"
             fontStyle = "bold"
-            fontSize = "${24.sp}px"
+            fontSize = "24px"
             color = if (enable) "#ffffff" else "#ffffff99"
         }).apply {
             if (enable) {
@@ -75,10 +74,11 @@ class MenuScene : BaseScene(jsObject {
         })
     }
 
+    @Suppress("UNUSED_VARIABLE")
     override fun update(time: Float, delta: Float) {
-        val padding = 10.dp
-        val halfLine = 1.dp
-        val halfPoint = 2.dp
+        val padding = 10.dp(0.7f)
+        val halfLine = 1.dp(0.7f)
+        val halfPoint = 2.dp(0.7f)
         val cX = cameras.main.centerX.toFloat()
         val cY = cameras.main.centerY.toFloat()
         val gameBounds: Rectangle = gameText.getBounds()
@@ -86,7 +86,7 @@ class MenuScene : BaseScene(jsObject {
         val gameHeight = gameBounds.height.toFloat()
         gameText.apply {
             x = cX - gameWidth / 2
-            y = 80
+            y = 60
         }
         val blockX = gameBounds.x.toFloat() - padding
         val blockY = gameBounds.y.toFloat() - padding / 2
@@ -151,14 +151,15 @@ class MenuScene : BaseScene(jsObject {
             )
         copyrightText.apply {
             x = cX + gameWidth / 2 + padding
-            y = gameBounds.bottom.toFloat() + padding
+            y = blockY + blockHeight
         }
         val copyrightBounds: Rectangle = copyrightText.getBounds()
         worldsTexts.forEachIndexed { i, text ->
             val worldBounds: Rectangle = text.getBounds()
             text.apply {
                 x = cX - worldBounds.width.toFloat() / 2
-                y = copyrightBounds.bottom.toFloat() + 30 + i * (worldBounds.height.toFloat() + 15)
+                y = copyrightBounds.bottom.toFloat() + 20.dp(0.5f) +
+                    i * (worldBounds.height.toFloat() + 15.dp(0.5f))
             }
         }
     }
