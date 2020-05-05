@@ -35,7 +35,6 @@ private fun startGame() {
             parent = "game" // id of div
             width = "100%"
             height = "100%"
-            resolution = 2
         }
         physics = jsObject<PhysicsConfig> {
             default = "arcade"

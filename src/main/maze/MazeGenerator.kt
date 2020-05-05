@@ -1,4 +1,4 @@
-package main
+package main.maze
 
 import kotlin.random.Random
 
@@ -9,27 +9,43 @@ class MazeGenerator(private val width: Int, private val height: Int) {
 
     private val data = Array(width) {
         Array(height) {
-            WALL_ID
+            WALL
         }
     }
 
-    fun generate() {
+    fun generate(): List<MazeCell> {
         for (x in 0 until width) {
             for (y in 0 until height) {
-                data[x][y] = WALL_ID
+                data[x][y] = WALL
             }
         }
         for (x in 0 until width) {
-            data[x][0] = SPACE_ID
-            data[x][height - 1] = SPACE_ID
+            data[x][0] = SPACE
+            data[x][height - 1] = SPACE
         }
         for (y in 0 until height) {
-            data[0][y] = SPACE_ID
-            data[width - 1][y] = SPACE_ID
+            data[0][y] = SPACE
+            data[width - 1][y] = SPACE
         }
-        data[2][2] = SPACE_ID
+        data[2][2] = SPACE
         carve(2, 2)
-        data[width - 2][height - 3] = SPACE_ID
+        data[width - 2][height - 3] = SPACE
+        val cells = mutableListOf<MazeCell>()
+        data.forEachIndexed { row, subdata ->
+            subdata.forEachIndexed { col, value ->
+                if (value == WALL) {
+                    cells.add(MazeCell(col, row).apply {
+                        setBorders(
+                            data[col][row - 1],
+                            subdata[col - 1],
+                            subdata[col + 1],
+                            data[col][row + 1]
+                        )
+                    })
+                }
+            }
+        }
+        return cells
     }
 
     private fun carve(x: Int, y: Int) {
@@ -42,9 +58,9 @@ class MazeGenerator(private val width: Int, private val height: Int) {
             val y1 = y + upY[dir]
             val x2 = x1 + upX[dir]
             val y2 = y1 + upY[dir]
-            if (data[x1][y1] == WALL_ID && data[x2][y2] == WALL_ID) {
-                data[x1][y1] = SPACE_ID
-                data[x2][y2] = SPACE_ID
+            if (data[x1][y1] == WALL && data[x2][y2] == WALL) {
+                data[x1][y1] = SPACE
+                data[x2][y2] = SPACE
                 carve(x2, y2)
             } else {
                 dir = (dir + 1) % 4
@@ -59,7 +75,7 @@ class MazeGenerator(private val width: Int, private val height: Int) {
             for (x in 0 until width) {
                 print(
                     when (data[x][y]) {
-                        WALL_ID -> "[]"
+                        WALL -> "[]"
                         else -> "  "
                     }
                 )
@@ -70,7 +86,7 @@ class MazeGenerator(private val width: Int, private val height: Int) {
 
     companion object {
 
-        const val SPACE_ID = 0
-        const val WALL_ID = -1
+        const val SPACE = 0
+        const val WALL = 1
     }
 }
