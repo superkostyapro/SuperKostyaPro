@@ -6,7 +6,9 @@ import Phaser.GameObjects.Graphics
 import Phaser.GameObjects.Text
 import Phaser.Geom.Rectangle
 import Phaser.Types.GameObjects.Text.TextStyle
+import main.extension.dp
 import main.extension.jsObject
+import main.extension.sp
 import org.w3c.dom.get
 import kotlin.browser.localStorage
 
@@ -26,32 +28,57 @@ class MenuScene : BaseScene(jsObject {
         graphics = add.graphics()
         gameText = add.text(0, 0, "SUPER\nKOSTYA PRO.", jsObject<TextStyle> {
             fontFamily = "NSMBWii"
-            fontSize = "72px"
+            fontSize = "${72.sp}px"
             color = "#fbbbaf"
         }).setShadow(0, 5, "#000000", 2, false, true)
         copyrightText = add.text(0, 0, "©2020 VLAD", jsObject<TextStyle> {
             fontFamily = "sans-serif"
             fontStyle = "bold"
-            fontSize = "24px"
+            fontSize = "${24.sp}px"
             color = "#fdbbad"
         }).setOrigin(1, 0)
-        worldsTexts.apply {
-            add(addMenuItem("WORLD 1-1") {
-
-            })
-            add(addMenuItem("WORLD 2-1") {
-
-            })
-            add(addMenuItem("WORLD 3-1") {
-
-            })
+        addWorldText(1) {
+            with(scene) {
+                stop("Menu")
+                start("Engine")
+            }
+        }
+        addWorldText(2) {
+            with(scene) {
+                stop("Menu")
+                start("Program")
+            }
+        }
+        addWorldText(3) {
+            with(scene) {
+                stop("Menu")
+                start("King")
+            }
         }
     }
 
+    private fun addWorldText(id: Int, action: () -> Unit) {
+        val level = localStorage["world$id"]
+        val enable = id == 1 || !level.isNullOrBlank()
+        worldsTexts.add(add.text(0, 0, "WORLD $id-${level ?: 1}", jsObject<TextStyle> {
+            fontFamily = "sans-serif"
+            fontStyle = "bold"
+            fontSize = "${24.sp}px"
+            color = if (enable) "#ffffff" else "#ffffff99"
+        }).apply {
+            if (enable) {
+                setInteractive(jsObject {
+                    useHandCursor = true
+                })
+                on("pointerdown", action)
+            }
+        })
+    }
+
     override fun update(time: Float, delta: Float) {
-        val padding = 10f
-        val halfLine = 1f
-        val halfPoint = 2f
+        val padding = 10.dp
+        val halfLine = 1.dp
+        val halfPoint = 2.dp
         val cX = cameras.main.centerX.toFloat()
         val cY = cameras.main.centerY.toFloat()
         val gameBounds: Rectangle = gameText.getBounds()
@@ -59,7 +86,7 @@ class MenuScene : BaseScene(jsObject {
         val gameHeight = gameBounds.height.toFloat()
         gameText.apply {
             x = cX - gameWidth / 2
-            y = cY - gameHeight / 2 - 160
+            y = 80
         }
         val blockX = gameBounds.x.toFloat() - padding
         val blockY = gameBounds.y.toFloat() - padding / 2
@@ -133,21 +160,6 @@ class MenuScene : BaseScene(jsObject {
                 x = cX - worldBounds.width.toFloat() / 2
                 y = copyrightBounds.bottom.toFloat() + 30 + i * (worldBounds.height.toFloat() + 15)
             }
-        }
-    }
-
-    private fun addMenuItem(name: String, action: () -> Unit): Text {
-        val enable = localStorage[name].toString().toBoolean()
-        return add.text(0, 0, name, jsObject<TextStyle> {
-            fontFamily = "sans-serif"
-            fontStyle = "bold"
-            fontSize = "24px"
-            color = if (!enable) "#ffffff" else "#ffffff89"
-        }).apply {
-            setInteractive(jsObject {
-                useHandCursor = true
-            })
-            on("pointdown", action)
         }
     }
 }
