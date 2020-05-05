@@ -1,29 +1,32 @@
 package main.maze
 
+/**
+ * The coordinate system
+ * 0 -> col
+ * |
+ * v
+ * row
+ */
 class MazeCell(val col: Int, val row: Int) {
 
     /**
-     * Mask from left to right
-     * top - left - right - bottom
-     *  0
-     * 1 2
-     *  3
+     * 0x0000(top)(left)(right)(bottom)
      */
-    var borders = 0x0000
+    var mask = 0x0
 
-    fun setBorders(top: Int, left: Int, right: Int, bottom: Int) {
+    fun updateMask(top: Int, left: Int, right: Int, bottom: Int) {
+        mask = 0x0
         if (top == MazeGenerator.WALL) {
-            borders = borders.or(0x1000)
+            mask = mask.or(0x1000)
         }
         if (left == MazeGenerator.WALL) {
-            borders = borders.or(0x0100)
+            mask = mask.or(0x0100)
         }
         if (right == MazeGenerator.WALL) {
-            borders = borders.or(0x0010)
+            mask = mask.or(0x0010)
         }
         if (bottom == MazeGenerator.WALL) {
-            borders = borders.or(0x0001)
+            mask = mask.or(0x0001)
         }
-        println("$top $left $right $bottom $borders")
     }
 }

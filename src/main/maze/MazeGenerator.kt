@@ -31,16 +31,11 @@ class MazeGenerator(private val width: Int, private val height: Int) {
         carve(2, 2)
         data[width - 2][height - 3] = SPACE
         val cells = mutableListOf<MazeCell>()
-        data.forEachIndexed { row, subdata ->
-            subdata.forEachIndexed { col, value ->
-                if (value == WALL) {
-                    cells.add(MazeCell(col, row).apply {
-                        setBorders(
-                            data[col][row - 1],
-                            subdata[col - 1],
-                            subdata[col + 1],
-                            data[col][row + 1]
-                        )
+        for (y in 0 until height) {
+            for (x in 0 until width) {
+                if (data[x][y] == WALL) {
+                    cells.add(MazeCell(x, y).apply {
+                        updateMask(data[x][y - 1], data[x - 1][y], data[x + 1][y], data[x][y + 1])
                     })
                 }
             }
