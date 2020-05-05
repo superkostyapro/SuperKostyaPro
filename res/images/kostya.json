@@ -1,0 +1,461 @@
+{
+  "textures": [
+    {
+      "image": "kostya.png",
+      "format": "RGBA8888",
+      "size": {
+        "w": 800,
+        "h": 1200
+      },
+      "scale": 1,
+      "frames": [
+        {
+          "filename": "kostya2.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 185,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 185,
+            "h": 300
+          },
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 185,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya3.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 172,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 172,
+            "h": 300
+          },
+          "frame": {
+            "x": 0,
+            "y": 300,
+            "w": 172,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya21.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 170,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 170,
+            "h": 300
+          },
+          "frame": {
+            "x": 0,
+            "y": 600,
+            "w": 170,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya1.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 159,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 159,
+            "h": 300
+          },
+          "frame": {
+            "x": 0,
+            "y": 900,
+            "w": 159,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya13.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 159,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 159,
+            "h": 300
+          },
+          "frame": {
+            "x": 0,
+            "y": 900,
+            "w": 159,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya12.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 158,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 158,
+            "h": 300
+          },
+          "frame": {
+            "x": 159,
+            "y": 900,
+            "w": 158,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya11.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 157,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 300
+          },
+          "frame": {
+            "x": 170,
+            "y": 600,
+            "w": 157,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya14.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 156,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 156,
+            "h": 300
+          },
+          "frame": {
+            "x": 317,
+            "y": 900,
+            "w": 156,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya15.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 156,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 156,
+            "h": 300
+          },
+          "frame": {
+            "x": 172,
+            "y": 300,
+            "w": 156,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya17.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 156,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 156,
+            "h": 300
+          },
+          "frame": {
+            "x": 327,
+            "y": 600,
+            "w": 156,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya18.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 156,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 156,
+            "h": 300
+          },
+          "frame": {
+            "x": 473,
+            "y": 900,
+            "w": 156,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya6.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 156,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 156,
+            "h": 300
+          },
+          "frame": {
+            "x": 185,
+            "y": 0,
+            "w": 156,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya7.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 156,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 156,
+            "h": 300
+          },
+          "frame": {
+            "x": 328,
+            "y": 300,
+            "w": 156,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya10.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 155,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 155,
+            "h": 300
+          },
+          "frame": {
+            "x": 483,
+            "y": 600,
+            "w": 155,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya16.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 155,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 155,
+            "h": 300
+          },
+          "frame": {
+            "x": 629,
+            "y": 900,
+            "w": 155,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya4.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 155,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 155,
+            "h": 300
+          },
+          "frame": {
+            "x": 341,
+            "y": 0,
+            "w": 155,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya5.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 154,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 154,
+            "h": 300
+          },
+          "frame": {
+            "x": 484,
+            "y": 300,
+            "w": 154,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya19.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 153,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 153,
+            "h": 300
+          },
+          "frame": {
+            "x": 496,
+            "y": 0,
+            "w": 153,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya20.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 153,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 153,
+            "h": 300
+          },
+          "frame": {
+            "x": 638,
+            "y": 300,
+            "w": 153,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya9.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 151,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 151,
+            "h": 300
+          },
+          "frame": {
+            "x": 649,
+            "y": 0,
+            "w": 151,
+            "h": 300
+          }
+        },
+        {
+          "filename": "kostya8.png",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 152,
+            "h": 300
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 152,
+            "h": 300
+          },
+          "frame": {
+            "x": 638,
+            "y": 600,
+            "w": 152,
+            "h": 300
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "3.0",
+    "smartupdate": "$TexturePacker:SmartUpdate:a8e793e785ea9da0da09bbc5173a55a1:c3dd045dfee5657687c4b987cb78c3c0:8344b19a28fda7b6013ac33d8ec1c330$"
+  }
+}
