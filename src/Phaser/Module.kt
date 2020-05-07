@@ -2,42 +2,34 @@
 @file:JsNonModule
 package Phaser
 
-import kotlin.js.*
-import org.w3c.dom.*
-import Phaser.Core.Config
-import Phaser.Events.EventEmitter
 import Phaser.Animations.AnimationManager
-import Phaser.Textures.TextureManager
 import Phaser.Cache.CacheManager
-import Phaser.Data.DataManager
-import Phaser.Input.InputManager
-import Phaser.Scenes.SceneManager
-import Phaser.Scale.ScaleManager
-import Phaser.Core.TimeStep
-import Phaser.Plugins.PluginManager
-import Phaser.Device.OS
-import Phaser.Device.Browser
-import Phaser.Device.Features
-import Phaser.Device.Input
-import Phaser.Device.Audio
-import Phaser.Device.Video
-import Phaser.Device.Fullscreen
-import Phaser.Device.CanvasFeatures
-import Phaser.Types.Scenes.SettingsConfig
-import Phaser.Scenes.Systems
-import Phaser.Sound.BaseSoundManager
 import Phaser.Cameras.Scene2D.CameraManager
-import Phaser.GameObjects.GameObjectFactory
-import Phaser.GameObjects.GameObjectCreator
-import Phaser.Scenes.ScenePlugin
+import Phaser.Core.Config
+import Phaser.Core.TimeStep
+import Phaser.Data.DataManager
+import Phaser.Device.*
+import Phaser.Events.EventEmitter
 import Phaser.GameObjects.DisplayList
+import Phaser.GameObjects.GameObjectCreator
+import Phaser.GameObjects.GameObjectFactory
 import Phaser.GameObjects.LightsManager
+import Phaser.Input.InputManager
 import Phaser.Input.InputPlugin
 import Phaser.Loader.LoaderPlugin
-import Phaser.Time.Clock
-import Phaser.Tweens.TweenManager
 import Phaser.Physics.Arcade.ArcadePhysics
 import Phaser.Physics.Matter.MatterPhysics
+import Phaser.Plugins.PluginManager
+import Phaser.Scale.ScaleManager
+import Phaser.Scenes.SceneManager
+import Phaser.Scenes.ScenePlugin
+import Phaser.Scenes.Systems
+import Phaser.Sound.BaseSoundManager
+import Phaser.Textures.TextureManager
+import Phaser.Time.Clock
+import Phaser.Tweens.TweenManager
+import org.w3c.dom.HTMLCanvasElement
+import org.w3c.dom.HTMLDivElement
 
 external var VERSION: String
 
@@ -149,9 +141,7 @@ external enum class ScaleModes {
     NEAREST
 }
 
-open external class Scene {
-    constructor(config: String)
-    constructor(config: SettingsConfig)
+open external class Scene(config: dynamic/* String | SettingsConfig */) {
     open var sys: Systems
     open var game: Game
     open var anims: AnimationManager
