@@ -23,12 +23,10 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.generator
+package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Cell
 import com.maltaisn.mazegen.maze.Maze
-import java.util.*
-
 
 /**
  * Implementation of a recursive backtracking maze generator as described
@@ -47,6 +45,7 @@ import java.util.*
  *
  * Runtime complexity is O(n) and memory space is O(n).
  */
+@ExperimentalStdlibApi
 class RecursiveBacktrackerGenerator : Generator() {
 
     override fun generate(maze: Maze) {
@@ -58,7 +57,7 @@ class RecursiveBacktrackerGenerator : Generator() {
         var currentCell = maze.getRandomCell()
         currentCell.visited = true
 
-        val stack = LinkedList<Cell>()
+        val stack = mutableListOf<Cell>()
         while (true) {
             // Find an unvisited neighbor cell
             val unvisitedNeighbor = currentCell.neighbors.shuffled().find { !it.visited }
@@ -86,5 +85,4 @@ class RecursiveBacktrackerGenerator : Generator() {
     }
 
     override fun isMazeSupported(maze: Maze) = true
-
 }

@@ -23,11 +23,9 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.generator
+package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Maze
-import com.maltaisn.mazegen.paramError
-
 
 /**
  * Base class for a maze generator. Comparison of generator algorithms can be found
@@ -41,9 +39,9 @@ abstract class Generator {
     open fun generate(maze: Maze) {
         // Make sure this generator supports the maze type
         if (!isMazeSupported(maze)) {
-            paramError(
-                "${this.javaClass.simpleName} " +
-                    "cannot generate ${maze.javaClass.simpleName}."
+            throw Throwable(
+                "${this::class.js.name} " +
+                    "cannot generate ${maze::class.js.name}."
             )
         }
     }
@@ -52,5 +50,4 @@ abstract class Generator {
      * Returns whether a [maze]'s type is supported or not by the generator.
      */
     abstract fun isMazeSupported(maze: Maze): Boolean
-
 }

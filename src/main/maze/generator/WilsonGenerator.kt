@@ -23,13 +23,12 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.generator
+package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Maze
 import com.maltaisn.mazegen.maze.WeaveOrthogonalMaze
 import com.maltaisn.mazegen.maze.ZetaMaze
 import kotlin.random.Random
-
 
 /**
  * Implementation of Wilson's algorithm as described
@@ -114,5 +113,4 @@ class WilsonGenerator : Generator() {
     }
 
     override fun isMazeSupported(maze: Maze) = maze !is ZetaMaze && maze !is WeaveOrthogonalMaze
-
 }
