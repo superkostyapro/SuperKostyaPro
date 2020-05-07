@@ -23,10 +23,9 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.generator
+package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Maze
-
 
 /**
  * Implementation of Aldous-Broder's algorithm as described
@@ -70,5 +69,4 @@ class AldousBroderGenerator : Generator() {
     }
 
     override fun isMazeSupported(maze: Maze) = true
-
 }

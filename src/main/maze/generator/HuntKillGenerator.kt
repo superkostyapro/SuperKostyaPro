@@ -23,12 +23,11 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.generator
+package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Cell
 import com.maltaisn.mazegen.maze.Maze
 import kotlin.random.Random
-
 
 /**
  * Implementation of the hunt-and-kill algorithm for maze generation as described
@@ -109,5 +108,4 @@ class HuntKillGenerator : Generator() {
     }
 
     override fun isMazeSupported(maze: Maze) = true
-
 }

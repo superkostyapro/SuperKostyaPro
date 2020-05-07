@@ -23,14 +23,13 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.generator
+package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Maze
-import com.maltaisn.mazegen.maze.OrthogonalCell.Side
-import com.maltaisn.mazegen.maze.OrthogonalMaze
 import com.maltaisn.mazegen.maze.UnicursalOrthogonalMaze
+import main.maze.OrthogonalCell.Side
+import main.maze.OrthogonalMaze
 import kotlin.random.Random
-
 
 /**
  * Implementation of the binary tree algorithm as described
@@ -49,7 +48,6 @@ class BinaryTreeGenerator : Generator() {
      * There will always be straight passages the length of the maze on these two sides.
      */
     var bias: Bias = Bias.NORTH_EAST
-
 
     override fun generate(maze: Maze) {
         super.generate(maze)
@@ -77,12 +75,10 @@ class BinaryTreeGenerator : Generator() {
     override fun isMazeSupported(maze: Maze) =
         maze is OrthogonalMaze || maze is UnicursalOrthogonalMaze
 
-
     enum class Bias(val side1: Side, val side2: Side) {
         NORTH_EAST(Side.NORTH, Side.EAST),
         NORTH_WEST(Side.NORTH, Side.WEST),
         SOUTH_EAST(Side.SOUTH, Side.EAST),
         SOUTH_WEST(Side.SOUTH, Side.WEST);
     }
-
 }

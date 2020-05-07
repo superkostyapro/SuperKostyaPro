@@ -23,12 +23,10 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.generator
+package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Maze
-import com.maltaisn.mazegen.paramError
 import kotlin.random.Random
-
 
 /**
  * Implementation of the Growing Tree algorithm as described
@@ -82,7 +80,7 @@ class GrowingTreeGenerator : Generator() {
 
     private fun computeWeightSum() {
         if (randomWeight < 0 || newestWeight < 0 || oldestWeight < 0) {
-            paramError("Weights for the growing tree generator must be positive.")
+            throw Throwable("Weights for the growing tree generator must be positive.")
         }
         weightSum = randomWeight + newestWeight + oldestWeight
     }
@@ -133,5 +131,4 @@ class GrowingTreeGenerator : Generator() {
     }
 
     override fun isMazeSupported(maze: Maze) = true
-
 }

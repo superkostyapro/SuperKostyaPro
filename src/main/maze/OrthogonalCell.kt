@@ -23,8 +23,10 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.maze
+package main.maze
 
+import com.maltaisn.mazegen.maze.Cell
+import com.maltaisn.mazegen.maze.Position2D
 
 /**
  * A square cell for [OrthogonalMaze].

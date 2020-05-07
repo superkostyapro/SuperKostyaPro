@@ -23,10 +23,9 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.generator
+package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Maze
-
 
 /**
  * Implementation of Prim's algorithm as described
@@ -72,5 +71,4 @@ class PrimGenerator : Generator() {
     }
 
     override fun isMazeSupported(maze: Maze) = true
-
 }
