@@ -15,6 +15,26 @@ import main.scene.menu.MenuScene
 import kotlin.browser.document
 
 fun main() {
+    console.log(
+        """
+____▒▒▒▒▒
+—-▒▒▒▒▒▒▒▒▒
+—–▓▓▓░░▓░
+—▓░▓░░░▓░░░
+—▓░▓▓░░░▓░░░
+—▓▓░░░░▓▓▓▓
+——░░░░░░░░
+—-▓▓▒▓▓▓▒▓▓
+–▓▓▓▒▓▓▓▒▓▓▓
+▓▓▓▓▒▒▒▒▒▓▓▓▓
+░░▓▒░▒▒▒░▒▓░░
+░░░▒▒▒▒▒▒▒░░░
+░░▒▒▒▒▒▒▒▒▒░░
+—-▒▒▒ ——▒▒▒
+–▓▓▓———-▓▓▓
+▓▓▓▓———-▓▓▓▓
+    """.trimIndent()
+    )
     FontFace("NSMBWii", "url(NSMBWii.ttf)").load().then {
         document.asDynamic().fonts.add(it)
         startGame()
@@ -28,6 +48,7 @@ private fun startGame() {
     SuperKostyaPro(jsObject {
         type = AUTO
         title = "Super Kostya Pro"
+        version = "1.0"
         backgroundColor = "#5c93fa"
         scale = jsObject<ScaleConfig> {
             mode = ScaleModeType.RESIZE
