@@ -20,17 +20,12 @@ class MenuScene : BaseScene(jsObject {
 
     private lateinit var copyrightText: Text
 
-    private lateinit var continueText: Text
-
     private val worlds = mutableListOf<Text>()
 
     override fun create() {
         graphics = add.graphics()
-        moneyText = add.text(
-            16,
-            16,
-            "KOSTYA\n${Preferences.coins.toString().padStart(7, '0')}",
-            jsObject<TextStyle> {
+        val kostyaText = "KOSTYA\n${Preferences.coins.toString().padStart(7, '0')}"
+        moneyText = add.text(16, 16, kostyaText, jsObject<TextStyle> {
             fontFamily = "sans-serif"
             fontStyle = "bold"
             fontSize = "24px"
@@ -65,12 +60,6 @@ class MenuScene : BaseScene(jsObject {
                 start("King")
             }
         }) as Text)
-        continueText = add.text(0, 0, "TO BE CONTINUED", jsObject<TextStyle> {
-            fontFamily = "sans-serif"
-            fontStyle = "bold"
-            fontSize = "22px"
-            color = "#ffffffdd"
-        })
     }
 
     @Suppress("UNUSED_VARIABLE")
@@ -158,12 +147,6 @@ class MenuScene : BaseScene(jsObject {
                 x = cX - bounds.width / 2
                 y = copyrightBounds.bottom + 35 + i * (bounds.height + 15)
             }
-        }
-        val continueBounds = continueText.getBounds<Rectangle>()
-        val lastWorldBounds = worlds.last().getBounds<Rectangle>()
-        continueText.apply {
-            x = cX - continueBounds.width / 2
-            y = lastWorldBounds.bottom + 40
         }
     }
 }
