@@ -6,8 +6,6 @@ import Phaser.Game
 import Phaser.Types.Core.GameConfig
 import Phaser.Types.Core.PhysicsConfig
 import Phaser.Types.Core.ScaleConfig
-import Phaser.Types.Math.Vector2Like
-import Phaser.Types.Physics.Arcade.ArcadeWorldConfig
 import main.extension.jsObject
 import main.scene.EngineerDrawing
 import main.scene.FarFarKingdom
@@ -38,11 +36,6 @@ private fun startGame() {
         }
         physics = jsObject<PhysicsConfig> {
             default = "arcade"
-            arcade = jsObject<ArcadeWorldConfig> {
-                gravity = jsObject<Vector2Like> {
-                    y = 2000
-                }
-            }
         }
         scene = arrayOf(
             MenuScene::class.js,
