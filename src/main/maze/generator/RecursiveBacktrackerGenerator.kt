@@ -45,9 +45,9 @@ import main.maze.Maze
  *
  * Runtime complexity is O(n) and memory space is O(n).
  */
-@ExperimentalStdlibApi
 class RecursiveBacktrackerGenerator : Generator() {
 
+    @ExperimentalStdlibApi
     override fun generate(maze: Maze) {
         super.generate(maze)
 

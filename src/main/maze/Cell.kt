@@ -23,8 +23,9 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.maze
+package main.maze
 
+import main.maze.Cell.Side
 
 /**
  * Base class for the cell of a flat maze.
@@ -156,7 +157,15 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
      * Returns the number of sides set on this cell.
      */
     open val sidesCount: Int
-        get() = Integer.bitCount(value)
+        get() {
+            var i = value
+            i -= (i ushr 1 and 0x55555555)
+            i = (i and 0x33333333) + (i ushr 2 and 0x33333333)
+            i = i + (i ushr 4) and 0x0f0f0f0f
+            i += (i ushr 8)
+            i += (i ushr 16)
+            return i and 0x3f
+        }
 
     /**
      * Returns a list of all possible side values.
@@ -168,7 +177,7 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
      */
     abstract val allSidesValue: Int
 
-
+    @ExperimentalStdlibApi
     override fun toString(): String {
         val sb = StringBuilder()
         sb.append("[pos: $position, sides: ")
@@ -181,7 +190,7 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
                     sb.append(",")
                 }
             }
-            sb.deleteCharAt(sb.length - 1)
+            sb.deleteAt(sb.lastIndex)
         }
         sb.append(", ")
         sb.append(if (visited) "visited" else "unvisited")
@@ -222,5 +231,4 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
          */
         val opposite: Side
     }
-
 }

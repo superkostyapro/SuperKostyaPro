@@ -42,9 +42,9 @@ import kotlin.random.Random
  *
  * Runtime complexity is O(n) and memory space is O(n).
  */
-@ExperimentalStdlibApi
 class RecursiveDivisionGenerator : Generator() {
 
+    @ExperimentalStdlibApi
     override fun generate(maze: Maze) {
         super.generate(maze)
         maze as OrthogonalMaze

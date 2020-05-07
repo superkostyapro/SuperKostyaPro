@@ -23,16 +23,11 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.maze
+package main.maze
 
-import com.maltaisn.mazegen.Configuration
-import com.maltaisn.mazegen.paramError
-import com.maltaisn.mazegen.render.Canvas
-import java.util.*
 import kotlin.math.min
 import kotlin.math.round
 import kotlin.random.Random
-
 
 /**
  * Base class for a maze.
@@ -116,7 +111,7 @@ abstract class Maze {
         val cell = getOpeningCell(opening)
         if (cell != null) {
             if (openings.contains(cell)) {
-                paramError("Duplicate opening for position ${cell.position}.")
+                throw Throwable("Duplicate opening for position ${cell.position}.")
             }
 
             for (side in cell.allSides) {
@@ -128,7 +123,7 @@ abstract class Maze {
 
             openings.add(cell)
         } else {
-            paramError("Opening describes no cell in the maze.")
+            throw Throwable("Opening describes no cell in the maze.")
         }
     }
 
@@ -138,103 +133,10 @@ abstract class Maze {
     abstract fun getOpeningCell(opening: Position): Cell?
 
     /**
-     * Find the solution of the maze between two cells.
-     * The solution is a list of cells in the path, starting
-     * from the start cell, or null if there's no solution.
-     *
-     * This uses the A* star algorithm as described
-     * [here](https://en.wikipedia.org/wiki/A*_search_algorithm#Description).
-     *
-     * 1. Make the starting cell the root node and add it to a list.
-     * 2. Find the node in the list with the lowest "cost". Cost is the sum of the
-     *    cost from the start and the lowest possible cost to the end. The cost from
-     *    the start is the number of cells travelled to get to the node's cell. The
-     *    lowest cost to the end is the minimum number of cells that have to be
-     *    travelled to get to the end cell. Remove this node from the list.
-     * 3. Add nodes of all unvisited neighbor of this node's cell
-     *    to the list and mark them as visited.
-     * 4. Repeat step 2 and 3 until the list is empty, hence there is no solution, or
-     *    when the cell of the node selected at step 2 is the end cell.
-     *
-     * Runtime complexity is O(n) and memory space is O(n).
-     *
-     * @param start Start cell for solving.
-     * @param end End cell for solving.
-     */
-    fun solve(start: Cell = openings[0], end: Cell = openings[1]): Boolean {
-        forEachCell { it.visited = false }
-
-        val nodes = PriorityQueue<Node>()
-
-        // Add the start cell as the initial node
-        nodes.add(
-            Node(
-                null, start, 0,
-                start.position.distanceTo(end.position)
-            )
-        )
-        start.visited = true
-
-        while (nodes.isNotEmpty()) {
-            // Remove the node with the lowest cost from the queue.
-            val node = nodes.remove()
-            val cell = node.cell
-
-            if (cell === end) {
-                // Found path to the end cell
-                val path = mutableListOf<Cell>()
-                var currentNode: Node? = node
-                while (currentNode != null) {
-                    path.add(0, currentNode.cell)
-                    currentNode = currentNode.parent
-                }
-                solution = path
-                return true
-            }
-
-            for (neighbor in cell.findAccessibleNeighbors()) {
-                if (!neighbor.visited) {
-                    // Add all unvisited neighbors to the nodes list
-                    nodes.add(
-                        Node(
-                            node, neighbor, node.costFromStart + 1,
-                            neighbor.position.distanceTo(end.position)
-                        )
-                    )
-                    neighbor.visited = true
-                }
-            }
-        }
-
-        // All cells were visited, no path was found.
-        solution = null
-        return false
-    }
-
-    /**
      * If maze was previously solved, clear the solution.
      */
     fun clearSolution() {
         solution = null
-    }
-
-
-    private data class Node(
-        val parent: Node?, val cell: Cell,
-        val costFromStart: Int, val costToEnd: Int
-    ) : Comparable<Node> {
-
-        override operator fun compareTo(other: Node): Int =
-            (costFromStart + costToEnd).compareTo(other.costFromStart + other.costToEnd)
-
-        override fun equals(other: Any?): Boolean {
-            if (other === this) return true
-            if (other !is Node) return false
-            return cell === other.cell
-        }
-
-        override fun hashCode(): Int = cell.hashCode()
-
     }
 
     /**
@@ -288,7 +190,7 @@ abstract class Maze {
          */
         constructor(count: Int) {
             if (count < 0) {
-                paramError("Braiding parameter must be a positive number.")
+                throw Throwable("Braiding parameter must be a positive number.")
             }
 
             value = count
@@ -300,7 +202,7 @@ abstract class Maze {
          */
         constructor(percent: Double) {
             if (percent < 0 || percent > 1) {
-                paramError("Braiding percentage must be between 0 and 1 inclusive.")
+                throw Throwable("Braiding percentage must be between 0 and 1 inclusive.")
             }
 
             value = percent
@@ -351,7 +253,7 @@ abstract class Maze {
         val startCell = if (startPos == null) {
             getRandomCell()
         } else {
-            getOpeningCell(startPos) ?: paramError(
+            getOpeningCell(startPos) ?: throw Throwable(
                 "Distance map start position describes no cell in the maze."
             )
         }
@@ -404,16 +306,9 @@ abstract class Maze {
         }
     }
 
-    /**
-     * Draw the maze to a [canvas] with [style] settings.
-     */
-    abstract fun drawTo(canvas: Canvas, style: Configuration.Style)
-
-
     companion object {
         const val OPENING_POS_START = Int.MIN_VALUE
         const val OPENING_POS_CENTER = Int.MIN_VALUE + 1
         const val OPENING_POS_END = Int.MIN_VALUE + 2
     }
-
 }
