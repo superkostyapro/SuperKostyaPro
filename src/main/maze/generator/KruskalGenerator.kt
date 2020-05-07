@@ -23,14 +23,10 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.generator
+package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Cell
 import com.maltaisn.mazegen.maze.Maze
-import com.maltaisn.mazegen.maze.WeaveOrthogonalMaze
-import com.maltaisn.mazegen.maze.ZetaMaze
-import java.util.*
-
 
 /**
  * Implementation of Kruskal's algorithm as described
@@ -77,7 +73,7 @@ class KruskalGenerator : Generator() {
         }
     }
 
-    override fun isMazeSupported(maze: Maze) = maze !is ZetaMaze && maze !is WeaveOrthogonalMaze
+    override fun isMazeSupported(maze: Maze) = true
 
     /**
      * A edge for a maze, between two cells, [cell1] and [cell2].
@@ -92,12 +88,17 @@ class KruskalGenerator : Generator() {
                 || cell1 === other.cell2 && cell2 === other.cell1
         }
 
-        override fun hashCode() = if (cell1.position < cell2.position) {
-            Objects.hash(cell1, cell2)
-        } else {
-            Objects.hash(cell2, cell1)
+        override fun hashCode(): Int {
+            var result = 1
+            if (cell1.position < cell2.position) {
+                result = 31 * result + cell1.hashCode()
+                result = 31 * result + cell2.hashCode()
+            } else {
+                result = 31 * result + cell2.hashCode()
+                result = 31 * result + cell1.hashCode()
+            }
+            return result
         }
-
     }
 
     private class Node {
@@ -116,5 +117,4 @@ class KruskalGenerator : Generator() {
             node.root().parent = this
         }
     }
-
 }

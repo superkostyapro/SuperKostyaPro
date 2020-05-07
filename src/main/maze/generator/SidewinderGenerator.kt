@@ -27,7 +27,6 @@ package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Cell
 import com.maltaisn.mazegen.maze.Maze
-import com.maltaisn.mazegen.maze.UnicursalOrthogonalMaze
 import main.maze.OrthogonalCell.Side
 import main.maze.OrthogonalMaze
 import kotlin.random.Random
@@ -73,6 +72,5 @@ class SidewinderGenerator : Generator() {
         }
     }
 
-    override fun isMazeSupported(maze: Maze) =
-        maze is OrthogonalMaze || maze is UnicursalOrthogonalMaze
+    override fun isMazeSupported(maze: Maze) = maze is OrthogonalMaze
 }

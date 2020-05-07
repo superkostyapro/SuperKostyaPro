@@ -26,7 +26,6 @@
 package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Maze
-import com.maltaisn.mazegen.maze.UnicursalOrthogonalMaze
 import main.maze.OrthogonalCell.Side
 import main.maze.OrthogonalMaze
 import kotlin.random.Random
@@ -122,8 +121,7 @@ class RecursiveDivisionGenerator : Generator() {
         }
     }
 
-    override fun isMazeSupported(maze: Maze) =
-        maze is OrthogonalMaze || maze is UnicursalOrthogonalMaze
+    override fun isMazeSupported(maze: Maze) = maze is OrthogonalMaze
 
     private data class Area(val x: Int, val y: Int, val w: Int, val h: Int)
 }

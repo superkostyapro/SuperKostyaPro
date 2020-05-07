@@ -26,8 +26,6 @@
 package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Maze
-import com.maltaisn.mazegen.maze.WeaveOrthogonalMaze
-import com.maltaisn.mazegen.maze.ZetaMaze
 import kotlin.random.Random
 
 /**
@@ -112,5 +110,5 @@ class WilsonGenerator : Generator() {
         }
     }
 
-    override fun isMazeSupported(maze: Maze) = maze !is ZetaMaze && maze !is WeaveOrthogonalMaze
+    override fun isMazeSupported(maze: Maze) = true
 }

@@ -26,7 +26,6 @@
 package main.maze.generator
 
 import com.maltaisn.mazegen.maze.Maze
-import com.maltaisn.mazegen.maze.UnicursalOrthogonalMaze
 import main.maze.OrthogonalCell.Side
 import main.maze.OrthogonalMaze
 import kotlin.random.Random
@@ -72,8 +71,7 @@ class BinaryTreeGenerator : Generator() {
         }
     }
 
-    override fun isMazeSupported(maze: Maze) =
-        maze is OrthogonalMaze || maze is UnicursalOrthogonalMaze
+    override fun isMazeSupported(maze: Maze) = maze is OrthogonalMaze
 
     enum class Bias(val side1: Side, val side2: Side) {
         NORTH_EAST(Side.NORTH, Side.EAST),
