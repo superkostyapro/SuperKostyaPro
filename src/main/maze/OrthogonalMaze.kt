@@ -25,9 +25,6 @@
 
 package main.maze
 
-import com.maltaisn.mazegen.maze.BaseGridMaze
-import com.maltaisn.mazegen.maze.Position2D
-
 /**
  * Class for a normal square-tiled orthogonal maze with [width] columns and [height] rows.
  */

@@ -25,7 +25,7 @@
 
 package main.maze.generator
 
-import com.maltaisn.mazegen.maze.Maze
+import main.maze.Maze
 
 /**
  * Implementation of Aldous-Broder's algorithm as described

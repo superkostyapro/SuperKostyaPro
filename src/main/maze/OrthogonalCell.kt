@@ -25,9 +25,6 @@
 
 package main.maze
 
-import com.maltaisn.mazegen.maze.Cell
-import com.maltaisn.mazegen.maze.Position2D
-
 /**
  * A square cell for [OrthogonalMaze].
  * Has north, east, south and east sides.
@@ -68,7 +65,5 @@ open class OrthogonalCell(
             val ALL = listOf(NORTH, SOUTH, WEST, EAST)
             const val ALL_VALUE = 15
         }
-
     }
-
 }

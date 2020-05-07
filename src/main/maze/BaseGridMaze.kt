@@ -25,8 +25,6 @@
 
 package main.maze
 
-import com.maltaisn.mazegen.maze.Cell
-import com.maltaisn.mazegen.maze.Maze
 import kotlin.random.Random
 
 /**
@@ -55,7 +53,7 @@ abstract class BaseGridMaze<T : Cell>(val width: Int, val height: Int) : Maze() 
 
     override fun getAllCells(): MutableList<T> {
         val list = mutableListOf<T>()
-        for (x in 0 until grid.size) {
+        for (x in grid.indices) {
             for (y in 0 until grid[x].size) {
                 list.add(grid[x][y])
             }
@@ -64,7 +62,7 @@ abstract class BaseGridMaze<T : Cell>(val width: Int, val height: Int) : Maze() 
     }
 
     override fun forEachCell(action: (Cell) -> Unit) {
-        for (x in 0 until grid.size) {
+        for (x in grid.indices) {
             for (y in 0 until grid[x].size) {
                 action(grid[x][y])
             }

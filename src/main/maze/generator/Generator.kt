@@ -25,7 +25,7 @@
 
 package main.maze.generator
 
-import com.maltaisn.mazegen.maze.Maze
+import main.maze.Maze
 
 /**
  * Base class for a maze generator. Comparison of generator algorithms can be found

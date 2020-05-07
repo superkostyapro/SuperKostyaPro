@@ -25,8 +25,8 @@
 
 package main.maze.generator
 
-import com.maltaisn.mazegen.maze.Cell
-import com.maltaisn.mazegen.maze.Maze
+import main.maze.Cell
+import main.maze.Maze
 import main.maze.OrthogonalCell.Side
 import main.maze.OrthogonalMaze
 import kotlin.random.Random
