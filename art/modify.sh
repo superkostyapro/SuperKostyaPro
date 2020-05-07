@@ -3,8 +3,8 @@ cd kostya
 i=1
 for file in *.png; do
 
-  # kostya
   : '
+  # kostya
   convert $file -trim $file
   mogrify -resize x300 $file
   mv $file kostya$i.png

@@ -27,6 +27,6 @@ kotlin {
 
 compileKotlinJs {
     kotlinOptions {
-        moduleKind = "commonjs"
+        moduleKind = "amd"
     }
 }
