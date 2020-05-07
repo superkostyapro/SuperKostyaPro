@@ -23,10 +23,9 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.maze
+package main.maze
 
 import kotlin.math.absoluteValue
-
 
 /**
  * A 2D position.
@@ -63,5 +62,4 @@ open class Position2D(val x: Int, val y: Int) : Position {
     }
 
     override fun toString() = "[x: $x, y: $y]"
-
 }

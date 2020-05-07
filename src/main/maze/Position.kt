@@ -23,8 +23,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.maze
-
+package main.maze
 
 /**
  * Interface for a cell position in the maze.
@@ -47,5 +46,4 @@ interface Position {
      * Compare this position with another position, [pos].
      */
     operator fun compareTo(pos: Position): Int
-
 }

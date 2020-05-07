@@ -23,11 +23,11 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.maltaisn.mazegen.maze
+package main.maze
 
-import com.maltaisn.mazegen.paramError
+import com.maltaisn.mazegen.maze.Cell
+import com.maltaisn.mazegen.maze.Maze
 import kotlin.random.Random
-
 
 /**
  * Base class for a maze represented by 2D orthogonal grid of cells.
@@ -40,10 +40,9 @@ abstract class BaseGridMaze<T : Cell>(val width: Int, val height: Int) : Maze() 
 
     init {
         if (width < 1 || height < 1) {
-            paramError("Dimensions must be at least 1.")
+            throw Throwable("Dimensions must be at least 1.")
         }
     }
-
 
     override val cellCount: Int
         get() = grid.size * grid[0].size
@@ -89,5 +88,4 @@ abstract class BaseGridMaze<T : Cell>(val width: Int, val height: Int) : Maze() 
     }
 
     override fun toString() = "[width: $width, height: $height]"
-
 }
