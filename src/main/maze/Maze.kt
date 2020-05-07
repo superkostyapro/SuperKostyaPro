@@ -31,11 +31,6 @@ package main.maze
 abstract class Maze {
 
     /**
-     * The list of cell with openings in the maze.
-     */
-    private val openings = mutableListOf<Cell>()
-
-    /**
      * Get the total number of cells in this maze.
      */
     abstract val cellCount: Int
@@ -68,7 +63,6 @@ abstract class Maze {
             it.value = 0
             it.visited = false
         }
-        openings.clear()
     }
 
     /**
@@ -79,41 +73,5 @@ abstract class Maze {
             it.value = it.allSidesValue
             it.visited = false
         }
-        openings.clear()
-    }
-
-    /**
-     * Create an [opening] in the maze. An exception is thrown if the opening position
-     * doesn't match any cell or if the opening already exists.
-     */
-    fun createOpening(opening: Position) {
-        val cell = getOpeningCell(opening)
-        if (cell != null) {
-            if (openings.contains(cell)) {
-                throw Throwable("Duplicate opening for position ${cell.position}.")
-            }
-
-            for (side in cell.allSides) {
-                if (cell.getCellOnSide(side) == null) {
-                    cell.openSide(side)
-                    break
-                }
-            }
-
-            openings.add(cell)
-        } else {
-            throw Throwable("Opening describes no cell in the maze.")
-        }
-    }
-
-    /**
-     * Get the cell described by the [opening] position.
-     */
-    abstract fun getOpeningCell(opening: Position): Cell?
-
-    companion object {
-        const val OPENING_POS_START = Int.MIN_VALUE
-        const val OPENING_POS_CENTER = Int.MIN_VALUE + 1
-        const val OPENING_POS_END = Int.MIN_VALUE + 2
     }
 }

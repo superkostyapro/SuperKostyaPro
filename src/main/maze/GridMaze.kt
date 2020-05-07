@@ -32,7 +32,7 @@ import kotlin.random.Random
  * @property width number of rows
  * @property height number of columns
  */
-abstract class BaseGridMaze<T : Cell>(val width: Int, val height: Int) : Maze() {
+abstract class GridMaze<T : Cell>(val width: Int, val height: Int) : Maze() {
 
     protected abstract val grid: Array<Array<T>>
 
@@ -67,22 +67,6 @@ abstract class BaseGridMaze<T : Cell>(val width: Int, val height: Int) : Maze() 
                 action(grid[x][y])
             }
         }
-    }
-
-    override fun getOpeningCell(opening: Position): T? {
-        val x = when (val pos = (opening as Position2D).x) {
-            OPENING_POS_START -> 0
-            OPENING_POS_CENTER -> grid.size / 2
-            OPENING_POS_END -> grid.size - 1
-            else -> pos
-        }
-        val y = when (val pos = opening.y) {
-            OPENING_POS_START -> 0
-            OPENING_POS_CENTER -> grid[0].size / 2
-            OPENING_POS_END -> grid[0].size - 1
-            else -> pos
-        }
-        return cellAt(x, y)
     }
 
     override fun toString() = "[width: $width, height: $height]"

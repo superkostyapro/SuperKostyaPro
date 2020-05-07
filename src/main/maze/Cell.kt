@@ -63,23 +63,6 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
     }
 
     /**
-     * Returns a list of neighbor cells than are accessible from this cell,
-     * meaning the wall they share with this cell is not set.
-     */
-    open fun findAccessibleNeighbors(): MutableList<out Cell> {
-        val list = mutableListOf<Cell>()
-        for (side in allSides) {
-            if (!hasSide(side)) {
-                val neighbor = getCellOnSide(side)
-                if (neighbor != null) {
-                    list.add(neighbor)
-                }
-            }
-        }
-        return list
-    }
-
-    /**
      * Returns the neighbor cell on the [side] of the cell.
      * If the neighbor doesn't exist, returns null.
      */

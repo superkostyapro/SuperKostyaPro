@@ -28,8 +28,7 @@ package main.maze
 /**
  * Class for a normal square-tiled orthogonal maze with [width] columns and [height] rows.
  */
-open class OrthogonalMaze(width: Int, height: Int) :
-    BaseGridMaze<OrthogonalCell>(width, height) {
+open class OrthogonalMaze(width: Int, height: Int) : GridMaze<OrthogonalCell>(width, height) {
 
     final override val grid: Array<Array<OrthogonalCell>>
 
