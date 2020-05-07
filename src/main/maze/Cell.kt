@@ -48,11 +48,6 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
     open var value = 0
 
     /**
-     * If a distance map was generated, the minimum distance of this cell from the starting cell.
-     */
-    var distanceMapValue = -1
-
-    /**
      * The list of cells adjacent to this cell, but not necessarily connected.
      * All neighbors must be able to validly connect with this cell.
      */
