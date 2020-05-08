@@ -1,4 +1,4 @@
 package main
 
-const val PPUX = 100
-const val PPUY = 100
+const val UNIT_W = 100
+const val UNIT_H = 100

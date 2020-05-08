@@ -1,10 +1,6 @@
 package main.extension
 
 import kotlin.browser.window
-import kotlin.math.roundToInt
+import kotlin.math.max
 
-val Number.dp
-    get() = toFloat() * window.devicePixelRatio
-
-val Number.sp
-    get() = (toFloat() * window.devicePixelRatio).roundToInt()
+fun Number.dp(ratio: Float) = toFloat() * max(1.0, window.devicePixelRatio * ratio)

@@ -62,6 +62,7 @@ open class OrthogonalCell(
             }
 
         companion object {
+
             val ALL = listOf(NORTH, SOUTH, WEST, EAST)
             const val ALL_VALUE = 15
         }

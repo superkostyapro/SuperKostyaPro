@@ -54,8 +54,8 @@ abstract class GridMaze<T : Cell>(val width: Int, val height: Int) : Maze() {
     override fun getAllCells(): MutableList<T> {
         val list = mutableListOf<T>()
         for (x in grid.indices) {
-            for (y in 0 until grid[x].size) {
-                list.add(grid[x][y])
+            for (value in grid[x]) {
+                list.add(value)
             }
         }
         return list
@@ -63,8 +63,8 @@ abstract class GridMaze<T : Cell>(val width: Int, val height: Int) : Maze() {
 
     override fun forEachCell(action: (Cell) -> Unit) {
         for (x in grid.indices) {
-            for (y in 0 until grid[x].size) {
-                action(grid[x][y])
+            for (value in grid[x]) {
+                action(value)
             }
         }
     }
