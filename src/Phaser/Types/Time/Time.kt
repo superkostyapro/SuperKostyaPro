@@ -1,6 +1,6 @@
-package Phaser.Types.Time
+@file:JsQualifier("Phaser.Types.Time")
 
-import kotlin.js.*
+package Phaser.Types.Time
 
 external interface TimerEventConfig {
     var delay: Number?

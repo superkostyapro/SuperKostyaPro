@@ -1,8 +1,9 @@
+@file:JsQualifier("Phaser.Types.Loader.FileTypes")
+
 package Phaser.Types.Loader.FileTypes
 
-import kotlin.js.*
-import Phaser.Types.Loader.XHRSettingsObject
 import Phaser.Types.Loader.FileConfig
+import Phaser.Types.Loader.XHRSettingsObject
 import Phaser.integer
 
 external interface AtlasJSONFileConfig {

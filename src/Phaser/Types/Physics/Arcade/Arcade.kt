@@ -1,8 +1,9 @@
+@file:JsQualifier("Phaser.Types.Physics.Arcade")
+
 package Phaser.Types.Physics.Arcade
 
-import kotlin.js.*
-import Phaser.Types.Math.Vector2Like
 import Phaser.Geom.Rectangle
+import Phaser.Types.Math.Vector2Like
 
 external interface ArcadeBodyBounds {
     var x: Number

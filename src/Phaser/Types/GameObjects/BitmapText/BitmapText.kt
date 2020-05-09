@@ -1,8 +1,8 @@
+@file:JsQualifier("Phaser.Types.GameObjects.BitmapText")
+
 package Phaser.Types.GameObjects.BitmapText
 
 import Phaser.GameObjects.DynamicBitmapText
-
-typealias DisplayCallback = (display: DisplayCallbackConfig) -> Unit
 
 external interface `T$1` {
     @nativeGetter

@@ -1,6 +1,6 @@
-package Phaser.Types.Math
+@file:JsQualifier("Phaser.Types.Math")
 
-import kotlin.js.*
+package Phaser.Types.Math
 
 external interface SinCosTable {
     var sin: Number

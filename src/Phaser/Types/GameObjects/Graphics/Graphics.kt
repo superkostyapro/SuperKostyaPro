@@ -1,6 +1,6 @@
-package Phaser.Types.GameObjects.Graphics
+@file:JsQualifier("Phaser.Types.GameObjects.Graphics")
 
-import kotlin.js.*
+package Phaser.Types.GameObjects.Graphics
 
 external interface FillStyle {
     var color: Number?

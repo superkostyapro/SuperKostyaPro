@@ -1,9 +1,8 @@
+@file:JsQualifier("Phaser.Types.Actions")
+
 package Phaser.Types.Actions
 
-import Phaser.GameObjects.GameObject
 import Phaser.integer
-
-typealias CallCallback = (item: GameObject) -> Unit
 
 external interface GridAlignConfig {
     var width: integer?

@@ -1,12 +1,9 @@
+@file:JsQualifier("Phaser.Types.GameObjects.Group")
+
 package Phaser.Types.GameObjects.Group
 
-import Phaser.GameObjects.GameObject
 import Phaser.Types.Input.HitAreaCallback
 import Phaser.integer
-
-typealias GroupCallback = (item: GameObject) -> Unit
-
-typealias GroupMultipleCreateCallback = (items: Array<GameObject>) -> Unit
 
 external interface GroupConfig {
     var classType: Function<*>?

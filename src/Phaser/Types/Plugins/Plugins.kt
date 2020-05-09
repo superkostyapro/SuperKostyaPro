@@ -1,6 +1,6 @@
-package Phaser.Types.Plugins
+@file:JsQualifier("Phaser.Types.Plugins")
 
-import kotlin.js.*
+package Phaser.Types.Plugins
 
 external interface CorePluginContainer {
     var key: String

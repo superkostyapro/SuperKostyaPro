@@ -1,9 +1,8 @@
+@file:JsQualifier("Phaser.Types.Renderer.Snapshot")
+
 package Phaser.Types.Renderer.Snapshot
 
 import Phaser.integer
-import kotlin.js.*
-
-typealias SnapshotCallback = (snapshot: dynamic /* Phaser.Display.Color | HTMLImageElement */) -> Unit
 
 external interface SnapshotState {
     var callback: SnapshotCallback

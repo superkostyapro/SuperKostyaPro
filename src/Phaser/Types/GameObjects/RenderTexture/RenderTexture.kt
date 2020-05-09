@@ -1,6 +1,6 @@
-package Phaser.Types.GameObjects.RenderTexture
+@file:JsQualifier("Phaser.Types.GameObjects.RenderTexture")
 
-import kotlin.js.*
+package Phaser.Types.GameObjects.RenderTexture
 
 external interface RenderTextureConfig {
     var x: Number?

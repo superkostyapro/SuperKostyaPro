@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Types.Animations")
+
 package Phaser.Types.Animations
 
 import Phaser.integer

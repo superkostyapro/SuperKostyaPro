@@ -1,8 +1,9 @@
+@file:JsQualifier("Phaser.Types.GameObjects.Text")
+
 package Phaser.Types.GameObjects.Text
 
 import Phaser.TextStyleWordWrapCallback
 import Phaser.integer
-import kotlin.js.*
 
 external interface TextMetrics {
     var ascent: Number

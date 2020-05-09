@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Types.Curves")
+
 package Phaser.Types.Curves
 
 import Phaser.integer

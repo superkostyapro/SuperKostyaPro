@@ -1,12 +1,11 @@
+@file:JsQualifier("Phaser.Types.Input")
+
 package Phaser.Types.Input
 
-import kotlin.js.*
-import Phaser.GameObjects.GameObject
 import Phaser.Cameras.Scene2D.Camera
+import Phaser.GameObjects.GameObject
 import Phaser.GameObjects.Shape
 import Phaser.integer
-
-typealias HitAreaCallback = (hitArea: Any, x: Number, y: Number, gameObject: GameObject) -> Unit
 
 external interface EventData {
     var cancelled: Boolean?

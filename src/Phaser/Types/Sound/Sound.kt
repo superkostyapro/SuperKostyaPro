@@ -1,10 +1,6 @@
+@file:JsQualifier("Phaser.Types.Sound")
+
 package Phaser.Types.Sound
-
-import Phaser.Sound.BaseSound
-import Phaser.Sound.BaseSoundManager
-import kotlin.js.*
-
-typealias EachActiveSoundCallback = (manager: BaseSoundManager, sound: BaseSound, index: Number, sounds: Array<BaseSound>) -> Unit
 
 external interface AudioSpriteSound {
     var spritemap: Any?

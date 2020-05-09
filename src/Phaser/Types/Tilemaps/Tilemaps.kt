@@ -1,6 +1,7 @@
+@file:JsQualifier("Phaser.Types.Tilemaps")
+
 package Phaser.Types.Tilemaps
 
-import kotlin.js.*
 import Phaser.Tilemaps.LayerData
 import Phaser.Tilemaps.Tileset
 import Phaser.Types.Math.Vector2Like

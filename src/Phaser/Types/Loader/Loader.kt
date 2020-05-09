@@ -1,8 +1,9 @@
+@file:JsQualifier("Phaser.Types.Loader")
+
 package Phaser.Types.Loader
 
 import Phaser.integer
-import kotlin.js.*
-import org.w3c.xhr.*
+import org.w3c.xhr.XMLHttpRequestResponseType
 
 external interface FileConfig {
     var type: String

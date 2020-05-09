@@ -1,15 +1,11 @@
+@file:JsQualifier("Phaser.Types.Scenes")
+
 package Phaser.Types.Scenes
 
 import Phaser.Scene
 import Phaser.Types.Core.LoaderConfig
 import Phaser.Types.Core.PhysicsConfig
 import Phaser.integer
-
-typealias SceneCreateCallback = (data: Any?) -> Unit
-
-typealias SceneInitCallback = (data: Any?) -> Unit
-
-typealias ScenePreloadCallback = () -> Unit
 
 external interface CreateSceneFromObjectConfig {
     var init: SceneInitCallback?

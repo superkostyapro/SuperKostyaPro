@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Types.Display")
+
 package Phaser.Types.Display
 
 external interface ColorObject {

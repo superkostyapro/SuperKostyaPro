@@ -1,18 +1,13 @@
+@file:JsQualifier("Phaser.Types.Core")
+
 package Phaser.Types.Core
 
-import Phaser.Game
 import Phaser.Scale.CenterType
 import Phaser.Types.Physics.Arcade.ArcadeWorldConfig
 import Phaser.Types.Physics.Matter.MatterWorldConfig
 import Phaser.integer
 import org.w3c.dom.CanvasRenderingContext2D
 import org.w3c.dom.HTMLCanvasElement
-
-typealias BootCallback = (game: Game) -> Unit
-
-typealias NOOP = () -> Unit
-
-typealias TimeStepCallback = (time: Number, average: Number, interpolation: Number) -> Unit
 
 external interface AudioConfig {
     var disableWebAudio: Boolean?
@@ -372,8 +367,7 @@ external interface ScaleConfig {
     var expandParent: Boolean?
         get() = definedExternally
         set(value) = definedExternally
-    var mode: dynamic
-        /* ScaleModeType? | integer*/
+    var mode: dynamic /* ScaleModeType? | integer*/
         get() = definedExternally
         set(value) = definedExternally
     var min: WidthHeight?

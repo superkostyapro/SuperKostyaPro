@@ -1,6 +1,6 @@
-package Phaser.Types.GameObjects.PathFollower
+@file:JsQualifier("Phaser.Types.GameObjects.PathFollower")
 
-import kotlin.js.*
+package Phaser.Types.GameObjects.PathFollower
 
 external interface PathConfig {
     var duration: Number?

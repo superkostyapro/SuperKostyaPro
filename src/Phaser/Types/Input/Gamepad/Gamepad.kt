@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Types.Input.Gamepad")
+
 package Phaser.Types.Input.Gamepad
 
 import Phaser.integer

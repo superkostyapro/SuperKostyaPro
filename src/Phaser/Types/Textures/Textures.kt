@@ -1,7 +1,8 @@
+@file:JsQualifier("Phaser.Types.Textures")
+
 package Phaser.Types.Textures
 
 import Phaser.integer
-import kotlin.js.*
 
 external interface PixelConfig {
     var x: integer

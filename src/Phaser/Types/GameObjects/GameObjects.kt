@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Types.GameObjects")
+
 package Phaser.Types.GameObjects
 
 import Phaser.integer
