@@ -19,13 +19,17 @@ class CutBlock(
         it.fillStyle(backgroundColor)
         it.fillRectShape(this)
         it.lineStyle(2, lineColor)
-        //lineBetween(blockX - halfLine, blockY, blockX - halfLine, blockY + blockHeight)
-        val minSize = min(width, height)
-        val maxSize = max(width, height)
-        val space = minSize / 8
+        val space = min(width, height) / 8
         var s = space
-        while (s < maxSize) {
-            it.lineBetween(x + s, y, x, y + s)
+        while (s < 2 * max(width, height)) {
+            val y1 = y + s
+            val x2 = x + s
+            it.lineBetween(
+                x + max(0f, y1 - bottom),
+                min(y1, bottom),
+                min(x2, right),
+                y + max(0f, x2 - right)
+            )
             s += space
         }
     }
