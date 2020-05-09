@@ -166,7 +166,7 @@ open external class Scene(config: dynamic/* String | SettingsConfig */) {
     open var facebook: FacebookInstantGamesPlugin
     open var scale: ScaleManager
     open var plugins: PluginManager
-    open fun update(time: Number, delta: Number)
+    open fun update(time: Float, delta: Float)
 }
 
 open external class FacebookInstantGamesPlugin(game: Phaser.Game) : EventEmitter {

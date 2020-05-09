@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Utils.Array")
+
 package Phaser.Utils.Array
 
 import Phaser.integer

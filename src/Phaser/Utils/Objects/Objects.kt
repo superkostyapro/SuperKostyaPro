@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Utils.Objects")
+
 package Phaser.Utils.Objects
 
 external fun Clone(obj: Any?): Any?

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Utils.Array.Matrix")
+
 package Phaser.Utils.Array.Matrix
 
 external fun <T> CheckMatrix(matrix: Array<Array<T>> = definedExternally): Boolean

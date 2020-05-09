@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Utils.Base64")
+
 package Phaser.Utils.Base64
 
 import org.khronos.webgl.ArrayBuffer
