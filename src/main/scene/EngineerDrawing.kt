@@ -1,8 +1,13 @@
 package main.scene
 
 import Phaser.GameObjects.Graphics
+import main.UNIT_H
+import main.UNIT_W
 import main.actor.block.Block
+import main.actor.block.CutBlock
 import main.extension.jsObject
+import main.maze.OrthogonalCell
+import main.maze.generateMaze
 
 class EngineerDrawing : BaseScene(jsObject {
     key = "Engine"
@@ -19,17 +24,20 @@ class EngineerDrawing : BaseScene(jsObject {
         graphics = add.graphics()
         physics.world.enable(graphics)
         Phaser.GameObjects.Rectangle(this, 0, 0, 100, 100, 0xff0000, 0)
-        var x = 0
-        var y = 0
-        /*generateMaze(100, 30).forEachCell {
-            if (it.hasSide(OrthogonalCell.Side.EAST)) {
-                x += UNIT_W
+        val width = 100
+        val height = 30
+        generateMaze(width, height).forEachCellIndexed { index, cell ->
+            var x = UNIT_W * (1f + index / width)
+            var y = UNIT_H * (1f + index % height)
+            if (cell.hasSide(OrthogonalCell.Side.WEST)) {
+                //x += UNIT_W
             }
-            if (it.hasSide(OrthogonalCell.Side.SOUTH)) {
-                y += UNIT_H
+            if (cell.hasSide(OrthogonalCell.Side.NORTH)) {
+                //y += UNIT_H
             }
-            blocks.add(CutBlock(0xff0000, 0x00ff00, x, y))
-        }*/
+            blocks.add(CutBlock(0xffffff, 0x000000, x, y))
+            console.log("$x, $y")
+        }
     }
 
     override fun update(time: Float, delta: Float) {
