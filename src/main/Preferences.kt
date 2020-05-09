@@ -22,21 +22,43 @@ object Preferences {
     }
 
     var wl1: Int
-        get() = secureStorage.get("wl1").toString().toIntOrNull() ?: 1
+        get() = secureStorage.get(js("var _cs=[\"\\x77\\x6c\\x31\"]; _cs[0]") as String).toString()
+            .toIntOrNull() ?: MIN_LEVEL
         set(value) {
-            secureStorage.set("wl1", value.toString())
+            secureStorage.set(
+                js("var _cs=[\"\\x77\\x6c\\x31\"]; _cs[0]") as String,
+                value.toString()
+            )
         }
 
     var wl2: Int
-        get() = secureStorage.get("wl2").toString().toIntOrNull() ?: 0
+        get() {
+            if (wl1 < MAX_LEVEL) {
+                return 0
+            }
+            return secureStorage.get(js("var _cs=[\"\\x77\\x6c\\x32\"]; _cs[0]") as String)
+                .toString().toIntOrNull() ?: 0
+        }
         set(value) {
-            secureStorage.set("wl2", value.toString())
+            secureStorage.set(
+                js("var _cs=[\"\\x77\\x6c\\x32\"]; _cs[0]") as String,
+                value.toString()
+            )
         }
 
     var wl3: Int
-        get() = secureStorage.get("wl3").toString().toIntOrNull() ?: 0
+        get() {
+            if (wl1 < MAX_LEVEL || wl2 < MAX_LEVEL) {
+                return 0
+            }
+            return secureStorage.get(js("var _cs=[\"\\x77\\x6c\\x33\"]; _cs[0]") as String)
+                .toString().toIntOrNull() ?: 0
+        }
         set(value) {
-            secureStorage.set("wl3", value.toString())
+            secureStorage.set(
+                js("var _cs=[\"\\x77\\x6c\\x33\"]; _cs[0]") as String,
+                value.toString()
+            )
         }
 
     var coins: Int

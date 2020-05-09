@@ -34,7 +34,7 @@ class TextMenu(scene: Scene, text: String, action: () -> Unit) : Text(scene, 0, 
                 setColor("#ffffffdd")
             })
         } else {
-            setColor("#ffffff99")
+            setColor("#ffffff61")
         }
     }
 }
