@@ -2,6 +2,7 @@ package main.scene
 
 import Phaser.GameObjects.Graphics
 import Phaser.Types.Input.Keyboard.CursorKeys
+import main.Preferences
 import main.UNIT
 import main.extension.jsObject
 
@@ -19,7 +20,7 @@ class DrawingScene : GameScene(jsObject {
         super.create()
         cameras.main.setBackgroundColor(0xfafafa)
         cursors = input.keyboard.createCursorKeys()
-        generateMap(30, 10)
+        generateMap(Preferences.worldLevel1)
     }
 
     override fun createBlock(): Graphics {

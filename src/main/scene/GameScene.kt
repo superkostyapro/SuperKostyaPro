@@ -7,7 +7,8 @@ import main.UNIT
 import main.actor.drawCut
 import main.extension.jsObject
 import main.maze.OrthogonalCell
-import main.maze.generateMaze
+import main.maze.OrthogonalMaze
+import main.maze.generator.*
 
 abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
 
@@ -20,25 +21,42 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
         //background.play()
     }
 
-    protected fun generateMap(cols: Int, rows: Int) {
+    protected fun generateMap(level: Int) {
+        val cols: Int
+        val rows: Int
+        val generator: Generator
+        when (level) {
+            1 -> {
+                cols = 10
+                rows = 10
+                generator = WilsonGenerator()
+            }
+            2 -> {
+                cols = 10
+                rows = 10
+                generator = EllerGenerator()
+            }
+            3 -> {
+                cols = 10
+                rows = 10
+                generator = KruskalGenerator()
+            }
+            else -> {
+                cols = 10
+                rows = 10
+                generator = PrimGenerator()
+            }
+        }
         val graphics = add.graphics()
         cameras.main.setSize(UNIT * (cols * SCALE_X + 1), UNIT * (rows * SCALE_Y + 1))
-        generateMaze(cols, rows).forEachCellIndexed { col, row, cell ->
+        val maze = OrthogonalMaze(cols, rows)
+        generator.generate(maze)
+        maze.forEachCellIndexed { col, row, cell ->
             val x = UNIT * (col * SCALE_X + 0.5f)
             val y = UNIT * (row * SCALE_Y + 0.5f)
             graphics.lineStyle(16, 0x00ff00)
                 .strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
                 .lineStyle(4, 0xff0000)
-            if (cell.hasSide(OrthogonalCell.Side.NORTH)) {
-                val exists = cell.getCellOnSide(OrthogonalCell.Side.NORTH)
-                    ?.hasSide(OrthogonalCell.Side.SOUTH) ?: false
-                if (!exists) {
-                    (1 until SCALE_X).forEach {
-                        createBlock().drawCut(x + UNIT * it, y)
-                    }
-                    graphics.lineBetween(x, y, x + UNIT * SCALE_X, y)
-                }
-            }
             if (cell.hasSide(OrthogonalCell.Side.NORTH) || cell.hasSide(OrthogonalCell.Side.EAST)) {
                 val top = cell.getCellOnSide(OrthogonalCell.Side.NORTH)
                 if (
@@ -47,16 +65,6 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                     ))
                 ) {
                     createBlock().drawCut(x + UNIT * SCALE_X, y)
-                }
-            }
-            if (cell.hasSide(OrthogonalCell.Side.WEST)) {
-                val exists = cell.getCellOnSide(OrthogonalCell.Side.WEST)
-                    ?.hasSide(OrthogonalCell.Side.EAST) ?: false
-                if (!exists) {
-                    (1 until SCALE_Y).forEach {
-                        createBlock().drawCut(x, y + UNIT * it)
-                    }
-                    graphics.lineBetween(x, y, x, y + UNIT * SCALE_Y)
                 }
             }
             if (cell.hasSide(OrthogonalCell.Side.NORTH) || cell.hasSide(OrthogonalCell.Side.WEST)) {
@@ -91,14 +99,34 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                     createBlock().drawCut(x, y + UNIT * SCALE_Y)
                 }
             }
+            if (cell.hasSide(OrthogonalCell.Side.SOUTH) || cell.hasSide(OrthogonalCell.Side.EAST)) {
+                createBlock().drawCut(x + UNIT * SCALE_X, y + UNIT * SCALE_Y)
+            }
+            if (cell.hasSide(OrthogonalCell.Side.NORTH)) {
+                val exists = cell.getCellOnSide(OrthogonalCell.Side.NORTH)
+                    ?.hasSide(OrthogonalCell.Side.SOUTH) ?: false
+                if (!exists) {
+                    (1 until SCALE_X).forEach {
+                        createBlock().drawCut(x + UNIT * it, y)
+                    }
+                }
+                graphics.lineBetween(x, y, x + UNIT * SCALE_X, y)
+            }
+            if (cell.hasSide(OrthogonalCell.Side.WEST)) {
+                val exists = cell.getCellOnSide(OrthogonalCell.Side.WEST)
+                    ?.hasSide(OrthogonalCell.Side.EAST) ?: false
+                if (!exists) {
+                    (1 until SCALE_Y).forEach {
+                        createBlock().drawCut(x, y + UNIT * it)
+                    }
+                }
+                graphics.lineBetween(x, y, x, y + UNIT * SCALE_Y)
+            }
             if (cell.hasSide(OrthogonalCell.Side.EAST)) {
                 (1 until SCALE_Y).forEach {
                     createBlock().drawCut(x + UNIT * SCALE_X, y + UNIT * it)
                 }
                 graphics.lineBetween(x + UNIT * SCALE_X, y, x + UNIT * SCALE_X, y + UNIT * SCALE_Y)
-            }
-            if (cell.hasSide(OrthogonalCell.Side.SOUTH) || cell.hasSide(OrthogonalCell.Side.EAST)) {
-                createBlock().drawCut(x + UNIT * SCALE_X, y + UNIT * SCALE_Y)
             }
             if (cell.hasSide(OrthogonalCell.Side.SOUTH)) {
                 (1 until SCALE_X).forEach {
@@ -111,9 +139,16 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
 
     abstract fun createBlock(): Graphics
 
+    @Suppress("ConstantConditionIf")
     companion object {
 
         const val SCALE_X = 2
-        const val SCALE_Y = 3
+        const val SCALE_Y = 4
+
+        init {
+            if (SCALE_X <= 1 || SCALE_Y <= 1) {
+                throw Throwable("Scale values must be at least 2.")
+            }
+        }
     }
 }
