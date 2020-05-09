@@ -13,9 +13,9 @@ class TextMenu(scene: Scene, text: String, action: () -> Unit) : Text(scene, 0, 
 
     init {
         val level = when {
-            text.endsWith("1") -> Preferences.wl1
-            text.endsWith("2") -> Preferences.wl2
-            text.endsWith("3") -> Preferences.wl3
+            text.endsWith("1") -> Preferences.worldLevel1
+            text.endsWith("2") -> Preferences.worldLevel2
+            text.endsWith("3") -> Preferences.worldLevel3
             else -> null
         }
         if (level != null) {
