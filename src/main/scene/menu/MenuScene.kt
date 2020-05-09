@@ -4,6 +4,7 @@ import Phaser.GameObjects.Graphics
 import Phaser.GameObjects.Text
 import Phaser.Geom.Rectangle
 import Phaser.Types.GameObjects.Text.TextStyle
+import main.Preferences
 import main.extension.jsObject
 import main.scene.BaseScene
 
@@ -19,11 +20,17 @@ class MenuScene : BaseScene(jsObject {
 
     private lateinit var copyrightText: Text
 
-    private val menu = mutableListOf<Text>()
+    private lateinit var continueText: Text
+
+    private val worlds = mutableListOf<Text>()
 
     override fun create() {
         graphics = add.graphics()
-        moneyText = add.text(16, 16, "KOSTYA\n0000000", jsObject<TextStyle> {
+        moneyText = add.text(
+            16,
+            16,
+            "KOSTYA\n${Preferences.coins.toString().padStart(7, '0')}",
+            jsObject<TextStyle> {
             fontFamily = "sans-serif"
             fontStyle = "bold"
             fontSize = "24px"
@@ -40,26 +47,29 @@ class MenuScene : BaseScene(jsObject {
             fontSize = "24px"
             color = "#fdbbad"
         }).setOrigin(1, 0)
-        menu.add(add.existing(TextMenu(this, 1) {
+        worlds.add(add.existing(TextWorld(this, 1) {
             with(scene) {
                 stop("Menu")
                 start("Draw")
             }
         }) as Text)
-        menu.add(add.existing(TextMenu(this, 2) {
+        worlds.add(add.existing(TextWorld(this, 2) {
             with(scene) {
                 stop("Menu")
                 start("CAD")
             }
         }) as Text)
-        menu.add(add.existing(TextMenu(this, 3) {
+        worlds.add(add.existing(TextWorld(this, 3) {
             with(scene) {
                 stop("Menu")
                 start("King")
             }
         }) as Text)
-        menu.add((add.existing(TextMenu(this, "TO BE CONTINUED...", null)) as Text).apply {
-            setFontSize(20)
+        continueText = add.text(0, 0, "TO BE CONTINUED", jsObject<TextStyle> {
+            fontFamily = "sans-serif"
+            fontStyle = "bold"
+            fontSize = "22px"
+            color = "#ffffffdd"
         })
     }
 
@@ -74,7 +84,7 @@ class MenuScene : BaseScene(jsObject {
         val gameBounds = gameText.getBounds<Rectangle>()
         gameText.apply {
             x = cX - gameBounds.width / 2
-            y = moneyBounds.bottom + 20
+            y = moneyBounds.bottom + 24
         }
         val blockX = gameBounds.x - padding
         val blockY = gameBounds.y - padding / 2
@@ -142,12 +152,18 @@ class MenuScene : BaseScene(jsObject {
             y = blockY + blockHeight
         }
         val copyrightBounds = copyrightText.getBounds<Rectangle>()
-        menu.forEachIndexed { i, text ->
-            text.apply {
+        worlds.forEachIndexed { i, world ->
+            world.apply {
                 val bounds = getBounds<Rectangle>()
                 x = cX - bounds.width / 2
-                y = copyrightBounds.bottom + 20 + i * (bounds.height + 15)
+                y = copyrightBounds.bottom + 35 + i * (bounds.height + 15)
             }
+        }
+        val continueBounds = continueText.getBounds<Rectangle>()
+        val lastWorldBounds = worlds.last().getBounds<Rectangle>()
+        continueText.apply {
+            x = cX - continueBounds.width / 2
+            y = lastWorldBounds.bottom + 40
         }
     }
 }
