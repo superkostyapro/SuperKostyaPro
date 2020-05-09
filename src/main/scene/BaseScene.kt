@@ -5,12 +5,11 @@ import Phaser.Types.Scenes.SettingsConfig
 
 abstract class BaseScene(config: SettingsConfig) : Scene(config) {
 
-    open fun preload() {
-    }
+    protected val tag = this::class.js.name
 
-    open fun create() {
-    }
+    open fun preload() {}
 
-    override fun update(time: Float, delta: Float) {
-    }
+    open fun create() {}
+
+    override fun update(time: Float, delta: Float) {}
 }
