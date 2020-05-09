@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Data")
+
 package Phaser.Data
 
 import Phaser.DataEachCallback

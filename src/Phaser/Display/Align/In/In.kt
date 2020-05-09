@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Display.Align.In")
+
 package Phaser.Display.Align.In
 
 import Phaser.GameObjects.GameObject

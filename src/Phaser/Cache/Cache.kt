@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Cache")
+
 package Phaser.Cache
 
 import Phaser.Events.EventEmitter
@@ -19,6 +21,7 @@ open external class BaseCache {
 external interface `T$0` {
     @nativeGetter
     operator fun get(key: String): BaseCache?
+
     @nativeSetter
     operator fun set(key: String, value: BaseCache)
 }

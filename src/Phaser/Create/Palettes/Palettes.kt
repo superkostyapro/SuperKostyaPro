@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Create.Palettes")
+
 package Phaser.Create.Palettes
 
 import Phaser.Types.Create.Palette

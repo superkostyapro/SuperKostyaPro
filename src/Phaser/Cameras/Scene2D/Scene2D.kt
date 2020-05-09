@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Cameras.Scene2D")
+
 package Phaser.Cameras.Scene2D
 
 import Phaser.CameraRotateCallback

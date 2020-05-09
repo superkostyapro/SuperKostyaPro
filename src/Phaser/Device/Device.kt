@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Device")
+
 package Phaser.Device
 
 external interface Audio {

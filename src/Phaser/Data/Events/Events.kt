@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Data.Events")
+
 package Phaser.Data.Events
 
 external var CHANGE_DATA: Any

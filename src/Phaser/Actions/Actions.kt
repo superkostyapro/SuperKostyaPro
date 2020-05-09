@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Actions")
+
 package Phaser.Actions
 
 import Phaser.GameObjects.GameObject

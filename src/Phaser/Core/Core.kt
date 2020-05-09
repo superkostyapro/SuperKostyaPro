@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Core")
+
 package Phaser.Core
 
 import Phaser.DOM.RequestAnimationFrame

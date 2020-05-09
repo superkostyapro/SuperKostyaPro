@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Display.Align")
+
 package Phaser.Display.Align
 
 import Phaser.integer

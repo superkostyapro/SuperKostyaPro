@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Curves")
+
 package Phaser.Curves
 
 import Phaser.GameObjects.Graphics
@@ -13,6 +15,7 @@ import Phaser.integer
 open external class CubicBezier : Curve {
     constructor(p0: Vector2, p1: Vector2, p2: Vector2, p3: Vector2)
     constructor(p0: Array<Vector2>, p1: Vector2, p2: Vector2, p3: Vector2)
+
     open var p0: Vector2
     open var p1: Vector2
     open var p2: Vector2
@@ -58,6 +61,7 @@ open external class Curve(type: String) {
 open external class Ellipse : Curve {
     constructor(x: Number, y: Number, xRadius: Number, yRadius: Number, startAngle: integer, endAngle: integer, clockwise: Boolean, rotation: integer)
     constructor(x: EllipseCurveConfig, y: Number, xRadius: Number, yRadius: Number, startAngle: integer, endAngle: integer, clockwise: Boolean, rotation: integer)
+
     open var p0: Vector2
     override fun <O : Vector2> getStartPoint(out: O): O
     open fun getResolution(divisions: Number): Number
@@ -89,6 +93,7 @@ open external class Ellipse : Curve {
 open external class Line : Curve {
     constructor(p0: Vector2, p1: Vector2)
     constructor(p0: Array<Number>, p1: Vector2)
+
     open var p0: Vector2
     open var p1: Vector2
     override var arcLengthDivisions: integer
@@ -162,6 +167,7 @@ open external class Path(x: Number = definedExternally, y: Number = definedExter
 open external class QuadraticBezier : Curve {
     constructor(p0: Vector2, p1: Vector2, p2: Vector2)
     constructor(p0: Array<Number>, p1: Vector2, p2: Vector2)
+
     open var p0: Vector2
     open var p1: Vector2
     open var p2: Vector2
@@ -180,6 +186,7 @@ open external class Spline : Curve {
     constructor(points: Array<Vector2>)
     constructor(points: Array<Number>)
     constructor(points: Array<Array<Number>>)
+
     open var points: Array<Vector2>
     open fun addPoints(points: Array<Vector2>): Spline /* this */
     open fun addPoints(points: Array<Number>): Spline /* this */

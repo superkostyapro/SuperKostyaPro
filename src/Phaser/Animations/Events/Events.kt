@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Animations.Events")
+
 package Phaser.Animations.Events
 
 external var ADD_ANIMATION: Any

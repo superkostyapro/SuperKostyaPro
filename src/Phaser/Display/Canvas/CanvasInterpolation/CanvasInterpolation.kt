@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Display.Canvas.CanvasInterpolation")
+
 package Phaser.Display.Canvas.CanvasInterpolation
 
 import org.w3c.dom.HTMLCanvasElement

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Core.Events")
+
 package Phaser.Core.Events
 
 external var BLUR: Any

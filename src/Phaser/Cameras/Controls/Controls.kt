@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Cameras.Controls")
+
 package Phaser.Cameras.Controls
 
 import Phaser.Cameras.Scene2D.Camera

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Events")
+
 package Phaser.Events
 
 open external class EventEmitter {

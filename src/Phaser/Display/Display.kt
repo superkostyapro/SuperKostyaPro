@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Display")
+
 package Phaser.Display
 
 import Phaser.Types.Display.ColorObject

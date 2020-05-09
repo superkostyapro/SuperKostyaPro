@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Display.Canvas.CanvasPool")
+
 package Phaser.Display.Canvas.CanvasPool
 
 import Phaser.integer

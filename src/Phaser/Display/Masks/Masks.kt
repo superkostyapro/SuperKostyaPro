@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Display.Masks")
+
 package Phaser.Display.Masks
 
 import Phaser.Cameras.Scene2D.Camera

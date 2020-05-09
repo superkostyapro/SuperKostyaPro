@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Display.Bounds")
+
 package Phaser.Display.Bounds
 
 import Phaser.GameObjects.GameObject

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Cameras.Scene2D.Events")
+
 package Phaser.Cameras.Scene2D.Events
 
 external var DESTROY: Any

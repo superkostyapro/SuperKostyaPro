@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Animations")
+
 package Phaser.Animations
 
 import Phaser.Events.EventEmitter
@@ -54,6 +56,7 @@ open external class Animation(manager: Phaser.Animations.AnimationManager, key: 
 open external class AnimationFrame {
     constructor(textureKey: String, textureFrame: String, index: integer, frame: Frame)
     constructor(textureKey: String, textureFrame: integer, index: integer, frame: Frame)
+
     open var textureKey: String
     open var textureFrame: dynamic /* String | integer */
     open var index: integer

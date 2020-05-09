@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.DOM")
+
 package Phaser.DOM
 
 import Phaser.ContentLoadedCallback
@@ -29,6 +31,7 @@ open external class RequestAnimationFrame {
     open var target: Number
     open var step: Any
     open var stepTimeout: Function<*>
+
     // todo
     open fun start(callback: Any/*FrameRequestCallback*/, forceSetTimeOut: Boolean, targetFPS: Number)
     open fun stop()

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Create")
+
 package Phaser.Create
 
 import Phaser.Types.Create.GenerateTextureConfig

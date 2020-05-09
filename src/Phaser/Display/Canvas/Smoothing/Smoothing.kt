@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Display.Canvas.Smoothing")
+
 package Phaser.Display.Canvas.Smoothing
 
 import org.khronos.webgl.WebGLRenderingContext
