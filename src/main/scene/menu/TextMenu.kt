@@ -5,31 +5,35 @@ import Phaser.Scene
 import main.Preferences
 import main.extension.jsObject
 
-class TextMenu(scene: Scene, text: String, action: () -> Unit) : Text(scene, 0, 0, text, jsObject {
+@Suppress("SpellCheckingInspection")
+class TextMenu(scene: Scene, text: Any, action: (() -> Unit)?) :
+    Text(scene, 0, 0, text.toString(), jsObject {
     fontFamily = "sans-serif"
     fontStyle = "bold"
     fontSize = "24px"
 }) {
 
     init {
-        val level = when {
-            text.endsWith("1") -> Preferences.worldLevel1
-            text.endsWith("2") -> Preferences.worldLevel2
-            text.endsWith("3") -> Preferences.worldLevel3
+        val level = when (text) {
+            1 -> Preferences.worldLevel1
+            2 -> Preferences.worldLevel2
+            3 -> Preferences.worldLevel3
             else -> null
         }
         if (level != null) {
-            setText("$text-$level")
+            setText("WORLD $text-$level")
         }
         if (level == null || level > 0) {
             setColor("#ffffffdd")
-            setInteractive(jsObject {
-                useHandCursor = true
-            })
+            if (action != null) {
+                setInteractive(jsObject {
+                    useHandCursor = true
+                })
+                on("pointerdown", action)
+            }
             on("pointerover", {
                 setColor("#ffffff")
             })
-            on("pointerdown", action)
             on("pointerout", {
                 setColor("#ffffffdd")
             })

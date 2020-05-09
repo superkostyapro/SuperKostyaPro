@@ -9,16 +9,13 @@ import main.extension.jsObject
 import main.maze.OrthogonalCell
 import main.maze.generateMaze
 
-class EngineerDrawing : BaseScene(jsObject {
-    key = "Engine"
+class DrawingScene : BaseScene(jsObject {
+    key = "Draw"
 }) {
 
     private lateinit var graphics: Graphics
 
     private val blocks = mutableListOf<Block>()
-
-    init {
-    }
 
     override fun create() {
         graphics = add.graphics()

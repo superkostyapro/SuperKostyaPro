@@ -8,9 +8,9 @@ import Phaser.Types.Core.GameConfig
 import Phaser.Types.Core.PhysicsConfig
 import Phaser.Types.Core.ScaleConfig
 import main.extension.jsObject
-import main.scene.EngineerDrawing
-import main.scene.FarFarKingdom
-import main.scene.ProgrammerDrawing
+import main.scene.CADScene
+import main.scene.DrawingScene
+import main.scene.FarKingdom
 import main.scene.menu.MenuScene
 import kotlin.browser.document
 
@@ -40,9 +40,9 @@ private fun startGame() {
         }
         scene = arrayOf(
             MenuScene::class.js,
-            EngineerDrawing::class.js,
-            ProgrammerDrawing::class.js,
-            FarFarKingdom::class.js
+            DrawingScene::class.js,
+            CADScene::class.js,
+            FarKingdom::class.js
         )
     })
 }

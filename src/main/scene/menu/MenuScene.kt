@@ -13,6 +13,8 @@ class MenuScene : BaseScene(jsObject {
 
     private lateinit var graphics: Graphics
 
+    private lateinit var moneyText: Text
+
     private lateinit var gameText: Text
 
     private lateinit var copyrightText: Text
@@ -21,6 +23,12 @@ class MenuScene : BaseScene(jsObject {
 
     override fun create() {
         graphics = add.graphics()
+        moneyText = add.text(16, 16, "KOSTYA\n0000000", jsObject<TextStyle> {
+            fontFamily = "sans-serif"
+            fontStyle = "bold"
+            fontSize = "24px"
+            color = "#ffffffdd"
+        })
         gameText = add.text(0, 0, "SUPER\nKOSTYA PRO.", jsObject<TextStyle> {
             fontFamily = "NSMBWii"
             fontSize = "72px"
@@ -32,24 +40,27 @@ class MenuScene : BaseScene(jsObject {
             fontSize = "24px"
             color = "#fdbbad"
         }).setOrigin(1, 0)
-        menu.add(add.existing(TextMenu(this, "WORLD 1") {
+        menu.add(add.existing(TextMenu(this, 1) {
             with(scene) {
                 stop("Menu")
-                start("Engine")
+                start("Draw")
             }
         }) as Text)
-        menu.add(add.existing(TextMenu(this, "WORLD 2") {
+        menu.add(add.existing(TextMenu(this, 2) {
             with(scene) {
                 stop("Menu")
-                start("Program")
+                start("CAD")
             }
         }) as Text)
-        menu.add(add.existing(TextMenu(this, "WORLD 3") {
+        menu.add(add.existing(TextMenu(this, 3) {
             with(scene) {
                 stop("Menu")
                 start("King")
             }
         }) as Text)
+        menu.add((add.existing(TextMenu(this, "TO BE CONTINUED...", null)) as Text).apply {
+            setFontSize(20)
+        })
     }
 
     @Suppress("UNUSED_VARIABLE")
@@ -59,11 +70,11 @@ class MenuScene : BaseScene(jsObject {
         val halfPoint = 2
         val cX = cameras.main.centerX
         val cY = cameras.main.centerY
+        val moneyBounds = moneyText.getBounds<Rectangle>()
         val gameBounds = gameText.getBounds<Rectangle>()
         gameText.apply {
             x = cX - gameBounds.width / 2
-            // todo
-            y = 60
+            y = moneyBounds.bottom + 20
         }
         val blockX = gameBounds.x - padding
         val blockY = gameBounds.y - padding / 2

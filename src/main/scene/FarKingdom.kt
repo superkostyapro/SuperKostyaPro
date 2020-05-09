@@ -2,7 +2,7 @@ package main.scene
 
 import main.extension.jsObject
 
-class FarFarKingdom : BaseScene(jsObject {
+class FarKingdom : BaseScene(jsObject {
     key = "King"
 }) {
 
