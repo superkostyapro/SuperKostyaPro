@@ -27,28 +27,30 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
             val x = UNIT * (col * SCALE_X + 0.5f)
             val y = UNIT * (row * SCALE_Y + 0.5f)
             graphics.lineStyle(16, 0x00ff00)
-            graphics.strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
-            graphics.lineStyle(4, 0xff0000)
-            cell.getCellOnSide(OrthogonalCell.Side.NORTH)
-            cell.getCellOnPoint(OrthogonalCell.NORTH_EAST)
+                .strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
+                .lineStyle(4, 0xff0000)
             if (cell.hasSide(OrthogonalCell.Side.NORTH)) {
-                createBlock().drawCut(x + UNIT, y)
-                graphics.lineBetween(x, y, x + UNIT * SCALE_X, y)
-            }
-            if (cell.hasSide(OrthogonalCell.Side.WEST)) {
-                createBlock().drawCut(x, y + UNIT)
-                createBlock().drawCut(x, y + UNIT * SCALE_X)
-                graphics.lineBetween(x, y, x, y + UNIT * SCALE_Y)
-            }
-
-            if (cell.hasSide(OrthogonalCell.Side.NORTH)) {
-
+                val exists = cell.getCellOnSide(OrthogonalCell.Side.NORTH)
+                    ?.hasSide(OrthogonalCell.Side.SOUTH) ?: false
+                if (!exists) {
+                    (1 until SCALE_X).forEach {
+                        createBlock().drawCut(x + UNIT * it, y)
+                    }
+                    graphics.lineBetween(x, y, x + UNIT * SCALE_X, y)
+                }
             }
             if (cell.hasSide(OrthogonalCell.Side.NORTH) || cell.hasSide(OrthogonalCell.Side.EAST)) {
 
             }
             if (cell.hasSide(OrthogonalCell.Side.WEST)) {
-
+                val exists = cell.getCellOnSide(OrthogonalCell.Side.WEST)
+                    ?.hasSide(OrthogonalCell.Side.EAST) ?: false
+                if (!exists) {
+                    (1 until SCALE_Y).forEach {
+                        createBlock().drawCut(x, y + UNIT * it)
+                    }
+                    graphics.lineBetween(x, y, x, y + UNIT * SCALE_Y)
+                }
             }
             if (cell.hasSide(OrthogonalCell.Side.NORTH) || cell.hasSide(OrthogonalCell.Side.WEST)) {
 
@@ -56,7 +58,6 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
             if (cell.hasSide(OrthogonalCell.Side.SOUTH) || cell.hasSide(OrthogonalCell.Side.WEST)) {
 
             }
-
             if (cell.hasSide(OrthogonalCell.Side.EAST)) {
                 (1 until SCALE_Y).forEach {
                     createBlock().drawCut(x + UNIT * SCALE_X, y + UNIT * it)
