@@ -11,10 +11,6 @@ abstract class BaseScene(config: SettingsConfig) : Scene(config) {
     open fun create() {
     }
 
-    override fun update(time: Number, delta: Number) {
-        update(time.toFloat(), delta.toFloat())
-    }
-
-    open fun update(time: Float, delta: Float) {
+    override fun update(time: Float, delta: Float) {
     }
 }
