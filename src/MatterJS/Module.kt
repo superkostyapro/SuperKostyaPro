@@ -416,7 +416,9 @@ external interface IWorldDefinition : ICompositeDefinition {
         set(value) = definedExternally
 }
 
-external class Gravity : Vector {
+external interface Gravity {
+    var x: Number
+    var y: Number
     var scale: Number
 }
 
