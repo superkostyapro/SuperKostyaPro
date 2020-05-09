@@ -1,6 +1,5 @@
 package main.scene
 
-import Phaser.GameObjects.Graphics
 import Phaser.Types.Input.Keyboard.CursorKeys
 import main.Preferences
 import main.UNIT
@@ -23,8 +22,8 @@ class DrawingScene : GameScene(jsObject {
         generateMap(Preferences.worldLevel1)
     }
 
-    override fun createBlock(): Graphics {
-        return add.graphics().apply {
+    override fun createBlock(cX: Float, cY: Float) {
+        add.graphics().apply {
             fillStyle(0xf5f5f5)
             lineStyle(2, 0x000000)
             physics.add.existing(this, true)

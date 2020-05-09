@@ -1,14 +1,15 @@
 package main.scene
 
-import Phaser.GameObjects.Graphics
 import Phaser.Sound.BaseSound
 import Phaser.Types.Scenes.SettingsConfig
 import main.UNIT
-import main.actor.drawCut
 import main.extension.jsObject
 import main.maze.OrthogonalCell
 import main.maze.OrthogonalMaze
-import main.maze.generator.*
+import main.maze.generator.EllerGenerator
+import main.maze.generator.KruskalGenerator
+import main.maze.generator.PrimGenerator
+import main.maze.generator.WilsonGenerator
 
 abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
 
@@ -22,35 +23,18 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
     }
 
     protected fun generateMap(level: Int) {
-        val cols: Int
-        val rows: Int
-        val generator: Generator
-        when (level) {
-            1 -> {
-                cols = 10
-                rows = 10
-                generator = WilsonGenerator()
-            }
-            2 -> {
-                cols = 10
-                rows = 10
-                generator = EllerGenerator()
-            }
-            3 -> {
-                cols = 10
-                rows = 10
-                generator = KruskalGenerator()
-            }
-            else -> {
-                cols = 10
-                rows = 10
-                generator = PrimGenerator()
-            }
-        }
+        val cols = 8 * level
+        val rows = 5 * level
         val graphics = add.graphics()
         cameras.main.setSize(UNIT * (cols * SCALE_X + 1), UNIT * (rows * SCALE_Y + 1))
+        console.log("${UNIT * (cols * SCALE_X + 1)} ${UNIT * (rows * SCALE_Y + 1)}")
         val maze = OrthogonalMaze(cols, rows)
-        generator.generate(maze)
+        when (level) {
+            1 -> WilsonGenerator()
+            2 -> EllerGenerator()
+            3 -> KruskalGenerator()
+            else -> PrimGenerator()
+        }.generate(maze)
         maze.forEachCellIndexed { col, row, cell ->
             val x = UNIT * (col * SCALE_X + 0.5f)
             val y = UNIT * (row * SCALE_Y + 0.5f)
@@ -64,7 +48,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                         OrthogonalCell.Side.EAST
                     ))
                 ) {
-                    createBlock().drawCut(x + UNIT * SCALE_X, y)
+                    createBlock(x + UNIT * SCALE_X, y)
                 }
             }
             if (cell.hasSide(OrthogonalCell.Side.NORTH) || cell.hasSide(OrthogonalCell.Side.WEST)) {
@@ -82,7 +66,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                         OrthogonalCell.Side.EAST
                     )))
                 ) {
-                    createBlock().drawCut(x, y)
+                    createBlock(x, y)
                 }
             }
             if (cell.hasSide(OrthogonalCell.Side.SOUTH) || cell.hasSide(OrthogonalCell.Side.WEST)) {
@@ -96,59 +80,48 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                         OrthogonalCell.Side.EAST
                     )))
                 ) {
-                    createBlock().drawCut(x, y + UNIT * SCALE_Y)
+                    createBlock(x, y + UNIT * SCALE_Y)
                 }
             }
             if (cell.hasSide(OrthogonalCell.Side.SOUTH) || cell.hasSide(OrthogonalCell.Side.EAST)) {
-                createBlock().drawCut(x + UNIT * SCALE_X, y + UNIT * SCALE_Y)
+                createBlock(x + UNIT * SCALE_X, y + UNIT * SCALE_Y)
             }
             if (cell.hasSide(OrthogonalCell.Side.NORTH)) {
                 val exists = cell.getCellOnSide(OrthogonalCell.Side.NORTH)
                     ?.hasSide(OrthogonalCell.Side.SOUTH) ?: false
                 if (!exists) {
                     (1 until SCALE_X).forEach {
-                        createBlock().drawCut(x + UNIT * it, y)
+                        createBlock(x + UNIT * it, y)
                     }
                 }
-                graphics.lineBetween(x, y, x + UNIT * SCALE_X, y)
             }
             if (cell.hasSide(OrthogonalCell.Side.WEST)) {
                 val exists = cell.getCellOnSide(OrthogonalCell.Side.WEST)
                     ?.hasSide(OrthogonalCell.Side.EAST) ?: false
                 if (!exists) {
                     (1 until SCALE_Y).forEach {
-                        createBlock().drawCut(x, y + UNIT * it)
+                        createBlock(x, y + UNIT * it)
                     }
                 }
-                graphics.lineBetween(x, y, x, y + UNIT * SCALE_Y)
             }
             if (cell.hasSide(OrthogonalCell.Side.EAST)) {
                 (1 until SCALE_Y).forEach {
-                    createBlock().drawCut(x + UNIT * SCALE_X, y + UNIT * it)
+                    createBlock(x + UNIT * SCALE_X, y + UNIT * it)
                 }
-                graphics.lineBetween(x + UNIT * SCALE_X, y, x + UNIT * SCALE_X, y + UNIT * SCALE_Y)
             }
             if (cell.hasSide(OrthogonalCell.Side.SOUTH)) {
                 (1 until SCALE_X).forEach {
-                    createBlock().drawCut(x + UNIT * it, y + UNIT * SCALE_Y)
+                    createBlock(x + UNIT * it, y + UNIT * SCALE_Y)
                 }
-                graphics.lineBetween(x, y + UNIT * SCALE_Y, x + UNIT * SCALE_X, y + UNIT * SCALE_Y)
             }
         }
     }
 
-    abstract fun createBlock(): Graphics
+    abstract fun createBlock(cX: Float, cY: Float)
 
-    @Suppress("ConstantConditionIf")
     companion object {
 
-        const val SCALE_X = 2
-        const val SCALE_Y = 4
-
-        init {
-            if (SCALE_X <= 1 || SCALE_Y <= 1) {
-                throw Throwable("Scale values must be at least 2.")
-            }
-        }
+        const val SCALE_X = 3
+        const val SCALE_Y = 5
     }
 }
