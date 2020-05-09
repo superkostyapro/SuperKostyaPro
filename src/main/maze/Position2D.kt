@@ -41,14 +41,11 @@ open class Position2D(val x: Int, val y: Int) : Position {
     override operator fun plus(pos: Position) =
         Position2D(x + (pos as Position2D).x, y + pos.y)
 
-    override fun compareTo(pos: Position) =
-        if (x == (pos as Position2D).x && y == pos.y) {
-            0
-        } else if (x > pos.x || x == pos.x && y > pos.y) {
-            1
-        } else {
-            -1
-        }
+    override fun compareTo(pos: Position) = when {
+        x == (pos as Position2D).x && y == pos.y -> 0
+        x > pos.x || x == pos.x && y > pos.y -> 1
+        else -> -1
+    }
 
     override fun equals(other: Any?): Boolean {
         if (other === this) return true

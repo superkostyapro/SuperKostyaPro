@@ -33,19 +33,19 @@ class MenuScene : BaseScene(jsObject {
             fontSize = "24px"
             color = "#fdbbad"
         }).setOrigin(1, 0)
-        menu.add(add.existing(TextMenu(this, "WORLD $id-${level ?: 0}") {
+        menu.add(add.existing(TextMenu(this, "WORLD 1") {
             with(scene) {
                 stop("Menu")
                 start("Engine")
             }
         }) as Text)
-        menu.add(add.existing(TextMenu(this, "WORLD $id-${level ?: 0}") {
+        menu.add(add.existing(TextMenu(this, "WORLD 2") {
             with(scene) {
                 stop("Menu")
                 start("Program")
             }
         }) as Text)
-        menu.add(add.existing(TextMenu(this, "HHdsfsdfsdf") {
+        menu.add(add.existing(TextMenu(this, "WORLD 3") {
             with(scene) {
                 stop("Menu")
                 start("King")
