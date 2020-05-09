@@ -4,6 +4,21 @@ import org.w3c.dom.get
 import org.w3c.dom.set
 import kotlin.browser.localStorage
 
+external interface Storage {
+
+    fun setPassword(value: String)
+
+    fun set(index: dynamic, value: String? = definedExternally): Storage
+
+    fun get(index: String): String?
+
+    fun remove(index: String): Storage
+
+    fun reset()
+}
+
+external val secureStorage: Storage
+
 object Preferences {
 
     var wl1: Int
