@@ -67,4 +67,12 @@ open class OrthogonalCell(
             const val ALL_VALUE = 15
         }
     }
+
+    companion object {
+
+        val NORTH_EAST = Position2D(1, -1)
+        val SOUTH_EAST = Position2D(1, 1)
+        val SOUTH_WEST = Position2D(-1, 1)
+        val NORTH_WEST = Position2D(-1, -1)
+    }
 }
