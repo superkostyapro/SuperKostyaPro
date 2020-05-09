@@ -1,6 +1,4 @@
-@file:Suppress("UnsafeCastFromDynamic")
-
-package main.scene
+package main.scene.menu
 
 import Phaser.GameObjects.Graphics
 import Phaser.GameObjects.Text
@@ -8,8 +6,7 @@ import Phaser.Geom.Rectangle
 import Phaser.Types.GameObjects.Text.TextStyle
 import main.extension.dp
 import main.extension.jsObject
-import org.w3c.dom.get
-import kotlin.browser.localStorage
+import main.scene.BaseScene
 
 class MenuScene : BaseScene(jsObject {
     key = "Menu"
@@ -21,7 +18,7 @@ class MenuScene : BaseScene(jsObject {
 
     private lateinit var copyrightText: Text
 
-    private val worldsTexts = mutableListOf<Text>()
+    private val menu = mutableListOf<Text>()
 
     override fun create() {
         graphics = add.graphics()
@@ -36,42 +33,24 @@ class MenuScene : BaseScene(jsObject {
             fontSize = "24px"
             color = "#fdbbad"
         }).setOrigin(1, 0)
-        addWorldText(1) {
+        menu.add(add.existing(TextMenu(this, "WORLD $id-${level ?: 0}") {
             with(scene) {
                 stop("Menu")
                 start("Engine")
             }
-        }
-        addWorldText(2) {
+        }) as Text)
+        menu.add(add.existing(TextMenu(this, "WORLD $id-${level ?: 0}") {
             with(scene) {
                 stop("Menu")
                 start("Program")
             }
-        }
-        addWorldText(3) {
+        }) as Text)
+        menu.add(add.existing(TextMenu(this, "HHdsfsdfsdf") {
             with(scene) {
                 stop("Menu")
                 start("King")
             }
-        }
-    }
-
-    private fun addWorldText(id: Int, action: () -> Unit) {
-        val level = localStorage["world$id"]
-        val enable = id == 1 || !level.isNullOrBlank()
-        worldsTexts.add(add.text(0, 0, "WORLD $id-${level ?: 1}", jsObject<TextStyle> {
-            fontFamily = "sans-serif"
-            fontStyle = "bold"
-            fontSize = "24px"
-            color = if (enable) "#ffffff" else "#ffffff99"
-        }).apply {
-            if (enable) {
-                setInteractive(jsObject {
-                    useHandCursor = true
-                })
-                on("pointerdown", action)
-            }
-        })
+        }) as Text)
     }
 
     @Suppress("UNUSED_VARIABLE")
@@ -79,19 +58,18 @@ class MenuScene : BaseScene(jsObject {
         val padding = 10.dp(0.7f)
         val halfLine = 1.dp(0.7f)
         val halfPoint = 2.dp(0.7f)
-        val cX = cameras.main.centerX.toFloat()
-        val cY = cameras.main.centerY.toFloat()
-        val gameBounds: Rectangle = gameText.getBounds()
-        val gameWidth = gameBounds.width.toFloat()
-        val gameHeight = gameBounds.height.toFloat()
+        val cX = cameras.main.centerX
+        val cY = cameras.main.centerY
+        val gameBounds = gameText.getBounds<Rectangle>()
         gameText.apply {
-            x = cX - gameWidth / 2
+            x = cX - gameBounds.width / 2
+            // todo
             y = 60
         }
-        val blockX = gameBounds.x.toFloat() - padding
-        val blockY = gameBounds.y.toFloat() - padding / 2
-        val blockWidth = gameWidth + 2 * padding
-        val blockHeight = gameHeight + 3 * padding / 2
+        val blockX = gameBounds.x - padding
+        val blockY = gameBounds.y - padding / 2
+        val blockWidth = gameBounds.width + 2 * padding
+        val blockHeight = gameBounds.height + 3 * padding / 2
         graphics.clear()
             .fillStyle(0xc74b0b)
             .fillRect(blockX, blockY, blockWidth, blockHeight)
@@ -150,16 +128,15 @@ class MenuScene : BaseScene(jsObject {
                 halfPoint * 2
             )
         copyrightText.apply {
-            x = cX + gameWidth / 2 + padding
+            x = cX + blockWidth / 2
             y = blockY + blockHeight
         }
-        val copyrightBounds: Rectangle = copyrightText.getBounds()
-        worldsTexts.forEachIndexed { i, text ->
-            val worldBounds: Rectangle = text.getBounds()
+        val copyrightBounds = copyrightText.getBounds<Rectangle>()
+        menu.forEachIndexed { i, text ->
             text.apply {
-                x = cX - worldBounds.width.toFloat() / 2
-                y = copyrightBounds.bottom.toFloat() + 20.dp(0.5f) +
-                    i * (worldBounds.height.toFloat() + 15.dp(0.5f))
+                val bounds = getBounds<Rectangle>()
+                x = cX - bounds.width / 2
+                y = copyrightBounds.bottom + 20.dp(0.5f) + i * (bounds.height + 15.dp(0.5f))
             }
         }
     }
