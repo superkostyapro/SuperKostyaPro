@@ -69,5 +69,13 @@ abstract class GridMaze<T : Cell>(val width: Int, val height: Int) : Maze() {
         }
     }
 
+    override fun forEachCellIndexed(action: (col: Int, row: Int, Cell) -> Unit) {
+        for (x in grid.indices) {
+            for ((y, value) in grid[x].withIndex()) {
+                action(x, y, value)
+            }
+        }
+    }
+
     override fun toString() = "[width: $width, height: $height]"
 }

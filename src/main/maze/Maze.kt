@@ -56,6 +56,11 @@ abstract class Maze {
     abstract fun forEachCell(action: (Cell) -> Unit)
 
     /**
+     * Call [action] with index on every cell.
+     */
+    abstract fun forEachCellIndexed(action: (col: Int, row: Int, Cell) -> Unit)
+
+    /**
      * Clears all sides of all cells in the maze, resets all visited and distance map flags.
      */
     fun resetAll() {

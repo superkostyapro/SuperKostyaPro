@@ -9,11 +9,11 @@ import kotlin.math.min
 class CutBlock(
     private val backgroundColor: Int,
     private val lineColor: Int,
-    x: Number,
-    y: Number,
-    width: Number = UNIT_W,
-    height: Number = UNIT_H
-) : Block(x, y, width, height) {
+    cX: Float,
+    cY: Float,
+    width: Float = UNIT_W,
+    height: Float = UNIT_H
+) : Block(cX, cY, width, height) {
 
     override fun draw(graphics: Graphics) = graphics.let {
         it.fillStyle(backgroundColor)
