@@ -40,7 +40,14 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 }
             }
             if (cell.hasSide(OrthogonalCell.Side.NORTH) || cell.hasSide(OrthogonalCell.Side.EAST)) {
-
+                val top = cell.getCellOnSide(OrthogonalCell.Side.NORTH)
+                if (
+                    top == null || (!top.hasSide(OrthogonalCell.Side.SOUTH) && !top.hasSide(
+                        OrthogonalCell.Side.EAST
+                    ))
+                ) {
+                    createBlock().drawCut(x + UNIT * SCALE_X, y)
+                }
             }
             if (cell.hasSide(OrthogonalCell.Side.WEST)) {
                 val exists = cell.getCellOnSide(OrthogonalCell.Side.WEST)
@@ -53,10 +60,36 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 }
             }
             if (cell.hasSide(OrthogonalCell.Side.NORTH) || cell.hasSide(OrthogonalCell.Side.WEST)) {
-
+                val top = cell.getCellOnSide(OrthogonalCell.Side.NORTH)
+                val topLeft = cell.getCellOnPoint(OrthogonalCell.NORTH_WEST)
+                val left = cell.getCellOnSide(OrthogonalCell.Side.WEST)
+                if (
+                    (top == null || (!top.hasSide(OrthogonalCell.Side.SOUTH) && !top.hasSide(
+                        OrthogonalCell.Side.WEST
+                    ))) &&
+                    (topLeft == null || (!topLeft.hasSide(OrthogonalCell.Side.SOUTH) && !topLeft.hasSide(
+                        OrthogonalCell.Side.EAST
+                    ))) &&
+                    (left == null || (!left.hasSide(OrthogonalCell.Side.NORTH) && !left.hasSide(
+                        OrthogonalCell.Side.EAST
+                    )))
+                ) {
+                    createBlock().drawCut(x, y)
+                }
             }
             if (cell.hasSide(OrthogonalCell.Side.SOUTH) || cell.hasSide(OrthogonalCell.Side.WEST)) {
-
+                val left = cell.getCellOnSide(OrthogonalCell.Side.WEST)
+                val bottomLeft = cell.getCellOnPoint(OrthogonalCell.SOUTH_WEST)
+                if (
+                    (left == null || (!left.hasSide(OrthogonalCell.Side.SOUTH) && !left.hasSide(
+                        OrthogonalCell.Side.EAST
+                    ))) &&
+                    (bottomLeft == null || (!bottomLeft.hasSide(OrthogonalCell.Side.NORTH) && !bottomLeft.hasSide(
+                        OrthogonalCell.Side.EAST
+                    )))
+                ) {
+                    createBlock().drawCut(x, y + UNIT * SCALE_Y)
+                }
             }
             if (cell.hasSide(OrthogonalCell.Side.EAST)) {
                 (1 until SCALE_Y).forEach {
