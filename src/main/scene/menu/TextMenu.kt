@@ -16,9 +16,12 @@ class TextMenu(scene: Scene, text: String, action: () -> Unit) : Text(scene, 0, 
             text.endsWith("1") -> Preferences.wl1
             text.endsWith("2") -> Preferences.wl2
             text.endsWith("3") -> Preferences.wl3
-            else -> 100
+            else -> null
         }
-        if (level > 0) {
+        if (level != null) {
+            setText("$text-$level")
+        }
+        if (level == null || level > 0) {
             setColor("#ffffffdd")
             setInteractive(jsObject {
                 useHandCursor = true
@@ -26,16 +29,12 @@ class TextMenu(scene: Scene, text: String, action: () -> Unit) : Text(scene, 0, 
             on("pointerover", {
                 setColor("#ffffff")
             })
+            on("pointerdown", action)
             on("pointerout", {
                 setColor("#ffffffdd")
             })
         } else {
             setColor("#ffffff99")
         }
-        on("pointerdown", {
-            if (level > 0) {
-                action()
-            }
-        })
     }
 }

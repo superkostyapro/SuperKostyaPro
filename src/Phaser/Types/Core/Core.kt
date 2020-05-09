@@ -3,6 +3,7 @@
 package Phaser.Types.Core
 
 import Phaser.Scale.CenterType
+import Phaser.Scale.ScaleModeType
 import Phaser.Types.Physics.Arcade.ArcadeWorldConfig
 import Phaser.Types.Physics.Matter.MatterWorldConfig
 import Phaser.integer
@@ -367,7 +368,7 @@ external interface ScaleConfig {
     var expandParent: Boolean?
         get() = definedExternally
         set(value) = definedExternally
-    var mode: dynamic /* ScaleModeType? | integer*/
+    var mode: ScaleModeType?
         get() = definedExternally
         set(value) = definedExternally
     var min: WidthHeight?

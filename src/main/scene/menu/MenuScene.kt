@@ -4,7 +4,6 @@ import Phaser.GameObjects.Graphics
 import Phaser.GameObjects.Text
 import Phaser.Geom.Rectangle
 import Phaser.Types.GameObjects.Text.TextStyle
-import main.extension.dp
 import main.extension.jsObject
 import main.scene.BaseScene
 
@@ -55,9 +54,9 @@ class MenuScene : BaseScene(jsObject {
 
     @Suppress("UNUSED_VARIABLE")
     override fun update(time: Float, delta: Float) {
-        val padding = 10.dp(0.7f)
-        val halfLine = 1.dp(0.7f)
-        val halfPoint = 2.dp(0.7f)
+        val padding = 10f
+        val halfLine = 1
+        val halfPoint = 2
         val cX = cameras.main.centerX
         val cY = cameras.main.centerY
         val gameBounds = gameText.getBounds<Rectangle>()
@@ -136,7 +135,7 @@ class MenuScene : BaseScene(jsObject {
             text.apply {
                 val bounds = getBounds<Rectangle>()
                 x = cX - bounds.width / 2
-                y = copyrightBounds.bottom + 20.dp(0.5f) + i * (bounds.height + 15.dp(0.5f))
+                y = copyrightBounds.bottom + 20 + i * (bounds.height + 15)
             }
         }
     }

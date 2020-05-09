@@ -3,7 +3,7 @@ package main
 import FontFace
 import Phaser.AUTO
 import Phaser.Game
-import Phaser.Scale.RESIZE
+import Phaser.Scale.ScaleModeType
 import Phaser.Types.Core.GameConfig
 import Phaser.Types.Core.PhysicsConfig
 import Phaser.Types.Core.ScaleConfig
@@ -30,7 +30,7 @@ private fun startGame() {
         title = "Super Kostya Pro"
         backgroundColor = "#5c93fa"
         scale = jsObject<ScaleConfig> {
-            mode = RESIZE
+            mode = ScaleModeType.RESIZE
             parent = "game" // id of div
             width = "100%"
             height = "100%"
