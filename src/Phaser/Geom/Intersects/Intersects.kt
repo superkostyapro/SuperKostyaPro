@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Geom.Intersects")
+
 package Phaser.Geom.Intersects
 
 import Phaser.Geom.*

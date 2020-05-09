@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Geom")
+
 package Phaser.Geom
 
 import Phaser.CenterFunction

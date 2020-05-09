@@ -1,11 +1,13 @@
+@file:JsQualifier("Phaser.Physics.Arcade.Tilemap")
+
 package Phaser.Physics.Arcade.Tilemap
 
-import Phaser.Tilemaps.Tile
 import Phaser.GameObjects.Sprite
-import Phaser.Physics.Arcade.Body
 import Phaser.Geom.Rectangle
+import Phaser.Physics.Arcade.Body
 import Phaser.Tilemaps.DynamicTilemapLayer
 import Phaser.Tilemaps.StaticTilemapLayer
+import Phaser.Tilemaps.Tile
 
 external fun ProcessTileCallbacks(tile: Tile, sprite: Sprite): Boolean
 

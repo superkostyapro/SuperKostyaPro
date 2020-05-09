@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.GameObjects.RetroFont")
+
 package Phaser.GameObjects.RetroFont
 
 import Phaser.Scene

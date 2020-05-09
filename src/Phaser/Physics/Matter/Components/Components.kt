@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Physics.Matter.Components")
+
 package Phaser.Physics.Matter.Components
 
 import MatterJS.Body

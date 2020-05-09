@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Physics.Matter.Events")
+
 package Phaser.Physics.Matter.Events
 
 import Phaser.Types.Physics.Matter.MatterCollisionData

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.GameObjects.Particles.Zones")
+
 package Phaser.GameObjects.Particles.Zones
 
 import Phaser.GameObjects.Particles.Particle

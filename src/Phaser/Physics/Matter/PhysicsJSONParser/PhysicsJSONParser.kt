@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Physics.Matter.PhysicsJSONParser")
+
 package Phaser.Physics.Matter.PhysicsJSONParser
 
 import MatterJS.BodyType

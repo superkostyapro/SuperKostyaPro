@@ -1,6 +1,6 @@
-package Phaser.Physics.Arcade.Components
+@file:JsQualifier("Phaser.Physics.Arcade.Components")
 
-import kotlin.js.*
+package Phaser.Physics.Arcade.Components
 
 external interface Acceleration {
     fun setAcceleration(x: Number, y: Number = definedExternally): Acceleration /* this */

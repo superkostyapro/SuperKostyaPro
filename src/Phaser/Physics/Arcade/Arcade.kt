@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Physics.Arcade")
+
 package Phaser.Physics.Arcade
 
 import Phaser.ArcadePhysicsCallback
@@ -238,9 +240,7 @@ open external class ArcadePhysics(scene: Phaser.Scene) {
     open fun furthest(source: Any): dynamic /* Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody | Phaser.GameObjects.GameObject */
 }
 
-open external class Sprite : Phaser.GameObjects.Sprite, Acceleration, Angular, Bounce, Debug, Drag, Enable, Friction, Gravity, Immovable, Mass, Size, Velocity, Alpha, BlendMode, Depth, Flip, GetBounds, Origin, Pipeline, ScrollFactor, Phaser.GameObjects.Components.Size, Texture, Tint, Transform, Visible {
-    constructor(scene: Scene, x: Number, y: Number, texture: String, frame: String)
-    constructor(scene: Scene, x: Number, y: Number, texture: String, frame: integer)
+open external class Sprite(scene: Scene, x: Number, y: Number, texture: String, frame: dynamic/* String | integer*/) : Phaser.GameObjects.Sprite, Acceleration, Angular, Bounce, Debug, Drag, Enable, Friction, Gravity, Immovable, Mass, Size, Velocity, Alpha, BlendMode, Depth, Flip, GetBounds, Origin, Pipeline, ScrollFactor, Phaser.GameObjects.Components.Size, Texture, Tint, Transform, Visible {
     override var body: dynamic /* Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody */
     override fun clearAlpha(): Sprite /* this */
     override fun setAlpha(topLeft: Number, topRight: Number, bottomLeft: Number, bottomRight: Number): Sprite /* this */

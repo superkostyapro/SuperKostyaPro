@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.GameObjects")
+
 package Phaser.GameObjects
 
 import Phaser.*
@@ -2918,9 +2920,7 @@ open external class Sprite : GameObject, Alpha, BlendMode, Depth, Flip, GetBound
     override fun setTexture(key: String): Sprite /* this */
 }
 
-open external class Text : GameObject, Alpha, BlendMode, ComputedSize, Crop, Depth, Flip, GetBounds, Mask, Origin, Pipeline, ScrollFactor, Tint, Transform, Visible {
-    constructor(scene: Scene, x: Number, y: Number, text: String, style: Phaser.Types.GameObjects.Text.TextStyle)
-    constructor(scene: Scene, x: Number, y: Number, text: Array<String>, style: Phaser.Types.GameObjects.Text.TextStyle)
+open external class Text(scene: Scene, x: Number, y: Number, text: dynamic/* String | Array<String> */, style: Phaser.Types.GameObjects.Text.TextStyle) : GameObject, Alpha, BlendMode, ComputedSize, Crop, Depth, Flip, GetBounds, Mask, Origin, Pipeline, ScrollFactor, Tint, Transform, Visible {
     open var renderer: dynamic /* Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer */
     open var canvas: HTMLCanvasElement
     open var context: CanvasRenderingContext2D

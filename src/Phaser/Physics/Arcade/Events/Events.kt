@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Physics.Arcade.Events")
+
 package Phaser.Physics.Arcade.Events
 
 external var COLLIDE: Any

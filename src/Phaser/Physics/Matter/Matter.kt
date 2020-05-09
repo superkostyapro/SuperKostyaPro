@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Physics.Matter")
+
 package Phaser.Physics.Matter
 
 import MatterJS.*

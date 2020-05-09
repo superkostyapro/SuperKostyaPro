@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Physics.Matter.PhysicsEditorParser")
+
 package Phaser.Physics.Matter.PhysicsEditorParser
 
 import MatterJS.BodyType

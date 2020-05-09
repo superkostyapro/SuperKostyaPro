@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.GameObjects.Components")
+
 package Phaser.GameObjects.Components
 
 import Phaser.Animations.AnimationFrame

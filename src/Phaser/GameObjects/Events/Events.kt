@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.GameObjects.Events")
+
 package Phaser.GameObjects.Events
 
 external var DESTROY: Any

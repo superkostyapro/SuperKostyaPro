@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.GameObjects.Particles")
+
 package Phaser.GameObjects.Particles
 
 import Phaser.BlendModes
