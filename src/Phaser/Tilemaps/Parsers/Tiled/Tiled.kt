@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Tilemaps.Parsers.Tiled")
+
 package Phaser.Tilemaps.Parsers.Tiled
 
 import Phaser.Tilemaps.LayerData

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Loader.FileTypes")
+
 package Phaser.Loader.FileTypes
 
 import Phaser.Loader.File

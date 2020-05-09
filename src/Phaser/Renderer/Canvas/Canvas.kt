@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Renderer.Canvas")
+
 package Phaser.Renderer.Canvas
 
 import Phaser.Cameras.Scene2D.Camera

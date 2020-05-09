@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input.Keyboard.KeyCodes")
+
 package Phaser.Input.Keyboard.KeyCodes
 
 import Phaser.integer

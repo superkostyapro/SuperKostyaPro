@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Renderer.Snapshot")
+
 package Phaser.Renderer.Snapshot
 
 import Phaser.Types.Renderer.Snapshot.SnapshotState

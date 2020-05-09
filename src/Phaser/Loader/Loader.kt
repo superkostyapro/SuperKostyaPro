@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Loader")
+
 package Phaser.Loader
 
 import Phaser.Cache.CacheManager

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input.Gamepad.Events")
+
 package Phaser.Input.Gamepad.Events
 
 external var BUTTON_DOWN: Any

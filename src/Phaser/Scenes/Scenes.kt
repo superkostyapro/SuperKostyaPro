@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Scenes")
+
 package Phaser.Scenes
 
 import Phaser.Animations.AnimationManager

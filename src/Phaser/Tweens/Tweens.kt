@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Tweens")
+
 package Phaser.Tweens
 
 import Phaser.Events.EventEmitter

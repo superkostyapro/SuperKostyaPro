@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Math.Easing.Quadratic")
+
 package Phaser.Math.Easing.Quadratic
 
 external fun In(v: Number): Number

@@ -1,6 +1,7 @@
+@file:JsQualifier("Phaser.Math.Angle")
+
 package Phaser.Math.Angle
 
-import kotlin.js.*
 import Phaser.Types.Math.Vector2Like
 
 external fun Between(x1: Number, y1: Number, x2: Number, y2: Number): Number

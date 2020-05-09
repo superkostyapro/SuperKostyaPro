@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input.Keyboard")
+
 package Phaser.Input.Keyboard
 
 import Phaser.Events.EventEmitter

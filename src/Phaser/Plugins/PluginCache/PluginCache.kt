@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Plugins.PluginCache")
+
 package Phaser.Plugins.PluginCache
 
 import Phaser.Types.Plugins.CorePluginContainer

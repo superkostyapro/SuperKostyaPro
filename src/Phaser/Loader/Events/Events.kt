@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Loader.Events")
+
 package Phaser.Loader.Events
 
 external var ADD: Any

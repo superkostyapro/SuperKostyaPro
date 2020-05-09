@@ -1,6 +1,6 @@
-package Phaser.Math.Easing
+@file:JsQualifier("Phaser.Math.Easing")
 
-import kotlin.js.*
+package Phaser.Math.Easing
 
 external fun Linear(v: Number): Number
 

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Plugins")
+
 package Phaser.Plugins
 
 import Phaser.Game

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Textures")
+
 package Phaser.Textures
 
 import Phaser.EachTextureCallback

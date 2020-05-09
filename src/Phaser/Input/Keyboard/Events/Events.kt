@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input.Keyboard.Events")
+
 package Phaser.Input.Keyboard.Events
 
 external var ANY_KEY_DOWN: Any

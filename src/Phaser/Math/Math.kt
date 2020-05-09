@@ -1,11 +1,12 @@
+@file:JsQualifier("Phaser.Math")
+
 package Phaser.Math
 
-import kotlin.js.*
-import org.khronos.webgl.*
 import Phaser.Geom.Point
-import Phaser.Types.Math.Vector2Like
 import Phaser.Types.Math.SinCosTable
+import Phaser.Types.Math.Vector2Like
 import Phaser.integer
+import org.khronos.webgl.Float32Array
 
 external fun Average(values: Array<Number>): Number
 

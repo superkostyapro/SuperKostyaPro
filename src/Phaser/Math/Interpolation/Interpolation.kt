@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Math.Interpolation")
+
 package Phaser.Math.Interpolation
 
 external fun Bezier(v: Array<Number>, k: Number): Number

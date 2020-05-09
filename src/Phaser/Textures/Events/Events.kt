@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Textures.Events")
+
 package Phaser.Textures.Events
 
 external var ADD: Any

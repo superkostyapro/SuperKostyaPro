@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Scenes.Events")
+
 package Phaser.Scenes.Events
 
 external var BOOT: Any

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Tilemaps.Parsers.Impact")
+
 package Phaser.Tilemaps.Parsers.Impact
 
 import Phaser.Tilemaps.LayerData

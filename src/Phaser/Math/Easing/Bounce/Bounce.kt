@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Math.Easing.Bounce")
+
 package Phaser.Math.Easing.Bounce
 
 external fun In(v: Number): Number

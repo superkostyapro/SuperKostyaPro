@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Scenes.Settings")
+
 package Phaser.Scenes.Settings
 
 import Phaser.Types.Scenes.SettingsConfig

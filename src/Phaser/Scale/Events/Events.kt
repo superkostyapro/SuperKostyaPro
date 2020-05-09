@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Scale.Events")
+
 package Phaser.Scale.Events
 
 external var ENTER_FULLSCREEN: Any

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input.Gamepad.Configs")
+
 package Phaser.Input.Gamepad.Configs
 
 external var SNES_USB: Any?

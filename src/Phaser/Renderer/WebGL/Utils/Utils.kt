@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Renderer.WebGL.Utils")
+
 package Phaser.Renderer.WebGL.Utils
 
 import org.khronos.webgl.WebGLRenderingContext

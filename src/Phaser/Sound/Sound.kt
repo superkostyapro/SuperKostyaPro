@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Sound")
+
 package Phaser.Sound
 
 import Phaser.Cache.BaseCache

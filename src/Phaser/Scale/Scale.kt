@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Scale")
+
 package Phaser.Scale
 
 import Phaser.Device.Fullscreen
@@ -9,14 +11,6 @@ import Phaser.Structs.Size
 import Phaser.Types.Core.GameConfig
 import Phaser.integer
 import org.w3c.dom.HTMLCanvasElement
-
-typealias CenterType = Center
-
-typealias OrientationType = Orientation
-
-typealias ScaleModeType = ScaleModes
-
-typealias ZoomType = Zoom
 
 external enum class Center {
     NO_CENTER,

@@ -1,6 +1,6 @@
-package Phaser.Math.Easing.Elastic
+@file:JsQualifier("Phaser.Math.Easing.Elastic")
 
-import kotlin.js.*
+package Phaser.Math.Easing.Elastic
 
 external fun In(v: Number, amplitude: Number = definedExternally, period: Number = definedExternally): Number
 

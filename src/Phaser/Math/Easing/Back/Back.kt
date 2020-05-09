@@ -1,6 +1,6 @@
-package Phaser.Math.Easing.Back
+@file:JsQualifier("Phaser.Math.Easing.Back")
 
-import kotlin.js.*
+package Phaser.Math.Easing.Back
 
 external fun In(v: Number, overshoot: Number = definedExternally): Number
 

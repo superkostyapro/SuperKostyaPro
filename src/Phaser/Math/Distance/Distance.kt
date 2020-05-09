@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Math.Distance")
+
 package Phaser.Math.Distance
 
 import Phaser.Types.Math.Vector2Like

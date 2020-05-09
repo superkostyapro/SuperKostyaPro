@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Math.Easing.Expo")
+
 package Phaser.Math.Easing.Expo
 
 external fun In(v: Number): Number

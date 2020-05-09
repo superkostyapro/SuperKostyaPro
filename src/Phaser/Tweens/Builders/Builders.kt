@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Tweens.Builders")
+
 package Phaser.Tweens.Builders
 
 import Phaser.Tweens.Timeline

@@ -1,6 +1,6 @@
-package Phaser.Math.Snap
+@file:JsQualifier("Phaser.Math.Snap")
 
-import kotlin.js.*
+package Phaser.Math.Snap
 
 external fun Ceil(value: Number, gap: Number, start: Number = definedExternally, divide: Boolean = definedExternally): Number
 

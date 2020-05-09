@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Time")
+
 package Phaser.Time
 
 import Phaser.Scene

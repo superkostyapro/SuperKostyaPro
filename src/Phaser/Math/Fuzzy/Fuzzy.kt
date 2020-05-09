@@ -1,6 +1,6 @@
-package Phaser.Math.Fuzzy
+@file:JsQualifier("Phaser.Math.Fuzzy")
 
-import kotlin.js.*
+package Phaser.Math.Fuzzy
 
 external fun Ceil(value: Number, epsilon: Number = definedExternally): Number
 

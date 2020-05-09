@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input.InputPluginCache")
+
 package Phaser.Input.InputPluginCache
 
 import Phaser.Input.InputPlugin

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input.Events")
+
 package Phaser.Input.Events
 
 external var BOOT: Any

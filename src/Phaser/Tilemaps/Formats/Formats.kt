@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Tilemaps.Formats")
+
 package Phaser.Tilemaps.Formats
 
 external var CSV: Number

@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Tweens.Events")
+
 package Phaser.Tweens.Events
 
 external var TIMELINE_COMPLETE: Any

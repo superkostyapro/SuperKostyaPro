@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input.Gamepad")
+
 package Phaser.Input.Gamepad
 
 import Phaser.Events.EventEmitter

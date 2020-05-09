@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Tilemaps")
+
 package Phaser.Tilemaps
 
 import Phaser.*

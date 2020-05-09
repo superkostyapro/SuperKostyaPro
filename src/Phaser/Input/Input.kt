@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input")
+
 package Phaser.Input
 
 import Phaser.Cameras.Scene2D.Camera

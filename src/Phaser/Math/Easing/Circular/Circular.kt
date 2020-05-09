@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Math.Easing.Circular")
+
 package Phaser.Math.Easing.Circular
 
 external fun In(v: Number): Number

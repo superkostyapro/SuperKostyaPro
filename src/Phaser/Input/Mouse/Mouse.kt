@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input.Mouse")
+
 package Phaser.Input.Mouse
 
 import Phaser.Input.InputManager

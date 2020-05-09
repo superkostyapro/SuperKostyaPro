@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Input.Touch")
+
 package Phaser.Input.Touch
 
 import Phaser.Input.InputManager

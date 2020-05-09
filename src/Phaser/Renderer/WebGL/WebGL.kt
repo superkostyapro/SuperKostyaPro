@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Renderer.WebGL")
+
 package Phaser.Renderer.WebGL
 
 import Phaser.Cameras.Scene2D.BaseCamera

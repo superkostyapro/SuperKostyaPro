@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Structs")
+
 package Phaser.Structs
 
 import Phaser.EachListCallback

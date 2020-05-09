@@ -1,3 +1,5 @@
+@file:JsQualifier("Phaser.Sound.Events")
+
 package Phaser.Sound.Events
 
 external var COMPLETE: Any
