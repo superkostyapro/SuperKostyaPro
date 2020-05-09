@@ -33,7 +33,7 @@ interface Position {
 
     /**
      * Return the distance from this position to [pos].
-     * Used by the maze solver as an arbritrary cost heuristic.
+     * Used by the maze solver as an arbitrary cost heuristic.
      */
     fun distanceTo(pos: Position): Int
 

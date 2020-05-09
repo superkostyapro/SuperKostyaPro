@@ -59,4 +59,12 @@ open class Position2D(val x: Int, val y: Int) : Position {
     }
 
     override fun toString() = "[x: $x, y: $y]"
+
+    companion object {
+
+        val NORTH_EAST = Position2D(1, -1)
+        val SOUTH_EAST = Position2D(1, 1)
+        val SOUTH_WEST = Position2D(-1, 1)
+        val NORTH_WEST = Position2D(-1, -1)
+    }
 }

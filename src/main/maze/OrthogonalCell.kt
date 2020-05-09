@@ -44,7 +44,7 @@ open class OrthogonalCell(
      */
     enum class Side(
         override val value: Int,
-        override val relativePos: Position2D,
+        override val point: Position2D,
         override val symbol: String
     ) : Cell.Side {
 

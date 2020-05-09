@@ -52,14 +52,7 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
      * All neighbors must be able to validly connect with this cell.
      */
     open val neighbors: List<Cell> by lazy {
-        val list = mutableListOf<Cell>()
-        for (side in allSides) {
-            val cell = getCellOnSide(side)
-            if (cell != null) {
-                list.add(cell)
-            }
-        }
-        list
+        allSides.mapNotNull { getCellOnSide(it) }
     }
 
     /**
@@ -67,8 +60,15 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
      * If the neighbor doesn't exist, returns null.
      */
     open fun getCellOnSide(side: Side): Cell? {
-        if (side.relativePos == null) return null
-        return maze.cellAt(position + side.relativePos!!)
+        return getCellOnPoint(side.point ?: return null)
+    }
+
+    /**
+     * Returns the neighbor cell on the [point] of the cell.
+     * If the neighbor doesn't exist, returns null.
+     */
+    open fun getCellOnPoint(point: Position): Cell? {
+        return maze.cellAt(position + point)
     }
 
     /**
@@ -121,14 +121,8 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
      * neighbors in the same maze. Returns null otherwise.
      */
     open fun findSideOfCell(cell: Cell): Side? {
-        if (cell.maze === maze) {
-            for (side in allSides) {
-                if (getCellOnSide(side) == cell) {
-                    return side
-                }
-            }
-        }
-        return null
+        if (cell.maze !== maze) return null
+        return allSides.firstOrNull { getCellOnSide(it) == cell }
     }
 
     /**
@@ -197,7 +191,7 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
          * Relative position of a cell on this side.
          * Can be null if not always the same or not applicable.
          */
-        val relativePos: Position?
+        val point: Position?
 
         /**
          * The symbol for this side, used by [Cell.toString].
