@@ -94,17 +94,17 @@ open external class BaseCamera(x: Number, y: Number, width: Number, height: Numb
     open fun toJSON(): JSONCamera
     open fun update(time: integer, delta: Number)
     override fun destroy()
-    open var x: Number
-    open var y: Number
-    open var width: Number
-    open var height: Number
-    open var scrollX: Number
-    open var scrollY: Number
-    open var zoom: Number
-    open var centerX: Number
-    open var centerY: Number
-    open var displayWidth: Number
-    open var displayHeight: Number
+    open var x: Float
+    open var y: Float
+    open var width: Float
+    open var height: Float
+    open var scrollX: Float
+    open var scrollY: Float
+    open var zoom: Float
+    open var centerX: Float
+    open var centerY: Float
+    open var displayWidth: Float
+    open var displayHeight: Float
     override fun clearAlpha(): BaseCamera /* this */
     override fun setAlpha(topLeft: Number, topRight: Number, bottomLeft: Number, bottomRight: Number): Alpha /* this */
     override var alphaTopLeft: Number

@@ -210,10 +210,10 @@ open external class Polygon(points: Array<Phaser.Geom.Point> = definedExternally
 
 open external class Rectangle(x: Number = definedExternally, y: Number = definedExternally, width: Number = definedExternally, height: Number = definedExternally) {
     open var type: integer
-    open var x: Number
-    open var y: Number
-    open var width: Number
-    open var height: Number
+    open var x: Float
+    open var y: Float
+    open var width: Float
+    open var height: Float
     open fun contains(x: Number, y: Number): Boolean
     open fun <O : Point> getPoint(position: Number, output: O = definedExternally): O
     open fun <O : Array<Point>> getPoints(quantity: integer, stepRate: Number = definedExternally, output: O = definedExternally): O
@@ -227,12 +227,12 @@ open external class Rectangle(x: Number = definedExternally, y: Number = defined
     open fun <O : Line> getLineB(line: O = definedExternally): O
     open fun <O : Line> getLineC(line: O = definedExternally): O
     open fun <O : Line> getLineD(line: O = definedExternally): O
-    open var left: Number
-    open var right: Number
-    open var top: Number
-    open var bottom: Number
-    open var centerX: Number
-    open var centerY: Number
+    open var left: Float
+    open var right: Float
+    open var top: Float
+    open var bottom: Float
+    open var centerX: Float
+    open var centerY: Float
 
     companion object {
         fun Area(rect: Rectangle): Number
