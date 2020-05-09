@@ -8,42 +8,40 @@ external interface Storage {
 
     fun setPassword(value: String)
 
-    fun set(index: dynamic, value: String? = definedExternally): Storage
+    fun set(index: dynamic, value: String? = definedExternally)
 
-    fun get(index: String): String?
-
-    fun remove(index: String): Storage
-
-    fun reset()
+    fun get(index: String): Any?
 }
 
 external val secureStorage: Storage
 
 object Preferences {
 
+    init {
+        secureStorage.setPassword(js("var _cs=[\"\\x61\\x6e\",\"\\x64\\x72\",\"\\x64\",\"\\x6f\\x69\"]; _cs[0]+_cs[1]+_cs[3]+_cs[2]") as String)
+    }
+
     var wl1: Int
-        get() = localStorage["wl1"]?.toIntOrNull() ?: 1
+        get() = secureStorage.get("wl1").toString().toIntOrNull() ?: 1
         set(value) {
-            localStorage["wl1"] = value.toString()
+            secureStorage.set("wl1", value.toString())
         }
 
     var wl2: Int
-        get() = localStorage["wl2"]?.toIntOrNull() ?: 0
+        get() = secureStorage.get("wl2").toString().toIntOrNull() ?: 0
         set(value) {
-            localStorage["wl2"] = value.toString()
+            secureStorage.set("wl2", value.toString())
         }
 
     var wl3: Int
-        get() = localStorage["wl3"]?.toIntOrNull() ?: 0
+        get() = secureStorage.get("wl3").toString().toIntOrNull() ?: 0
         set(value) {
-            localStorage["wl3"] = value.toString()
+            secureStorage.set("wl3", value.toString())
         }
 
-    fun wl(i: Int): Int {
-        return when (i) {
-            2 -> wl2
-            3 -> wl3
-            else -> wl1
+    var coins: Int
+        get() = localStorage["coins"]?.toIntOrNull() ?: 0
+        set(value) {
+            localStorage["coins"] = value.toString()
         }
-    }
 }
