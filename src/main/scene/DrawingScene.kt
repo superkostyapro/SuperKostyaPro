@@ -14,8 +14,6 @@ class DrawingScene : BaseScene(jsObject {
     key = "Draw"
 }) {
 
-    override val tag = this::class.js.name
-
     private lateinit var graphics: Graphics
 
     private lateinit var cursors: CursorKeys
@@ -23,24 +21,51 @@ class DrawingScene : BaseScene(jsObject {
     private val blocks = mutableListOf<Block>()
 
     override fun preload() {
-        load.audio("bg${this::class.js.name}", "sound/01 - Super Mario Bros.mp3")
+        load.audio("bg$tag", "sound/01 - Super Mario Bros.mp3")
     }
 
     override fun create() {
         super.create()
-        cameras.main.setSize(6000, 6000)
-        physics.world.setBounds(0, 0, 6000, 6000)
         cameras.main.setBackgroundColor(0xfafafa)
         cursors = input.keyboard.createCursorKeys()
         graphics = add.graphics()
         //physics.world.enable(graphics)
-        val width = 100
-        val height = 30
-        generateMaze(width, height).forEachCellIndexed { col, row, cell ->
-            console.log("$row $col")
+        val cols = 30
+        val rows = 10
+        cameras.main.setSize(UNIT_W * (cols * 2 + 1), UNIT_H * (rows * 3 + 1))
+        generateMaze(cols, rows).forEachCellIndexed { col, row, cell ->
+            val x = UNIT_W * (col * 2 + 0.5f)
+            val y = UNIT_H * (row * 3 + 0.5f)
+            //console.log("$x $y")
+            graphics.lineStyle(16, 0x00ff00)
+            graphics.strokeRect(x, y, UNIT_W * 2, UNIT_H * 3)
+            graphics.lineStyle(4, 0xff0000)
             if (cell.hasSide(OrthogonalCell.Side.NORTH)) {
+                blocks.add(CutBlock(0xffffff, 0x000000, x + UNIT_W, y))
+                graphics.lineBetween(x, y, x + UNIT_W * 2, y)
+            }
+            if (cell.hasSide(OrthogonalCell.Side.WEST)) {
+                blocks.add(CutBlock(0xffffff, 0x000000, x, y + UNIT_H))
+                blocks.add(CutBlock(0xffffff, 0x000000, x, y + UNIT_H * 2))
+                graphics.lineBetween(x, y, x, y + UNIT_H * 3)
+            }
+            if (cell.hasSide(OrthogonalCell.Side.EAST)) {
+                blocks.add(CutBlock(0xffffff, 0x000000, x + UNIT_W * 2, y + UNIT_H))
+                blocks.add(CutBlock(0xffffff, 0x000000, x + UNIT_W * 2, y + UNIT_H * 2))
+                graphics.lineBetween(x + UNIT_W * 2, y, x + UNIT_W * 2, y + UNIT_H * 3)
+            }
+            if (cell.hasSide(OrthogonalCell.Side.SOUTH)) {
+                blocks.add(CutBlock(0xffffff, 0x000000, x + UNIT_W, y + UNIT_H * 3))
+                graphics.lineBetween(x, y + UNIT_H * 3, x + UNIT_W * 2, y + UNIT_H * 3)
+            }
+            /*if (cell.hasSide(OrthogonalCell.Side.NORTH)) {
                 //y += UNIT_H
                 blocks.add(CutBlock(0xffffff, 0x000000, col * UNIT_W, row * UNIT_H))
+            }*/
+        }
+        with(graphics) {
+            blocks.forEach {
+                it.draw(this)
             }
         }
         /*generateMaze(width, height).forEachCellIndexed { index, cell ->
@@ -57,22 +82,16 @@ class DrawingScene : BaseScene(jsObject {
     }
 
     override fun update(time: Float, delta: Float) {
-        with(graphics) {
-            clear()
-            blocks.forEach {
-                it.draw(this)
-            }
-        }
         if (cursors.up?.isDown == true) {
-            cameras.main.y -= 4
+            cameras.main.y += 40
         } else if (cursors.down?.isDown == true) {
-            cameras.main.y += 4
+            cameras.main.y -= 40
         }
 
         if (cursors.left?.isDown == true) {
-            cameras.main.x -= 4
+            cameras.main.x += 40
         } else if (cursors.right?.isDown == true) {
-            cameras.main.x += 4
+            cameras.main.x -= 40
         }
     }
 }
