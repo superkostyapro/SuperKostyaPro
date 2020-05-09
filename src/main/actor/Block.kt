@@ -5,7 +5,7 @@ import main.UNIT
 import kotlin.math.max
 import kotlin.math.min
 
-fun Graphics.drawCutRect(
+fun Graphics.drawCut(
     cX: Float,
     cY: Float,
     width: Float = UNIT,
