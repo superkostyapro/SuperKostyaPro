@@ -31,7 +31,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
     protected fun generateMap(level: Int) {
         val cols = max(level, 2) * (SCALE_Y + 0)
         val rows = max(level, 2) * (SCALE_X + 0)
-        val graphics = add.graphics()
+        //val graphics = add.graphics()
         cameras.main.setSize(UNIT * (cols * SCALE_X + 1), UNIT * (rows * SCALE_Y + 1))
         console.log("${UNIT * (cols * SCALE_X + 1)} ${UNIT * (rows * SCALE_Y + 1)}")
         val maze = OrthogonalMaze(cols, rows)
@@ -42,12 +42,17 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
             else -> PrimGenerator()
         }.generate(maze)
         maze.forEachCellIndexed { col, row, cell ->
+            //graphics.lineStyle(16, 0x00ff00)
+            //.strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
             val x = UNIT * (col * SCALE_X + 0.5f)
             val y = UNIT * (row * SCALE_Y + 0.5f)
-            graphics.lineStyle(16, 0x00ff00)
-            //.strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
+            val top = cell.getCellOnSide(NORTH)
+            val right = cell.getCellOnSide(EAST)
+            val left = cell.getCellOnSide(WEST)
+            val bottom = cell.getCellOnSide(SOUTH)
+            val sides = mutableListOf<Cell.Side>()
             if (cell.hasSide(NORTH)) {
-                val exists = cell.getCellOnSide(NORTH)?.hasSide(SOUTH) ?: false
+                val exists = top?.hasSide(SOUTH) ?: false
                 if (!exists) {
                     (1 until SCALE_X).forEach {
                         createBlock(x + UNIT * it, y, NORTH, SOUTH)
@@ -55,7 +60,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 }
             }
             if (cell.hasSide(WEST)) {
-                val exists = cell.getCellOnSide(WEST)?.hasSide(EAST) ?: false
+                val exists = left?.hasSide(EAST) ?: false
                 if (!exists) {
                     (1 until SCALE_Y).forEach {
                         createBlock(x, y + UNIT * it, WEST, EAST)
@@ -73,9 +78,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 }
             }
             if (cell.hasSide(NORTH) || cell.hasSide(WEST)) {
-                val top = cell.getCellOnSide(NORTH)
                 val topLeft = cell.getCellOnPoint(NORTH_WEST)
-                val left = cell.getCellOnSide(WEST)
                 if (
                     top?.hasSide(SOUTH, WEST) != true &&
                     topLeft?.hasSide(SOUTH, EAST) != true &&
@@ -85,9 +88,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 }
             }
             if (cell.hasSide(NORTH) || cell.hasSide(EAST)) {
-                val top = cell.getCellOnSide(NORTH)
                 val topRight = cell.getCellOnPoint(NORTH_EAST)
-                val right = cell.getCellOnSide(EAST)
                 if (top?.hasSide(SOUTH, EAST) != true) {
                     var east: Cell.Side? = null
                     if (right?.hasSide(NORTH) != true && topRight?.hasSide(SOUTH) != true) {
@@ -97,9 +98,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 }
             }
             if (cell.hasSide(SOUTH) || cell.hasSide(WEST)) {
-                val left = cell.getCellOnSide(WEST)
                 val bottomLeft = cell.getCellOnPoint(SOUTH_WEST)
-                val bottom = cell.getCellOnSide(SOUTH)
                 if (
                     left?.hasSide(SOUTH, EAST) != true &&
                     bottomLeft?.hasSide(NORTH, EAST) != true
@@ -112,23 +111,25 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 }
             }
             if (cell.hasSide(SOUTH) || cell.hasSide(EAST)) {
-                val right = cell.getCellOnSide(EAST)
                 val bottomRight = cell.getCellOnPoint(SOUTH_EAST)
-                val bottom = cell.getCellOnSide(SOUTH)
-                var east: Cell.Side? = null
-                var south: Cell.Side? = null
+                if (cell.hasSide(NORTH) || top?.hasSide(SOUTH) != true) {
+                    sides.add(NORTH)
+                }
                 if (right?.hasSide(SOUTH) != true && bottomRight?.hasSide(NORTH) != true) {
-                    east = EAST
+                    sides.add(EAST)
+                }
+                if (cell.hasSide(NORTH) || top?.hasSide(SOUTH) != true) {
+                    sides.add(WEST)
                 }
                 if (bottom?.hasSide(EAST) != true && bottomRight?.hasSide(WEST) != true) {
-                    south = SOUTH
+                    sides.add(SOUTH)
                 }
-                createBlock(x + UNIT * SCALE_X, y + UNIT * SCALE_Y, east, south)
+                createBlock(x + UNIT * SCALE_X, y + UNIT * SCALE_Y, sides)
             }
         }
     }
 
-    abstract fun createBlock(cX: Float, cY: Float, vararg sides: Cell.Side?)
+    abstract fun createBlock(cX: Float, cY: Float, sides: List<Cell.Side>)
 
     companion object {
 

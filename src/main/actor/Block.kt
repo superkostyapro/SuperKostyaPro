@@ -7,7 +7,7 @@ import main.maze.OrthogonalCell
 import kotlin.math.max
 import kotlin.math.min
 
-fun Graphics.drawCut(cX: Float, cY: Float, sides: Array<out Cell.Side?>) {
+fun Graphics.drawCut(cX: Float, cY: Float, sides: List<Cell.Side>) {
     val width = UNIT
     val height = UNIT
     val x = cX - width / 2
