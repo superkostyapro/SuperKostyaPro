@@ -47,7 +47,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 .strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
             if (cell.hasSide(NORTH) || cell.hasSide(EAST)) {
                 val top = cell.getCellOnSide(NORTH)
-                if (top == null || !top.hasSide(SOUTH) && !top.hasSide(EAST)) {
+                if (top?.hasSide(SOUTH, EAST) != true) {
                     createBlock(x + UNIT * SCALE_X, y, NORTH)
                 }
             }
@@ -56,9 +56,9 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 val topLeft = cell.getCellOnPoint(NORTH_WEST)
                 val left = cell.getCellOnSide(WEST)
                 if (
-                    (top == null || !top.hasSide(SOUTH) && !top.hasSide(WEST)) &&
-                    (topLeft == null || !topLeft.hasSide(SOUTH) && !topLeft.hasSide(EAST)) &&
-                    (left == null || !left.hasSide(NORTH) && !left.hasSide(EAST))
+                    top?.hasSide(SOUTH, WEST) != true &&
+                    topLeft?.hasSide(SOUTH, EAST) != true &&
+                    left?.hasSide(NORTH, EAST) != true
                 ) {
                     createBlock(x, y, NORTH, WEST)
                 }
@@ -67,8 +67,8 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 val left = cell.getCellOnSide(WEST)
                 val bottomLeft = cell.getCellOnPoint(SOUTH_WEST)
                 if (
-                    (left == null || !left.hasSide(SOUTH) && !left.hasSide(EAST)) &&
-                    (bottomLeft == null || !bottomLeft.hasSide(NORTH) && !bottomLeft.hasSide(EAST))
+                    left?.hasSide(SOUTH, EAST) != true &&
+                    bottomLeft?.hasSide(NORTH, EAST) != true
                 ) {
                     createBlock(x, y + UNIT * SCALE_Y, WEST)
                 }
@@ -79,10 +79,10 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 val bottom = cell.getCellOnSide(SOUTH)
                 val sides = arrayOfNulls<Cell.Side>(2)
                 if (
-                    (right == null || !right.hasSide(SOUTH) && !right.hasSide(EAST)) &&
-                    (bottomRight == null || !bottomRight.hasSide(NORTH) && !bottomRight.hasSide(EAST))
+                    right?.hasSide(SOUTH, EAST) != true &&
+                    bottomRight?.hasSide(NORTH, EAST) != true
                 ) {
-                    sides[0] = EAST
+                    //sides[0] = EAST
                 }
                 createBlock(x + UNIT * SCALE_X, y + UNIT * SCALE_Y, *sides)
             }

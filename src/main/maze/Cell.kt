@@ -80,6 +80,18 @@ abstract class Cell(open val maze: Maze, open val position: Position) {
     }
 
     /**
+     * Returns true if one of the [sides] is set.
+     */
+    open fun hasSide(vararg sides: Side): Boolean {
+        sides.forEach {
+            if (hasSide(it)) {
+                return true
+            }
+        }
+        return false
+    }
+
+    /**
      * Opens [side] of the cell. (Removes a wall)
      */
     fun openSide(side: Side) {
