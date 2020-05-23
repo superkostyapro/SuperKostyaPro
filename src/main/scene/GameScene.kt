@@ -46,11 +46,10 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
             val y = UNIT * (row * SCALE_Y + 0.5f)
             graphics.lineStyle(16, 0x00ff00)
                 .strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
-                .lineStyle(4, 0xff0000)
             if (cell.hasSide(north) || cell.hasSide(east)) {
                 val top = cell.getCellOnSide(north)
                 if (top == null || !top.hasSide(south) && !top.hasSide(east)) {
-                    createBlock(x + UNIT * SCALE_X, y)
+                    createBlock(x + UNIT * SCALE_X, y, north)
                 }
             }
             if (cell.hasSide(north) || cell.hasSide(west)) {
@@ -62,7 +61,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                     (topLeft == null || !topLeft.hasSide(south) && !topLeft.hasSide(east)) &&
                     (left == null || !left.hasSide(north) && !left.hasSide(east))
                 ) {
-                    createBlock(x, y)
+                    createBlock(x, y, north, west)
                 }
             }
             if (cell.hasSide(south) || cell.hasSide(west)) {
@@ -72,11 +71,21 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                     (left == null || !left.hasSide(south) && !left.hasSide(east)) &&
                     (bottomLeft == null || !bottomLeft.hasSide(north) && !bottomLeft.hasSide(east))
                 ) {
-                    createBlock(x, y + UNIT * SCALE_Y)
+                    createBlock(x, y + UNIT * SCALE_Y, west)
                 }
             }
             if (cell.hasSide(south) || cell.hasSide(east)) {
-                createBlock(x + UNIT * SCALE_X, y + UNIT * SCALE_Y)
+                val right = cell.getCellOnSide(east)
+                val bottomRight = cell.getCellOnPoint(OrthogonalCell.SOUTH_EAST)
+                val bottom = cell.getCellOnSide(south)
+                val sides = arrayOfNulls<Cell.Side>(2)
+                if (
+                    (right == null || !right.hasSide(south) && !right.hasSide(east)) &&
+                    (bottomRight == null || !bottomRight.hasSide(north) && !bottomRight.hasSide(east))
+                ) {
+                    sides[0] = east
+                }
+                createBlock(x + UNIT * SCALE_X, y + UNIT * SCALE_Y, *sides)
             }
             if (cell.hasSide(north)) {
                 val exists = cell.getCellOnSide(north)?.hasSide(south) ?: false
@@ -107,7 +116,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
         }
     }
 
-    abstract fun createBlock(cX: Float, cY: Float, vararg sides: Cell.Side)
+    abstract fun createBlock(cX: Float, cY: Float, vararg sides: Cell.Side?)
 
     companion object {
 
