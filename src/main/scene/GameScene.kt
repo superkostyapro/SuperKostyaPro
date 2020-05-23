@@ -5,6 +5,7 @@ import Phaser.Types.Scenes.SettingsConfig
 import main.UNIT
 import main.extension.jsObject
 import main.maze.Cell
+import main.maze.OrthogonalCell.Companion.NORTH_EAST
 import main.maze.OrthogonalCell.Companion.NORTH_WEST
 import main.maze.OrthogonalCell.Companion.SOUTH_EAST
 import main.maze.OrthogonalCell.Companion.SOUTH_WEST
@@ -47,8 +48,14 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 .strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
             if (cell.hasSide(NORTH) || cell.hasSide(EAST)) {
                 val top = cell.getCellOnSide(NORTH)
+                val topRight = cell.getCellOnPoint(NORTH_EAST)
+                val right = cell.getCellOnSide(EAST)
                 if (top?.hasSide(SOUTH, EAST) != true) {
-                    createBlock(x + UNIT * SCALE_X, y, NORTH)
+                    var east: Cell.Side? = null
+                    if (right?.hasSide(NORTH) != true && topRight?.hasSide(SOUTH) != true) {
+                        east = EAST
+                    }
+                    createBlock(x + UNIT * SCALE_X, y, NORTH, east)
                 }
             }
             if (cell.hasSide(NORTH) || cell.hasSide(WEST)) {
@@ -66,11 +73,16 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
             if (cell.hasSide(SOUTH) || cell.hasSide(WEST)) {
                 val left = cell.getCellOnSide(WEST)
                 val bottomLeft = cell.getCellOnPoint(SOUTH_WEST)
+                val bottom = cell.getCellOnSide(SOUTH)
                 if (
                     left?.hasSide(SOUTH, EAST) != true &&
                     bottomLeft?.hasSide(NORTH, EAST) != true
                 ) {
-                    createBlock(x, y + UNIT * SCALE_Y, WEST)
+                    var south: Cell.Side? = null
+                    if (bottom?.hasSide(WEST) != true && bottomLeft?.hasSide(EAST) != true) {
+                        south = SOUTH
+                    }
+                    createBlock(x, y + UNIT * SCALE_Y, WEST, south)
                 }
             }
             if (cell.hasSide(SOUTH) || cell.hasSide(EAST)) {
@@ -78,11 +90,11 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 val bottomRight = cell.getCellOnPoint(SOUTH_EAST)
                 val bottom = cell.getCellOnSide(SOUTH)
                 val sides = arrayOfNulls<Cell.Side>(2)
-                if (
-                    right?.hasSide(SOUTH, EAST) != true &&
-                    bottomRight?.hasSide(NORTH, EAST) != true
-                ) {
-                    //sides[0] = EAST
+                if (right?.hasSide(SOUTH) != true && bottomRight?.hasSide(NORTH) != true) {
+                    sides[0] = EAST
+                }
+                if (bottom?.hasSide(EAST) != true && bottomRight?.hasSide(WEST) != true) {
+                    sides[1] = SOUTH
                 }
                 createBlock(x + UNIT * SCALE_X, y + UNIT * SCALE_Y, *sides)
             }
