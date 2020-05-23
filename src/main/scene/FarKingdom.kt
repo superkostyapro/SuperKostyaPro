@@ -3,7 +3,9 @@ package main.scene
 import Phaser.Types.Input.Keyboard.CursorKeys
 import main.Preferences
 import main.UNIT
+import main.actor.drawCut
 import main.extension.jsObject
+import main.maze.Cell
 
 class FarKingdom : GameScene(jsObject {
     key = "King"
@@ -22,12 +24,13 @@ class FarKingdom : GameScene(jsObject {
         generateMap(Preferences.worldLevel3)
     }
 
-    override fun createBlock(cX: Float, cY: Float) {
+    override fun createBlock(cX: Float, cY: Float, vararg sides: Cell.Side) {
         add.graphics().apply {
             fillStyle(0xf5f5f5)
             lineStyle(2, 0x000000)
             physics.add.existing(this, true)
             body.setSize(UNIT, UNIT)
+            drawCut(cX, cY, *sides)
         }
     }
 

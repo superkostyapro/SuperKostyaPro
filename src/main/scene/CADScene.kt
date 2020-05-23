@@ -3,6 +3,7 @@ package main.scene
 import main.Preferences
 import main.UNIT
 import main.extension.jsObject
+import main.maze.Cell
 
 class CADScene : GameScene(jsObject {
     key = "CAD"
@@ -17,7 +18,7 @@ class CADScene : GameScene(jsObject {
         generateMap(Preferences.worldLevel2)
     }
 
-    override fun createBlock(cX: Float, cY: Float) {
+    override fun createBlock(cX: Float, cY: Float, vararg sides: Cell.Side) {
         add.graphics().apply {
             fillStyle(0xf5f5f5)
             lineStyle(2, 0x000000)
