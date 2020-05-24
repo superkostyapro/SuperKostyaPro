@@ -1,5 +1,6 @@
 package main.scene
 
+import Phaser.GameObjects.Graphics
 import Phaser.Sound.BaseSound
 import Phaser.Types.Scenes.SettingsConfig
 import main.UNIT
@@ -19,19 +20,21 @@ import kotlin.math.max
 
 abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
 
-    protected var background: BaseSound? = null
+    protected lateinit var background: BaseSound
+
+    protected lateinit var graphics: Graphics
 
     override fun create() {
         background = sound.add("bg$tag", jsObject {
             loop = true
         })
         //background.play()
+        graphics = add.graphics()
     }
 
     protected fun generateMap(level: Int) {
         val cols = max(level, 2) * (SCALE_Y + 0)
         val rows = max(level, 2) * (SCALE_X + 0)
-        //val graphics = add.graphics()
         cameras.main.setSize(UNIT * (cols * SCALE_X + 1), UNIT * (rows * SCALE_Y + 1))
         console.log("${UNIT * (cols * SCALE_X + 1)} ${UNIT * (rows * SCALE_Y + 1)}")
         val maze = OrthogonalMaze(cols, rows)
@@ -42,8 +45,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
             else -> PrimGenerator()
         }.generate(maze)
         maze.forEachCellIndexed { col, row, cell ->
-            //graphics.lineStyle(16, 0x00ff00)
-            //.strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
+            //graphics.lineStyle(16, 0x00ff00).strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
             val x = UNIT * (col * SCALE_X + 0.5f)
             val y = UNIT * (row * SCALE_Y + 0.5f)
             val top = cell.getCellOnSide(NORTH)
@@ -77,13 +79,13 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 }
             }
             if (cell.hasSide(NORTH) || cell.hasSide(WEST)) {
-                val sides = mutableListOf(NORTH, WEST)
                 val topLeft = cell.getCellOnPoint(NORTH_WEST)
                 if (
                     top?.hasSide(SOUTH, WEST) != true &&
                     topLeft?.hasSide(SOUTH, EAST) != true &&
                     left?.hasSide(NORTH, EAST) != true
                 ) {
+                    val sides = mutableListOf(NORTH, WEST)
                     if (!cell.hasSide(NORTH) && top?.hasSide(SOUTH) != true) {
                         sides.add(EAST)
                     }
@@ -94,9 +96,9 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 }
             }
             if (cell.hasSide(NORTH) || cell.hasSide(EAST)) {
-                val sides = mutableListOf(NORTH)
                 val topRight = cell.getCellOnPoint(NORTH_EAST)
                 if (top?.hasSide(SOUTH, EAST) != true) {
+                    val sides = mutableListOf(NORTH)
                     if (right?.hasSide(NORTH) != true && topRight?.hasSide(SOUTH) != true) {
                         sides.add(EAST)
                     }
@@ -110,12 +112,12 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 }
             }
             if (cell.hasSide(SOUTH) || cell.hasSide(WEST)) {
-                val sides = mutableListOf(WEST)
                 val bottomLeft = cell.getCellOnPoint(SOUTH_WEST)
                 if (
                     left?.hasSide(SOUTH, EAST) != true &&
                     bottomLeft?.hasSide(NORTH, EAST) != true
                 ) {
+                    val sides = mutableListOf(WEST)
                     if (!cell.hasSide(WEST) && left?.hasSide(EAST) != true) {
                         sides.add(NORTH)
                     }
@@ -146,9 +148,12 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 createBlock(x + UNIT * SCALE_X, y + UNIT * SCALE_Y, sides)
             }
         }
+        createSurface(133f, 133f, 100f, SOUTH)
     }
 
     abstract fun createBlock(cX: Float, cY: Float, sides: List<Cell.Side>)
+
+    abstract fun createSurface(cX: Float, cY: Float, length: Float, side: Cell.Side)
 
     companion object {
 

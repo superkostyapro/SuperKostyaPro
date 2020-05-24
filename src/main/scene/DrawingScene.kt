@@ -3,7 +3,8 @@ package main.scene
 import Phaser.Types.Input.Keyboard.CursorKeys
 import main.Preferences
 import main.UNIT
-import main.actor.drawCut
+import main.actor.drawCutBlock
+import main.actor.drawDimension
 import main.extension.jsObject
 import main.maze.Cell
 
@@ -30,8 +31,13 @@ class DrawingScene : GameScene(jsObject {
             lineStyle(2, 0x000000)
             physics.add.existing(this, true)
             body.setSize(UNIT, UNIT)
-            drawCut(cX, cY, sides)
+            drawCutBlock(cX, cY, sides)
         }
+    }
+
+    override fun createSurface(cX: Float, cY: Float, length: Float, side: Cell.Side) {
+        graphics.lineStyle(2, 0x00000080)
+            .drawDimension(cX, cY, length, side)
     }
 
     override fun update(time: Float, delta: Float) {
