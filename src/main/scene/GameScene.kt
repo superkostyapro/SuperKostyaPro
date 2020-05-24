@@ -84,6 +84,12 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                     topLeft?.hasSide(SOUTH, EAST) != true &&
                     left?.hasSide(NORTH, EAST) != true
                 ) {
+                    if (!cell.hasSide(NORTH) && top?.hasSide(SOUTH) != true) {
+                        sides.add(EAST)
+                    }
+                    if (!cell.hasSide(WEST) && left?.hasSide(EAST) != true) {
+                        sides.add(SOUTH)
+                    }
                     createBlock(x, y, sides)
                 }
             }
@@ -93,6 +99,12 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 if (top?.hasSide(SOUTH, EAST) != true) {
                     if (right?.hasSide(NORTH) != true && topRight?.hasSide(SOUTH) != true) {
                         sides.add(EAST)
+                    }
+                    if (!cell.hasSide(NORTH) && top?.hasSide(SOUTH) != true) {
+                        sides.add(WEST)
+                    }
+                    if (!cell.hasSide(EAST) && right?.hasSide(WEST) != true) {
+                        sides.add(SOUTH)
                     }
                     createBlock(x + UNIT * SCALE_X, y, sides)
                 }
@@ -104,6 +116,12 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                     left?.hasSide(SOUTH, EAST) != true &&
                     bottomLeft?.hasSide(NORTH, EAST) != true
                 ) {
+                    if (!cell.hasSide(WEST) && left?.hasSide(EAST) != true) {
+                        sides.add(NORTH)
+                    }
+                    if (!cell.hasSide(SOUTH) && bottom?.hasSide(NORTH) != true) {
+                        sides.add(EAST)
+                    }
                     if (bottom?.hasSide(WEST) != true) {
                         sides.add(SOUTH)
                     }
