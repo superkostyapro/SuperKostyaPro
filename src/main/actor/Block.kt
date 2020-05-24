@@ -7,7 +7,7 @@ import main.maze.OrthogonalCell
 import kotlin.math.max
 import kotlin.math.min
 
-fun Graphics.drawCut(cX: Float, cY: Float, sides: List<Cell.Side>) {
+fun Graphics.drawCutBlock(cX: Float, cY: Float, sides: List<Cell.Side>) {
     val width = UNIT
     val height = UNIT
     val x = cX - width / 2
@@ -34,10 +34,10 @@ fun Graphics.drawCut(cX: Float, cY: Float, sides: List<Cell.Side>) {
     if (sides.contains(OrthogonalCell.Side.WEST)) {
         lineBetween(x, y, x, bottom)
     }
-    if (sides.contains(OrthogonalCell.Side.SOUTH)) {
-        lineBetween(x, bottom, right, bottom)
-    }
     if (sides.contains(OrthogonalCell.Side.EAST)) {
         lineBetween(right, y, right, bottom)
+    }
+    if (sides.contains(OrthogonalCell.Side.SOUTH)) {
+        lineBetween(x, bottom, right, bottom)
     }
 }
