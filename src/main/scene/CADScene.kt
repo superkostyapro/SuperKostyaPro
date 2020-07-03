@@ -2,6 +2,7 @@ package main.scene
 
 import main.Preferences
 import main.UNIT
+import main.actor.drawDimension
 import main.extension.jsObject
 import main.maze.Cell
 
@@ -25,5 +26,11 @@ class CADScene : GameScene(jsObject {
             physics.add.existing(this, true)
             body.setSize(UNIT, UNIT)
         }
+    }
+
+    override fun createSurface(cX: Float, cY: Float, length: Float, side: Cell.Side) {
+        val text = add.text(0, 0, length.toString())
+        graphics.lineStyle(2, 0x000000, 0.3f)
+            .drawDimension(cX, cY, length, side, text)
     }
 }

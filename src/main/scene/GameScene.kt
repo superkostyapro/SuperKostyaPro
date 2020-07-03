@@ -48,6 +48,8 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
             //graphics.lineStyle(16, 0x00ff00).strokeRect(x, y, UNIT * SCALE_X, UNIT * SCALE_Y)
             val x = UNIT * (col * SCALE_X + 0.5f)
             val y = UNIT * (row * SCALE_Y + 0.5f)
+            val width = UNIT * SCALE_X
+            val height = UNIT * SCALE_Y
             val top = cell.getCellOnSide(NORTH)
             val right = cell.getCellOnSide(EAST)
             val left = cell.getCellOnSide(WEST)
@@ -70,13 +72,14 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
             }
             if (cell.hasSide(EAST)) {
                 (1 until SCALE_Y).forEach {
-                    createBlock(x + UNIT * SCALE_X, y + UNIT * it, listOf(WEST, EAST))
+                    createBlock(x + width, y + UNIT * it, listOf(WEST, EAST))
                 }
             }
             if (cell.hasSide(SOUTH)) {
                 (1 until SCALE_X).forEach {
-                    createBlock(x + UNIT * it, y + UNIT * SCALE_Y, listOf(NORTH, SOUTH))
+                    createBlock(x + UNIT * it, y + height, listOf(NORTH, SOUTH))
                 }
+                createSurface(x + width / 2, y + height - UNIT / 2, width - UNIT, SOUTH)
             }
             if (cell.hasSide(NORTH) || cell.hasSide(WEST)) {
                 val topLeft = cell.getCellOnPoint(NORTH_WEST)
@@ -108,7 +111,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                     if (!cell.hasSide(EAST) && right?.hasSide(WEST) != true) {
                         sides.add(SOUTH)
                     }
-                    createBlock(x + UNIT * SCALE_X, y, sides)
+                    createBlock(x + width, y, sides)
                 }
             }
             if (cell.hasSide(SOUTH) || cell.hasSide(WEST)) {
@@ -127,7 +130,7 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                     if (bottom?.hasSide(WEST) != true) {
                         sides.add(SOUTH)
                     }
-                    createBlock(x, y + UNIT * SCALE_Y, sides)
+                    createBlock(x, y + height, sides)
                 }
             }
             if (cell.hasSide(SOUTH) || cell.hasSide(EAST)) {
@@ -145,10 +148,9 @@ abstract class GameScene(config: SettingsConfig) : BaseScene(config) {
                 if (bottom?.hasSide(EAST) != true && bottomRight?.hasSide(WEST) != true) {
                     sides.add(SOUTH)
                 }
-                createBlock(x + UNIT * SCALE_X, y + UNIT * SCALE_Y, sides)
+                createBlock(x + width, y + height, sides)
             }
         }
-        createSurface(133f, 133f, 100f, SOUTH)
     }
 
     abstract fun createBlock(cX: Float, cY: Float, sides: List<Cell.Side>)

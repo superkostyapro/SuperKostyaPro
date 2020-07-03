@@ -1,5 +1,6 @@
 package main.scene
 
+import Phaser.GameObjects.TextStyle
 import Phaser.Types.Input.Keyboard.CursorKeys
 import main.Preferences
 import main.UNIT
@@ -36,8 +37,12 @@ class DrawingScene : GameScene(jsObject {
     }
 
     override fun createSurface(cX: Float, cY: Float, length: Float, side: Cell.Side) {
-        graphics.lineStyle(2, 0x00000080)
-            .drawDimension(cX, cY, length, side)
+        val text = add.text(0, 0, length.toString(), jsObject<TextStyle> {
+            fontStyle = "italic"
+            color = "#00000059"
+        })
+        graphics.lineStyle(2, 0x000000, 0.35f)
+            .drawDimension(cX, cY, length, side, text)
     }
 
     override fun update(time: Float, delta: Float) {

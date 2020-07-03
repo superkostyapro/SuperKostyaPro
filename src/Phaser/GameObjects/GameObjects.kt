@@ -694,7 +694,7 @@ open external class GameObject(scene: Phaser.Scene, type: String) : EventEmitter
     open var renderFlags: integer
     open var cameraFilter: Number
     open var input: InteractiveObject
-    open var body: dynamic /* Any? | Phaser.Physics.Arcade.Body | MatterJS.BodyType */
+    open var body: Phaser.Physics.Arcade.Body /* Any? | Phaser.Physics.Arcade.Body | MatterJS.BodyType */
     open var ignoreDestroy: Boolean
     open fun setActive(value: Boolean): GameObject /* this */
     open fun setName(value: String): GameObject /* this */

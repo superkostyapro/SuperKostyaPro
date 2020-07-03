@@ -7,6 +7,7 @@ import Phaser.Scale.ScaleModeType
 import Phaser.Types.Core.GameConfig
 import Phaser.Types.Core.PhysicsConfig
 import Phaser.Types.Core.ScaleConfig
+import Phaser.Types.Physics.Arcade.ArcadeWorldConfig
 import main.extension.jsObject
 import main.scene.CADScene
 import main.scene.DrawingScene
@@ -58,6 +59,8 @@ private fun startGame() {
         }
         physics = jsObject<PhysicsConfig> {
             default = "arcade"
+            arcade = jsObject<ArcadeWorldConfig> {
+            }
         }
         scene = arrayOf(
             MenuScene::class.js,

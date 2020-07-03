@@ -20,7 +20,7 @@ class TextWorld(scene: Scene, index: Int, action: () -> Unit) : Text(scene, 0, 0
         }
         setText("WORLD $index-$level")
         if (level > 0) {
-            setColor("#ffffffdd")
+            setColor("#ddffffff")
             setInteractive(jsObject {
                 useHandCursor = true
             })
