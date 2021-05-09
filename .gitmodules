@@ -1,0 +1,3 @@
+[submodule "phaser-kt"]
+	path = phaser-kt
+	url = https://github.com/androidovshchik/PhaserKt
