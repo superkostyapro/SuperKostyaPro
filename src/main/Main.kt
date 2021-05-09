@@ -13,7 +13,7 @@ import main.scene.CADScene
 import main.scene.DrawingScene
 import main.scene.FarKingdom
 import main.scene.menu.MenuScene
-import kotlin.browser.document
+import kotlinx.browser.document
 
 fun main() {
     console.log(

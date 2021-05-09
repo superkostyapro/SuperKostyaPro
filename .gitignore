@@ -3,3 +3,6 @@ build
 .idea
 local.properties
 *.iml
+/gradlew.bat
+/gradlew
+/gradle/wrapper/gradle-wrapper.jar
